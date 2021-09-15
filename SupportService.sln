@@ -9,7 +9,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SupportModel", "SupportMode
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SupportDAL", "SuportDAL\SupportDAL.csproj", "{141D3864-0D3F-4415-810A-B0FB3164ACC7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SupportDAO", "SupportDAO\SupportDAO.csproj", "{7E80D80F-9169-4928-ABB2-E1FFFD8762D4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SupportLogic", "SupportDAO\SupportLogic.csproj", "{7E80D80F-9169-4928-ABB2-E1FFFD8762D4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
