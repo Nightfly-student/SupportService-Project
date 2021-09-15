@@ -4,19 +4,18 @@ using MongoDB.Driver;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Configuration;
 
 namespace SupportDAL
 {
     public class MongoDatabase
     {
-        private const string DB_NAME = "dbname";
-        private const string CONNECT_STRING = "mongodb+srv://dbAdmin:dbadminpass@cluster0.ddguq.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
         private MongoClient _client;
         private IMongoDatabase _db;
 
         public MongoDatabase()
         {
-            _client = new MongoClient(CONNECT_STRING);
+            _client = new MongoClient(ConfigurationManager.ConnectionStrings["MongoConnection"].ConnectionString);
         }
 
         // connect to database

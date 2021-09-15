@@ -36,11 +36,11 @@ namespace SupportService
             this.tbPassword = new System.Windows.Forms.TextBox();
             this.lblPassword = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label2 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.lblInstruction = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.label2 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -51,6 +51,7 @@ namespace SupportService
             this.tbUsername.Font = new System.Drawing.Font("Arial", 15F, System.Drawing.FontStyle.Bold);
             this.tbUsername.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.tbUsername.Location = new System.Drawing.Point(210, 215);
+            this.tbUsername.MaxLength = 100;
             this.tbUsername.Name = "tbUsername";
             this.tbUsername.Size = new System.Drawing.Size(157, 30);
             this.tbUsername.TabIndex = 0;
@@ -83,7 +84,9 @@ namespace SupportService
             this.tbPassword.Font = new System.Drawing.Font("Arial", 15F, System.Drawing.FontStyle.Bold);
             this.tbPassword.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.tbPassword.Location = new System.Drawing.Point(210, 256);
+            this.tbPassword.MaxLength = 100;
             this.tbPassword.Name = "tbPassword";
+            this.tbPassword.PasswordChar = '*';
             this.tbPassword.Size = new System.Drawing.Size(157, 30);
             this.tbPassword.TabIndex = 1;
             // 
@@ -115,6 +118,20 @@ namespace SupportService
             this.panel1.Size = new System.Drawing.Size(450, 500);
             this.panel1.TabIndex = 4;
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.Transparent;
+            this.label2.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.label2.Font = new System.Drawing.Font("Comic Sans MS", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.label2.Location = new System.Drawing.Point(422, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(28, 29);
+            this.label2.TabIndex = 6;
+            this.label2.Text = "X";
+            this.label2.Click += new System.EventHandler(this.label2_Click);
+            // 
             // button1
             // 
             this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(200)))), ((int)(((byte)(150)))));
@@ -124,7 +141,7 @@ namespace SupportService
             this.button1.Location = new System.Drawing.Point(115, 358);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(209, 53);
-            this.button1.TabIndex = 5;
+            this.button1.TabIndex = 2;
             this.button1.Text = "Login";
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
@@ -161,20 +178,6 @@ namespace SupportService
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 5;
             this.pictureBox1.TabStop = false;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.BackColor = System.Drawing.Color.Transparent;
-            this.label2.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.label2.Font = new System.Drawing.Font("Comic Sans MS", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.label2.Location = new System.Drawing.Point(422, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(28, 29);
-            this.label2.TabIndex = 6;
-            this.label2.Text = "X";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // FormLogin
             // 
