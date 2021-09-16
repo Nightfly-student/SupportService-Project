@@ -30,6 +30,7 @@ namespace SupportService
         private void InitializeComponent()
         {
             this.pnlDashboard = new System.Windows.Forms.Panel();
+            this.lblExit = new System.Windows.Forms.Label();
             this.lblDashboard = new System.Windows.Forms.Label();
             this.lblHighBorder = new System.Windows.Forms.Label();
             this.lblHighPriority = new System.Windows.Forms.Label();
@@ -53,24 +54,39 @@ namespace SupportService
             this.chUser = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.chDate = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.chStatus = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.label2 = new System.Windows.Forms.Label();
+            this.pnlBorder = new System.Windows.Forms.Panel();
             this.pnlDashboard.SuspendLayout();
             this.pnlHighPriority.SuspendLayout();
             this.pnlNormalPriority.SuspendLayout();
             this.pnlLowPriority.SuspendLayout();
             this.pnlPriorities.SuspendLayout();
+            this.pnlBorder.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnlDashboard
             // 
-            this.pnlDashboard.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.pnlDashboard.Controls.Add(this.label2);
+            this.pnlDashboard.BackColor = System.Drawing.Color.White;
+            this.pnlDashboard.Controls.Add(this.lblExit);
             this.pnlDashboard.Controls.Add(this.lblDashboard);
             this.pnlDashboard.Location = new System.Drawing.Point(0, 0);
             this.pnlDashboard.Margin = new System.Windows.Forms.Padding(0);
             this.pnlDashboard.Name = "pnlDashboard";
             this.pnlDashboard.Size = new System.Drawing.Size(800, 42);
             this.pnlDashboard.TabIndex = 0;
+            // 
+            // lblExit
+            // 
+            this.lblExit.AutoSize = true;
+            this.lblExit.BackColor = System.Drawing.Color.Transparent;
+            this.lblExit.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.lblExit.Font = new System.Drawing.Font("Comic Sans MS", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblExit.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.lblExit.Location = new System.Drawing.Point(772, 0);
+            this.lblExit.Name = "lblExit";
+            this.lblExit.Size = new System.Drawing.Size(28, 29);
+            this.lblExit.TabIndex = 7;
+            this.lblExit.Text = "X";
+            this.lblExit.Click += new System.EventHandler(this.label2_Click);
             // 
             // lblDashboard
             // 
@@ -118,24 +134,26 @@ namespace SupportService
             // 
             // pnlHighPriority
             // 
+            this.pnlHighPriority.BackColor = System.Drawing.Color.White;
             this.pnlHighPriority.Controls.Add(this.lblHighPriority);
             this.pnlHighPriority.Controls.Add(this.lblHighAmount);
             this.pnlHighPriority.Controls.Add(this.lblHighBorder);
             this.pnlHighPriority.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pnlHighPriority.Location = new System.Drawing.Point(121, 32);
+            this.pnlHighPriority.Location = new System.Drawing.Point(111, 32);
             this.pnlHighPriority.Name = "pnlHighPriority";
-            this.pnlHighPriority.Size = new System.Drawing.Size(154, 80);
+            this.pnlHighPriority.Size = new System.Drawing.Size(180, 80);
             this.pnlHighPriority.TabIndex = 3;
             // 
             // pnlNormalPriority
             // 
+            this.pnlNormalPriority.BackColor = System.Drawing.Color.White;
             this.pnlNormalPriority.Controls.Add(this.lblNormalPriority);
             this.pnlNormalPriority.Controls.Add(this.lblNormalAmount);
             this.pnlNormalPriority.Controls.Add(this.lblNormalBorder);
             this.pnlNormalPriority.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pnlNormalPriority.Location = new System.Drawing.Point(317, 32);
+            this.pnlNormalPriority.Location = new System.Drawing.Point(312, 32);
             this.pnlNormalPriority.Name = "pnlNormalPriority";
-            this.pnlNormalPriority.Size = new System.Drawing.Size(180, 80);
+            this.pnlNormalPriority.Size = new System.Drawing.Size(190, 80);
             this.pnlNormalPriority.TabIndex = 4;
             // 
             // lblNormalPriority
@@ -173,13 +191,14 @@ namespace SupportService
             // 
             // pnlLowPriority
             // 
+            this.pnlLowPriority.BackColor = System.Drawing.Color.White;
             this.pnlLowPriority.Controls.Add(this.lblLowPriority);
             this.pnlLowPriority.Controls.Add(this.lblLowAmount);
             this.pnlLowPriority.Controls.Add(this.lblLowBorder);
             this.pnlLowPriority.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pnlLowPriority.Location = new System.Drawing.Point(511, 32);
+            this.pnlLowPriority.Location = new System.Drawing.Point(521, 32);
             this.pnlLowPriority.Name = "pnlLowPriority";
-            this.pnlLowPriority.Size = new System.Drawing.Size(154, 80);
+            this.pnlLowPriority.Size = new System.Drawing.Size(180, 80);
             this.pnlLowPriority.TabIndex = 5;
             // 
             // lblLowPriority
@@ -222,9 +241,9 @@ namespace SupportService
             this.pnlPriorities.Controls.Add(this.pnlLowPriority);
             this.pnlPriorities.Controls.Add(this.pnlNormalPriority);
             this.pnlPriorities.ForeColor = System.Drawing.Color.Maroon;
-            this.pnlPriorities.Location = new System.Drawing.Point(0, 41);
+            this.pnlPriorities.Location = new System.Drawing.Point(0, 3);
             this.pnlPriorities.Name = "pnlPriorities";
-            this.pnlPriorities.Size = new System.Drawing.Size(800, 172);
+            this.pnlPriorities.Size = new System.Drawing.Size(800, 160);
             this.pnlPriorities.TabIndex = 6;
             // 
             // btnNewTicket
@@ -233,7 +252,7 @@ namespace SupportService
             this.btnNewTicket.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnNewTicket.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Bold);
             this.btnNewTicket.ForeColor = System.Drawing.Color.White;
-            this.btnNewTicket.Location = new System.Drawing.Point(216, 191);
+            this.btnNewTicket.Location = new System.Drawing.Point(214, 182);
             this.btnNewTicket.Name = "btnNewTicket";
             this.btnNewTicket.Size = new System.Drawing.Size(185, 45);
             this.btnNewTicket.TabIndex = 1;
@@ -246,7 +265,7 @@ namespace SupportService
             this.btnUsers.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnUsers.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Bold);
             this.btnUsers.ForeColor = System.Drawing.Color.White;
-            this.btnUsers.Location = new System.Drawing.Point(421, 191);
+            this.btnUsers.Location = new System.Drawing.Point(419, 182);
             this.btnUsers.Name = "btnUsers";
             this.btnUsers.Size = new System.Drawing.Size(185, 45);
             this.btnUsers.TabIndex = 1;
@@ -258,7 +277,7 @@ namespace SupportService
             this.lblRecent.AutoSize = true;
             this.lblRecent.Font = new System.Drawing.Font("Arial", 15.75F);
             this.lblRecent.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.lblRecent.Location = new System.Drawing.Point(12, 273);
+            this.lblRecent.Location = new System.Drawing.Point(12, 237);
             this.lblRecent.Name = "lblRecent";
             this.lblRecent.Size = new System.Drawing.Size(144, 24);
             this.lblRecent.TabIndex = 2;
@@ -275,9 +294,9 @@ namespace SupportService
             this.lvRecentTickets.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lvRecentTickets.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.lvRecentTickets.HideSelection = false;
-            this.lvRecentTickets.Location = new System.Drawing.Point(12, 300);
+            this.lvRecentTickets.Location = new System.Drawing.Point(12, 264);
             this.lvRecentTickets.Name = "lvRecentTickets";
-            this.lvRecentTickets.Size = new System.Drawing.Size(776, 241);
+            this.lvRecentTickets.Size = new System.Drawing.Size(776, 277);
             this.lvRecentTickets.TabIndex = 7;
             this.lvRecentTickets.UseCompatibleStateImageBehavior = false;
             this.lvRecentTickets.View = System.Windows.Forms.View.Details;
@@ -307,31 +326,27 @@ namespace SupportService
             this.chStatus.Text = "Status";
             this.chStatus.Width = 72;
             // 
-            // label2
+            // pnlBorder
             // 
-            this.label2.AutoSize = true;
-            this.label2.BackColor = System.Drawing.Color.Transparent;
-            this.label2.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.label2.Font = new System.Drawing.Font("Comic Sans MS", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.label2.Location = new System.Drawing.Point(772, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(28, 29);
-            this.label2.TabIndex = 7;
-            this.label2.Text = "X";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
+            this.pnlBorder.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.pnlBorder.Controls.Add(this.pnlPriorities);
+            this.pnlBorder.ForeColor = System.Drawing.Color.Maroon;
+            this.pnlBorder.Location = new System.Drawing.Point(0, 41);
+            this.pnlBorder.Name = "pnlBorder";
+            this.pnlBorder.Size = new System.Drawing.Size(800, 166);
+            this.pnlBorder.TabIndex = 6;
             // 
             // FormDashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(800, 553);
             this.Controls.Add(this.lvRecentTickets);
             this.Controls.Add(this.lblRecent);
             this.Controls.Add(this.btnNewTicket);
             this.Controls.Add(this.btnUsers);
-            this.Controls.Add(this.pnlPriorities);
+            this.Controls.Add(this.pnlBorder);
             this.Controls.Add(this.pnlDashboard);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FormDashboard";
@@ -346,6 +361,7 @@ namespace SupportService
             this.pnlLowPriority.ResumeLayout(false);
             this.pnlLowPriority.PerformLayout();
             this.pnlPriorities.ResumeLayout(false);
+            this.pnlBorder.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -377,6 +393,7 @@ namespace SupportService
         private System.Windows.Forms.ColumnHeader chUser;
         private System.Windows.Forms.ColumnHeader chDate;
         private System.Windows.Forms.ColumnHeader chStatus;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label lblExit;
+        private System.Windows.Forms.Panel pnlBorder;
     }
 }
