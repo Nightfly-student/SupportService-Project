@@ -10,22 +10,16 @@ using System.Windows.Forms;
 
 namespace SupportService
 {
-    public partial class FormLogin : Form
+    public partial class FormDashboard : Form
     {
-        public FormLogin()
+        public FormDashboard()
         {
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            new FormMain().Show();
-            Hide();
-        }
-
         private void label2_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            Close();
         }
     }
 }

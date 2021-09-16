@@ -152,5 +152,10 @@ namespace SupportService
                 lvSelectedTable.Items.Add(item);
             }
         }
+
+        private void btnPreview_Click(object sender, EventArgs e)
+        {
+            new FormDashboard().Show();
+        }
     }
 }
