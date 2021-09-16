@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using SupportDAL;
 using SupportLogic;
+using SupportModel;
 
 namespace SupportService
 {
@@ -118,7 +119,7 @@ namespace SupportService
                 try
                 {
                     cbTables.Items.Clear();
-                    foreach (var name in _connectedClient.DisplayTables())
+                    foreach (var name in _connectedClient.DisplayCollections())
                     {
                         cbTables.Items.Add(name);
                     }
@@ -137,18 +138,18 @@ namespace SupportService
 
         private void cbTables_SelectedIndexChanged(object sender, EventArgs e)
         {
-            LoadRecords();
+            LoadItems();
         }
 
-        private void LoadRecords()
+        private void LoadItems()
         {
             lvSelectedTable.Items.Clear();
-            var records = _connectedClient.LoadAllItems<Person>(cbTables.Text);
+            var records = _connectedClient.LoadFromCollection<Person>(cbTables.Text);
             foreach (var record in records)
             {
                 ListViewItem item = new ListViewItem(record.FirstName);
                 item.SubItems.Add(record.LastName);
-                item.SubItems.Add(record.Age.ToString());
+                item.SubItems.Add(record.DateOfBirth.ToString("dd/MM/yyyy"));
                 lvSelectedTable.Items.Add(item);
             }
         }
@@ -156,6 +157,14 @@ namespace SupportService
         private void btnPreview_Click(object sender, EventArgs e)
         {
             new FormDashboard().Show();
+        }
+
+        private void btnAddUser_Click(object sender, EventArgs e)
+        {
+            if (_connectedClient != null)
+            {
+                new FormAddUser(_connectedClient).Show();
+            }
         }
     }
 }

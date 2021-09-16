@@ -40,17 +40,17 @@ namespace SupportDAL
         }
 
         // get list of tables within database
-        public List<string> DisplayTables()
+        public List<string> DisplayCollections()
         {
-            List<string> tableNames = new List<string>();
+            List<string> collectionNames = new List<string>();
             foreach (BsonDocument collection in _db.ListCollectionsAsync().Result.ToListAsync<BsonDocument>()
                 .Result)
             {
                 string tableName = collection["name"].AsString;
-                tableNames.Add(tableName);
+                collectionNames.Add(tableName);
             }
 
-            return tableNames;
+            return collectionNames;
         }
 
         public string GetDatabaseName()
@@ -67,9 +67,9 @@ namespace SupportDAL
         }
 
         // insert an item into database
-        public void InsertItem<T>(string table, T item)
+        public void InsertItem<T>(string collectionName, T item)
         {
-            var collection = _db.GetCollection<T>(table);
+            var collection = _db.GetCollection<T>(collectionName);
             collection.InsertOne(item);
         }
 
@@ -88,17 +88,17 @@ namespace SupportDAL
         }
 
         // load all items from database
-        public List<T> LoadAllItems<T>(string table)
+        public List<T> LoadFromCollection<T>(string collectionName)
         {
-            var collection = _db.GetCollection<T>(table);
+            var collection = _db.GetCollection<T>(collectionName);
 
             return collection.Find(new BsonDocument()).ToList();
         }
 
         // load specific item by ID
-        public T LoadItemById<T>(string table, Guid id)
+        public T LoadItemById<T>(string collectionName, Guid id)
         {
-            var collection = _db.GetCollection<T>(table);
+            var collection = _db.GetCollection<T>(collectionName);
             var filter = Builders<T>.Filter.Eq("Id", id);
 
             return collection.Find(filter).First();

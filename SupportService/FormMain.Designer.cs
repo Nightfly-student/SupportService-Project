@@ -36,13 +36,14 @@
             this.lvSelectedTable = new System.Windows.Forms.ListView();
             this.FirstName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.LastName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.Age = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.DateOfBirth = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.cbTables = new System.Windows.Forms.ComboBox();
             this.lbl1 = new System.Windows.Forms.Label();
             this.lbl2 = new System.Windows.Forms.Label();
             this.lbl3 = new System.Windows.Forms.Label();
             this.lbl4 = new System.Windows.Forms.Label();
             this.btnPreview = new System.Windows.Forms.Button();
+            this.btnAddUser = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lblConnectionStatus
@@ -97,11 +98,11 @@
             this.lvSelectedTable.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.FirstName,
             this.LastName,
-            this.Age});
+            this.DateOfBirth});
             this.lvSelectedTable.HideSelection = false;
             this.lvSelectedTable.Location = new System.Drawing.Point(427, 16);
             this.lvSelectedTable.Name = "lvSelectedTable";
-            this.lvSelectedTable.Size = new System.Drawing.Size(257, 231);
+            this.lvSelectedTable.Size = new System.Drawing.Size(312, 231);
             this.lvSelectedTable.TabIndex = 5;
             this.lvSelectedTable.UseCompatibleStateImageBehavior = false;
             this.lvSelectedTable.View = System.Windows.Forms.View.Details;
@@ -116,10 +117,10 @@
             this.LastName.Text = "LastName";
             this.LastName.Width = 100;
             // 
-            // Age
+            // DateOfBirth
             // 
-            this.Age.Text = "Age";
-            this.Age.Width = 50;
+            this.DateOfBirth.Text = "DateOfBirth";
+            this.DateOfBirth.Width = 250;
             // 
             // cbTables
             // 
@@ -178,11 +179,23 @@
             this.btnPreview.UseVisualStyleBackColor = true;
             this.btnPreview.Click += new System.EventHandler(this.btnPreview_Click);
             // 
+            // btnAddUser
+            // 
+            this.btnAddUser.Font = new System.Drawing.Font("Arial Black", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAddUser.Location = new System.Drawing.Point(597, 371);
+            this.btnAddUser.Name = "btnAddUser";
+            this.btnAddUser.Size = new System.Drawing.Size(191, 67);
+            this.btnAddUser.TabIndex = 11;
+            this.btnAddUser.Text = "ADD USER PREVIEW";
+            this.btnAddUser.UseVisualStyleBackColor = true;
+            this.btnAddUser.Click += new System.EventHandler(this.btnAddUser_Click);
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btnAddUser);
             this.Controls.Add(this.btnPreview);
             this.Controls.Add(this.lbl4);
             this.Controls.Add(this.lbl3);
@@ -214,13 +227,14 @@
         private System.Windows.Forms.ListView lvSelectedTable;
         private System.Windows.Forms.ColumnHeader FirstName;
         private System.Windows.Forms.ColumnHeader LastName;
-        private System.Windows.Forms.ColumnHeader Age;
+        private System.Windows.Forms.ColumnHeader DateOfBirth;
         private System.Windows.Forms.ComboBox cbTables;
         private System.Windows.Forms.Label lbl1;
         private System.Windows.Forms.Label lbl2;
         private System.Windows.Forms.Label lbl3;
         private System.Windows.Forms.Label lbl4;
         private System.Windows.Forms.Button btnPreview;
+        private System.Windows.Forms.Button btnAddUser;
     }
 }
 
