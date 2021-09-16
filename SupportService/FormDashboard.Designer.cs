@@ -30,6 +30,7 @@ namespace SupportService
         private void InitializeComponent()
         {
             this.pnlDashboard = new System.Windows.Forms.Panel();
+            this.lblExit = new System.Windows.Forms.Label();
             this.lblDashboard = new System.Windows.Forms.Label();
             this.lblHighBorder = new System.Windows.Forms.Label();
             this.lblHighPriority = new System.Windows.Forms.Label();
@@ -53,24 +54,45 @@ namespace SupportService
             this.chUser = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.chDate = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.chStatus = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.label2 = new System.Windows.Forms.Label();
+            this.pnlBorder = new System.Windows.Forms.Panel();
+            this.pnlHighBorder = new System.Windows.Forms.Panel();
+            this.pnlNormalBorder = new System.Windows.Forms.Panel();
+            this.pnlLowBorder = new System.Windows.Forms.Panel();
             this.pnlDashboard.SuspendLayout();
             this.pnlHighPriority.SuspendLayout();
             this.pnlNormalPriority.SuspendLayout();
             this.pnlLowPriority.SuspendLayout();
             this.pnlPriorities.SuspendLayout();
+            this.pnlBorder.SuspendLayout();
+            this.pnlHighBorder.SuspendLayout();
+            this.pnlNormalBorder.SuspendLayout();
+            this.pnlLowBorder.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnlDashboard
             // 
-            this.pnlDashboard.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.pnlDashboard.Controls.Add(this.label2);
+            this.pnlDashboard.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
+            this.pnlDashboard.Controls.Add(this.lblExit);
             this.pnlDashboard.Controls.Add(this.lblDashboard);
             this.pnlDashboard.Location = new System.Drawing.Point(0, 0);
             this.pnlDashboard.Margin = new System.Windows.Forms.Padding(0);
             this.pnlDashboard.Name = "pnlDashboard";
             this.pnlDashboard.Size = new System.Drawing.Size(800, 42);
             this.pnlDashboard.TabIndex = 0;
+            // 
+            // lblExit
+            // 
+            this.lblExit.AutoSize = true;
+            this.lblExit.BackColor = System.Drawing.Color.Transparent;
+            this.lblExit.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.lblExit.Font = new System.Drawing.Font("Comic Sans MS", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblExit.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.lblExit.Location = new System.Drawing.Point(772, 0);
+            this.lblExit.Name = "lblExit";
+            this.lblExit.Size = new System.Drawing.Size(28, 29);
+            this.lblExit.TabIndex = 7;
+            this.lblExit.Text = "X";
+            this.lblExit.Click += new System.EventHandler(this.label2_Click);
             // 
             // lblDashboard
             // 
@@ -86,145 +108,148 @@ namespace SupportService
             // lblHighBorder
             // 
             this.lblHighBorder.AutoSize = true;
-            this.lblHighBorder.Font = new System.Drawing.Font("Arial Narrow", 42F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblHighBorder.Font = new System.Drawing.Font("Arial Narrow", 46F, System.Drawing.FontStyle.Bold);
             this.lblHighBorder.ForeColor = System.Drawing.Color.Red;
-            this.lblHighBorder.Location = new System.Drawing.Point(2, 2);
+            this.lblHighBorder.Location = new System.Drawing.Point(12, 12);
             this.lblHighBorder.Name = "lblHighBorder";
-            this.lblHighBorder.Size = new System.Drawing.Size(41, 66);
+            this.lblHighBorder.Size = new System.Drawing.Size(44, 72);
             this.lblHighBorder.TabIndex = 1;
             this.lblHighBorder.Text = "|";
             // 
             // lblHighPriority
             // 
             this.lblHighPriority.AutoSize = true;
-            this.lblHighPriority.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblHighPriority.Font = new System.Drawing.Font("Arial", 20F);
             this.lblHighPriority.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.lblHighPriority.Location = new System.Drawing.Point(32, 15);
+            this.lblHighPriority.Location = new System.Drawing.Point(42, 21);
             this.lblHighPriority.Name = "lblHighPriority";
-            this.lblHighPriority.Size = new System.Drawing.Size(124, 24);
+            this.lblHighPriority.Size = new System.Drawing.Size(162, 32);
             this.lblHighPriority.TabIndex = 2;
             this.lblHighPriority.Text = "High Priority";
             // 
             // lblHighAmount
             // 
             this.lblHighAmount.AutoSize = true;
-            this.lblHighAmount.Font = new System.Drawing.Font("Arial", 14F);
-            this.lblHighAmount.ForeColor = System.Drawing.Color.Gray;
-            this.lblHighAmount.Location = new System.Drawing.Point(32, 43);
+            this.lblHighAmount.Font = new System.Drawing.Font("Arial", 19F);
+            this.lblHighAmount.ForeColor = System.Drawing.SystemColors.ButtonShadow;
+            this.lblHighAmount.Location = new System.Drawing.Point(42, 53);
             this.lblHighAmount.Name = "lblHighAmount";
-            this.lblHighAmount.Size = new System.Drawing.Size(21, 22);
+            this.lblHighAmount.Size = new System.Drawing.Size(28, 31);
             this.lblHighAmount.TabIndex = 2;
             this.lblHighAmount.Text = "7";
             // 
             // pnlHighPriority
             // 
+            this.pnlHighPriority.BackColor = System.Drawing.Color.Transparent;
             this.pnlHighPriority.Controls.Add(this.lblHighPriority);
             this.pnlHighPriority.Controls.Add(this.lblHighAmount);
             this.pnlHighPriority.Controls.Add(this.lblHighBorder);
             this.pnlHighPriority.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pnlHighPriority.Location = new System.Drawing.Point(121, 32);
+            this.pnlHighPriority.Location = new System.Drawing.Point(3, 3);
             this.pnlHighPriority.Name = "pnlHighPriority";
-            this.pnlHighPriority.Size = new System.Drawing.Size(154, 80);
+            this.pnlHighPriority.Size = new System.Drawing.Size(244, 104);
             this.pnlHighPriority.TabIndex = 3;
             // 
             // pnlNormalPriority
             // 
+            this.pnlNormalPriority.BackColor = System.Drawing.Color.Transparent;
             this.pnlNormalPriority.Controls.Add(this.lblNormalPriority);
             this.pnlNormalPriority.Controls.Add(this.lblNormalAmount);
             this.pnlNormalPriority.Controls.Add(this.lblNormalBorder);
             this.pnlNormalPriority.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pnlNormalPriority.Location = new System.Drawing.Point(317, 32);
+            this.pnlNormalPriority.Location = new System.Drawing.Point(3, 3);
             this.pnlNormalPriority.Name = "pnlNormalPriority";
-            this.pnlNormalPriority.Size = new System.Drawing.Size(180, 80);
+            this.pnlNormalPriority.Size = new System.Drawing.Size(244, 104);
             this.pnlNormalPriority.TabIndex = 4;
             // 
             // lblNormalPriority
             // 
             this.lblNormalPriority.AutoSize = true;
-            this.lblNormalPriority.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNormalPriority.Font = new System.Drawing.Font("Arial", 20F);
             this.lblNormalPriority.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.lblNormalPriority.Location = new System.Drawing.Point(32, 15);
+            this.lblNormalPriority.Location = new System.Drawing.Point(42, 21);
             this.lblNormalPriority.Name = "lblNormalPriority";
-            this.lblNormalPriority.Size = new System.Drawing.Size(148, 24);
+            this.lblNormalPriority.Size = new System.Drawing.Size(193, 32);
             this.lblNormalPriority.TabIndex = 2;
             this.lblNormalPriority.Text = "Normal Priority";
             // 
             // lblNormalAmount
             // 
             this.lblNormalAmount.AutoSize = true;
-            this.lblNormalAmount.Font = new System.Drawing.Font("Arial", 14F);
-            this.lblNormalAmount.ForeColor = System.Drawing.Color.Gray;
-            this.lblNormalAmount.Location = new System.Drawing.Point(32, 43);
+            this.lblNormalAmount.Font = new System.Drawing.Font("Arial", 19F);
+            this.lblNormalAmount.ForeColor = System.Drawing.SystemColors.ButtonShadow;
+            this.lblNormalAmount.Location = new System.Drawing.Point(42, 53);
             this.lblNormalAmount.Name = "lblNormalAmount";
-            this.lblNormalAmount.Size = new System.Drawing.Size(32, 22);
+            this.lblNormalAmount.Size = new System.Drawing.Size(42, 31);
             this.lblNormalAmount.TabIndex = 2;
             this.lblNormalAmount.Text = "13";
             // 
             // lblNormalBorder
             // 
             this.lblNormalBorder.AutoSize = true;
-            this.lblNormalBorder.Font = new System.Drawing.Font("Arial Narrow", 42F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNormalBorder.Font = new System.Drawing.Font("Arial Narrow", 46F, System.Drawing.FontStyle.Bold);
             this.lblNormalBorder.ForeColor = System.Drawing.Color.Orange;
-            this.lblNormalBorder.Location = new System.Drawing.Point(2, 2);
+            this.lblNormalBorder.Location = new System.Drawing.Point(12, 12);
             this.lblNormalBorder.Name = "lblNormalBorder";
-            this.lblNormalBorder.Size = new System.Drawing.Size(41, 66);
+            this.lblNormalBorder.Size = new System.Drawing.Size(44, 72);
             this.lblNormalBorder.TabIndex = 1;
             this.lblNormalBorder.Text = "|";
             // 
             // pnlLowPriority
             // 
+            this.pnlLowPriority.BackColor = System.Drawing.Color.Transparent;
             this.pnlLowPriority.Controls.Add(this.lblLowPriority);
             this.pnlLowPriority.Controls.Add(this.lblLowAmount);
             this.pnlLowPriority.Controls.Add(this.lblLowBorder);
             this.pnlLowPriority.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pnlLowPriority.Location = new System.Drawing.Point(511, 32);
+            this.pnlLowPriority.Location = new System.Drawing.Point(3, 3);
             this.pnlLowPriority.Name = "pnlLowPriority";
-            this.pnlLowPriority.Size = new System.Drawing.Size(154, 80);
+            this.pnlLowPriority.Size = new System.Drawing.Size(244, 104);
             this.pnlLowPriority.TabIndex = 5;
             // 
             // lblLowPriority
             // 
             this.lblLowPriority.AutoSize = true;
-            this.lblLowPriority.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblLowPriority.Font = new System.Drawing.Font("Arial", 20F);
             this.lblLowPriority.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.lblLowPriority.Location = new System.Drawing.Point(32, 15);
+            this.lblLowPriority.Location = new System.Drawing.Point(42, 21);
             this.lblLowPriority.Name = "lblLowPriority";
-            this.lblLowPriority.Size = new System.Drawing.Size(122, 24);
+            this.lblLowPriority.Size = new System.Drawing.Size(156, 32);
             this.lblLowPriority.TabIndex = 2;
             this.lblLowPriority.Text = "Low Priority";
             // 
             // lblLowAmount
             // 
             this.lblLowAmount.AutoSize = true;
-            this.lblLowAmount.Font = new System.Drawing.Font("Arial", 14F);
-            this.lblLowAmount.ForeColor = System.Drawing.Color.Gray;
-            this.lblLowAmount.Location = new System.Drawing.Point(32, 43);
+            this.lblLowAmount.Font = new System.Drawing.Font("Arial", 19F);
+            this.lblLowAmount.ForeColor = System.Drawing.SystemColors.ButtonShadow;
+            this.lblLowAmount.Location = new System.Drawing.Point(42, 53);
             this.lblLowAmount.Name = "lblLowAmount";
-            this.lblLowAmount.Size = new System.Drawing.Size(32, 22);
+            this.lblLowAmount.Size = new System.Drawing.Size(42, 31);
             this.lblLowAmount.TabIndex = 2;
             this.lblLowAmount.Text = "21";
             // 
             // lblLowBorder
             // 
             this.lblLowBorder.AutoSize = true;
-            this.lblLowBorder.Font = new System.Drawing.Font("Arial Narrow", 42F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblLowBorder.Font = new System.Drawing.Font("Arial Narrow", 46F, System.Drawing.FontStyle.Bold);
             this.lblLowBorder.ForeColor = System.Drawing.Color.Green;
-            this.lblLowBorder.Location = new System.Drawing.Point(2, 2);
+            this.lblLowBorder.Location = new System.Drawing.Point(12, 12);
             this.lblLowBorder.Name = "lblLowBorder";
-            this.lblLowBorder.Size = new System.Drawing.Size(41, 66);
+            this.lblLowBorder.Size = new System.Drawing.Size(44, 72);
             this.lblLowBorder.TabIndex = 1;
             this.lblLowBorder.Text = "|";
             // 
             // pnlPriorities
             // 
             this.pnlPriorities.BackColor = System.Drawing.Color.White;
-            this.pnlPriorities.Controls.Add(this.pnlHighPriority);
-            this.pnlPriorities.Controls.Add(this.pnlLowPriority);
-            this.pnlPriorities.Controls.Add(this.pnlNormalPriority);
+            this.pnlPriorities.Controls.Add(this.pnlLowBorder);
+            this.pnlPriorities.Controls.Add(this.pnlNormalBorder);
+            this.pnlPriorities.Controls.Add(this.pnlHighBorder);
             this.pnlPriorities.ForeColor = System.Drawing.Color.Maroon;
-            this.pnlPriorities.Location = new System.Drawing.Point(0, 41);
+            this.pnlPriorities.Location = new System.Drawing.Point(0, 3);
             this.pnlPriorities.Name = "pnlPriorities";
-            this.pnlPriorities.Size = new System.Drawing.Size(800, 172);
+            this.pnlPriorities.Size = new System.Drawing.Size(800, 145);
             this.pnlPriorities.TabIndex = 6;
             // 
             // btnNewTicket
@@ -233,7 +258,7 @@ namespace SupportService
             this.btnNewTicket.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnNewTicket.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Bold);
             this.btnNewTicket.ForeColor = System.Drawing.Color.White;
-            this.btnNewTicket.Location = new System.Drawing.Point(216, 191);
+            this.btnNewTicket.Location = new System.Drawing.Point(211, 167);
             this.btnNewTicket.Name = "btnNewTicket";
             this.btnNewTicket.Size = new System.Drawing.Size(185, 45);
             this.btnNewTicket.TabIndex = 1;
@@ -246,7 +271,7 @@ namespace SupportService
             this.btnUsers.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnUsers.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Bold);
             this.btnUsers.ForeColor = System.Drawing.Color.White;
-            this.btnUsers.Location = new System.Drawing.Point(421, 191);
+            this.btnUsers.Location = new System.Drawing.Point(402, 167);
             this.btnUsers.Name = "btnUsers";
             this.btnUsers.Size = new System.Drawing.Size(185, 45);
             this.btnUsers.TabIndex = 1;
@@ -258,7 +283,7 @@ namespace SupportService
             this.lblRecent.AutoSize = true;
             this.lblRecent.Font = new System.Drawing.Font("Arial", 15.75F);
             this.lblRecent.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.lblRecent.Location = new System.Drawing.Point(12, 273);
+            this.lblRecent.Location = new System.Drawing.Point(12, 208);
             this.lblRecent.Name = "lblRecent";
             this.lblRecent.Size = new System.Drawing.Size(144, 24);
             this.lblRecent.TabIndex = 2;
@@ -275,9 +300,9 @@ namespace SupportService
             this.lvRecentTickets.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lvRecentTickets.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.lvRecentTickets.HideSelection = false;
-            this.lvRecentTickets.Location = new System.Drawing.Point(12, 300);
+            this.lvRecentTickets.Location = new System.Drawing.Point(12, 235);
             this.lvRecentTickets.Name = "lvRecentTickets";
-            this.lvRecentTickets.Size = new System.Drawing.Size(776, 241);
+            this.lvRecentTickets.Size = new System.Drawing.Size(776, 306);
             this.lvRecentTickets.TabIndex = 7;
             this.lvRecentTickets.UseCompatibleStateImageBehavior = false;
             this.lvRecentTickets.View = System.Windows.Forms.View.Details;
@@ -307,31 +332,54 @@ namespace SupportService
             this.chStatus.Text = "Status";
             this.chStatus.Width = 72;
             // 
-            // label2
+            // pnlBorder
             // 
-            this.label2.AutoSize = true;
-            this.label2.BackColor = System.Drawing.Color.Transparent;
-            this.label2.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.label2.Font = new System.Drawing.Font("Comic Sans MS", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.label2.Location = new System.Drawing.Point(772, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(28, 29);
-            this.label2.TabIndex = 7;
-            this.label2.Text = "X";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
+            this.pnlBorder.BackColor = System.Drawing.Color.Transparent;
+            this.pnlBorder.Controls.Add(this.pnlPriorities);
+            this.pnlBorder.ForeColor = System.Drawing.Color.Maroon;
+            this.pnlBorder.Location = new System.Drawing.Point(0, 41);
+            this.pnlBorder.Name = "pnlBorder";
+            this.pnlBorder.Size = new System.Drawing.Size(800, 151);
+            this.pnlBorder.TabIndex = 6;
+            // 
+            // pnlHighBorder
+            // 
+            this.pnlHighBorder.BackColor = System.Drawing.Color.Transparent;
+            this.pnlHighBorder.Controls.Add(this.pnlHighPriority);
+            this.pnlHighBorder.Location = new System.Drawing.Point(9, 7);
+            this.pnlHighBorder.Name = "pnlHighBorder";
+            this.pnlHighBorder.Size = new System.Drawing.Size(250, 110);
+            this.pnlHighBorder.TabIndex = 6;
+            // 
+            // pnlNormalBorder
+            // 
+            this.pnlNormalBorder.BackColor = System.Drawing.Color.Transparent;
+            this.pnlNormalBorder.Controls.Add(this.pnlNormalPriority);
+            this.pnlNormalBorder.Location = new System.Drawing.Point(274, 7);
+            this.pnlNormalBorder.Name = "pnlNormalBorder";
+            this.pnlNormalBorder.Size = new System.Drawing.Size(250, 110);
+            this.pnlNormalBorder.TabIndex = 6;
+            // 
+            // pnlLowBorder
+            // 
+            this.pnlLowBorder.BackColor = System.Drawing.Color.Transparent;
+            this.pnlLowBorder.Controls.Add(this.pnlLowPriority);
+            this.pnlLowBorder.Location = new System.Drawing.Point(540, 7);
+            this.pnlLowBorder.Name = "pnlLowBorder";
+            this.pnlLowBorder.Size = new System.Drawing.Size(250, 110);
+            this.pnlLowBorder.TabIndex = 6;
             // 
             // FormDashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
             this.ClientSize = new System.Drawing.Size(800, 553);
             this.Controls.Add(this.lvRecentTickets);
             this.Controls.Add(this.lblRecent);
             this.Controls.Add(this.btnNewTicket);
             this.Controls.Add(this.btnUsers);
-            this.Controls.Add(this.pnlPriorities);
+            this.Controls.Add(this.pnlBorder);
             this.Controls.Add(this.pnlDashboard);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FormDashboard";
@@ -346,6 +394,10 @@ namespace SupportService
             this.pnlLowPriority.ResumeLayout(false);
             this.pnlLowPriority.PerformLayout();
             this.pnlPriorities.ResumeLayout(false);
+            this.pnlBorder.ResumeLayout(false);
+            this.pnlHighBorder.ResumeLayout(false);
+            this.pnlNormalBorder.ResumeLayout(false);
+            this.pnlLowBorder.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -377,6 +429,10 @@ namespace SupportService
         private System.Windows.Forms.ColumnHeader chUser;
         private System.Windows.Forms.ColumnHeader chDate;
         private System.Windows.Forms.ColumnHeader chStatus;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label lblExit;
+        private System.Windows.Forms.Panel pnlBorder;
+        private System.Windows.Forms.Panel pnlLowBorder;
+        private System.Windows.Forms.Panel pnlNormalBorder;
+        private System.Windows.Forms.Panel pnlHighBorder;
     }
 }
