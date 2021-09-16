@@ -41,6 +41,7 @@ namespace SupportService
             this.label1 = new System.Windows.Forms.Label();
             this.lblInstruction = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.chboxRememberMe = new System.Windows.Forms.CheckBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -48,12 +49,13 @@ namespace SupportService
             // tbUsername
             // 
             this.tbUsername.BackColor = System.Drawing.Color.White;
+            this.tbUsername.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.tbUsername.Font = new System.Drawing.Font("Arial", 15F, System.Drawing.FontStyle.Bold);
             this.tbUsername.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.tbUsername.Location = new System.Drawing.Point(210, 215);
+            this.tbUsername.Location = new System.Drawing.Point(77, 211);
             this.tbUsername.MaxLength = 100;
             this.tbUsername.Name = "tbUsername";
-            this.tbUsername.Size = new System.Drawing.Size(157, 30);
+            this.tbUsername.Size = new System.Drawing.Size(290, 30);
             this.tbUsername.TabIndex = 0;
             // 
             // lblGardenGroup
@@ -70,40 +72,42 @@ namespace SupportService
             // lblUsername
             // 
             this.lblUsername.AutoSize = true;
-            this.lblUsername.Font = new System.Drawing.Font("Arial", 15F, System.Drawing.FontStyle.Bold);
+            this.lblUsername.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
             this.lblUsername.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.lblUsername.Location = new System.Drawing.Point(73, 218);
+            this.lblUsername.Location = new System.Drawing.Point(76, 192);
             this.lblUsername.Name = "lblUsername";
-            this.lblUsername.Size = new System.Drawing.Size(118, 24);
+            this.lblUsername.Size = new System.Drawing.Size(79, 16);
             this.lblUsername.TabIndex = 3;
-            this.lblUsername.Text = "Username: ";
+            this.lblUsername.Text = "Username";
             // 
             // tbPassword
             // 
             this.tbPassword.BackColor = System.Drawing.Color.White;
+            this.tbPassword.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.tbPassword.Font = new System.Drawing.Font("Arial", 15F, System.Drawing.FontStyle.Bold);
             this.tbPassword.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.tbPassword.Location = new System.Drawing.Point(210, 256);
+            this.tbPassword.Location = new System.Drawing.Point(77, 271);
             this.tbPassword.MaxLength = 100;
             this.tbPassword.Name = "tbPassword";
             this.tbPassword.PasswordChar = '*';
-            this.tbPassword.Size = new System.Drawing.Size(157, 30);
+            this.tbPassword.Size = new System.Drawing.Size(290, 30);
             this.tbPassword.TabIndex = 1;
             // 
             // lblPassword
             // 
             this.lblPassword.AutoSize = true;
-            this.lblPassword.Font = new System.Drawing.Font("Arial", 15F, System.Drawing.FontStyle.Bold);
+            this.lblPassword.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
             this.lblPassword.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.lblPassword.Location = new System.Drawing.Point(73, 259);
+            this.lblPassword.Location = new System.Drawing.Point(76, 252);
             this.lblPassword.Name = "lblPassword";
-            this.lblPassword.Size = new System.Drawing.Size(116, 24);
+            this.lblPassword.Size = new System.Drawing.Size(76, 16);
             this.lblPassword.TabIndex = 3;
-            this.lblPassword.Text = "Password: ";
+            this.lblPassword.Text = "Password";
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
+            this.panel1.Controls.Add(this.chboxRememberMe);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.button1);
             this.panel1.Controls.Add(this.label1);
@@ -138,7 +142,7 @@ namespace SupportService
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(115, 358);
+            this.button1.Location = new System.Drawing.Point(115, 366);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(209, 53);
             this.button1.TabIndex = 2;
@@ -162,7 +166,7 @@ namespace SupportService
             this.lblInstruction.AutoSize = true;
             this.lblInstruction.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblInstruction.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.lblInstruction.Location = new System.Drawing.Point(130, 141);
+            this.lblInstruction.Location = new System.Drawing.Point(131, 148);
             this.lblInstruction.Name = "lblInstruction";
             this.lblInstruction.Size = new System.Drawing.Size(166, 16);
             this.lblInstruction.TabIndex = 2;
@@ -178,6 +182,21 @@ namespace SupportService
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 5;
             this.pictureBox1.TabStop = false;
+            // 
+            // chboxRememberMe
+            // 
+            this.chboxRememberMe.AutoSize = true;
+            this.chboxRememberMe.BackColor = System.Drawing.Color.Transparent;
+            this.chboxRememberMe.FlatAppearance.BorderSize = 0;
+            this.chboxRememberMe.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chboxRememberMe.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.chboxRememberMe.Location = new System.Drawing.Point(77, 309);
+            this.chboxRememberMe.Name = "chboxRememberMe";
+            this.chboxRememberMe.Size = new System.Drawing.Size(121, 20);
+            this.chboxRememberMe.TabIndex = 8;
+            this.chboxRememberMe.TabStop = false;
+            this.chboxRememberMe.Text = "Remember me";
+            this.chboxRememberMe.UseVisualStyleBackColor = false;
             // 
             // FormLogin
             // 
@@ -211,5 +230,6 @@ namespace SupportService
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.CheckBox chboxRememberMe;
     }
 }
