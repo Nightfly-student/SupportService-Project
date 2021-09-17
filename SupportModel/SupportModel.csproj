@@ -56,10 +56,6 @@
       <Project>{141d3864-0d3f-4415-810a-b0fb3164acc7}</Project>
       <Name>SupportDAL</Name>
     </ProjectReference>
-    <ProjectReference Include="..\SupportDAO\SupportLogic.csproj">
-      <Project>{7e80d80f-9169-4928-abb2-e1fffd8762d4}</Project>
-      <Name>SupportLogic</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

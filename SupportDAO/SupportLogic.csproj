@@ -39,6 +39,7 @@
     <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.5.0.0\lib\net45\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
     </Reference>
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -54,6 +55,10 @@
     <ProjectReference Include="..\SuportDAL\SupportDAL.csproj">
       <Project>{141d3864-0d3f-4415-810a-b0fb3164acc7}</Project>
       <Name>SupportDAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SupportModel\SupportModel.csproj">
+      <Project>{9d68d1b5-a99f-4a18-8076-dd80b69d72fa}</Project>
+      <Name>SupportModel</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
