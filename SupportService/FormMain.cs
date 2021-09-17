@@ -20,6 +20,8 @@ namespace SupportService
         public FormMain()
         {
             InitializeComponent();
+            btnAddTicket.Enabled = false;
+            btnAddUser.Enabled = false;
         }
 
         private void FormMain_FormClosed(object sender, FormClosedEventArgs e)
@@ -69,6 +71,8 @@ namespace SupportService
                 MongoDatabaseLogic.Instance.ConnectClient(new MongoDatabase());
                 _OLDWAYconnectedClient = new MongoDatabase();
                 UpdateLabels();
+                btnAddTicket.Enabled = true;
+                btnAddUser.Enabled = true;
                 Cursor.Current = Cursors.Default;
             }
             catch (Exception exception)
@@ -162,18 +166,12 @@ namespace SupportService
 
         private void btnAddUser_Click(object sender, EventArgs e)
         {
-            if (_OLDWAYconnectedClient == null)
-            {
-                new FormAddUser(_OLDWAYconnectedClient).Show();
-            }
+                new FormAddUser().Show();
         }
 
         private void btnAddTicket_Click(object sender, EventArgs e)
         {
-            if (_OLDWAYconnectedClient != null)
-            {
                 new FormAddTicket().Show();
-            }
         }
     }
 }

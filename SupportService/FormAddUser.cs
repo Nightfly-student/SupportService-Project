@@ -13,7 +13,7 @@ namespace SupportService
         private readonly ListViewColumnSorter _lvwColumnSorter;
         //private readonly MongoDatabaseLogic _supportLogic;
 
-        public FormAddUser(MongoDatabase connectedClient)
+        public FormAddUser()
         {
             InitializeComponent();
             _lvwColumnSorter = new ListViewColumnSorter();
