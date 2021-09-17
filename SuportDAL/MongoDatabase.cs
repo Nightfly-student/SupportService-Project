@@ -103,7 +103,13 @@ namespace SupportDAL
 
             return collection.Find(filter).First();
         }
+        public void DeleteItemById<T>(string collectionName, ObjectId id)
+        {
+            var collection = _db.GetCollection<T>(collectionName);
+            var filter = Builders<T>.Filter.Eq("Id", id);
 
+            collection.DeleteOne(filter);
+        }
         //UPDATE (GEEN IDEE HOE HET WERKT)//
 
         /*public async Task UpdateDocument<T>(ObjectId Id, T item)

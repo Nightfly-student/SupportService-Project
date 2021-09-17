@@ -13,13 +13,30 @@ namespace SupportLogic
 {
     public class MongoDatabaseLogic
     {
-        private readonly MongoDatabase _connectedClient;
+        private static MongoDatabaseLogic instance;
+        private static MongoDatabase _connectedClient;
 
-        public MongoDatabaseLogic(MongoDatabase connectedClient)
+        private MongoDatabaseLogic()
+        {
+        }
+
+        public void ConnectClient(MongoDatabase connectedClient)
         {
             _connectedClient = connectedClient;
         }
-        public List<ListViewItem> LoadFromCollection(string collectionName)
+        public static MongoDatabaseLogic Instance
+        {
+            get
+            {
+                if (instance == null)
+                {
+                    instance = new MongoDatabaseLogic();
+                }
+
+                return instance;
+            }
+        }
+        public List<ListViewItem> ListViewItemsFromCollection(string collectionName)
         {
             var records = _connectedClient.LoadFromCollection<Person>(collectionName);
             List<ListViewItem> items = new List<ListViewItem>();
@@ -38,6 +55,20 @@ namespace SupportLogic
             return items;
         }
 
+        public string GetEnumName<T>(T value)
+        {
+            Type type = value.GetType();
+            string name = Enum.GetName(type, value);
+            if (name == null) return value.ToString();
+            FieldInfo fieldInfo = type.GetField(name);
+            if (fieldInfo == null) return value.ToString();
+            if (Attribute.GetCustomAttribute(fieldInfo,
+                typeof(DescriptionAttribute)) is DescriptionAttribute attr)
+            {
+                return attr.Description;
+            }
+            return value.ToString();
+        }
         public void InsertItem<T>(string collectionName, T item)
         {
             _connectedClient.InsertItem(collectionName, item);

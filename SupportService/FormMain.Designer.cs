@@ -44,6 +44,7 @@
             this.lbl4 = new System.Windows.Forms.Label();
             this.btnPreview = new System.Windows.Forms.Button();
             this.btnAddUser = new System.Windows.Forms.Button();
+            this.btnAddTicket = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lblConnectionStatus
@@ -190,11 +191,23 @@
             this.btnAddUser.UseVisualStyleBackColor = true;
             this.btnAddUser.Click += new System.EventHandler(this.btnAddUser_Click);
             // 
+            // btnAddTicket
+            // 
+            this.btnAddTicket.Font = new System.Drawing.Font("Arial Black", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAddTicket.Location = new System.Drawing.Point(400, 371);
+            this.btnAddTicket.Name = "btnAddTicket";
+            this.btnAddTicket.Size = new System.Drawing.Size(191, 67);
+            this.btnAddTicket.TabIndex = 11;
+            this.btnAddTicket.Text = "ADD TICKET PREVIEW";
+            this.btnAddTicket.UseVisualStyleBackColor = true;
+            this.btnAddTicket.Click += new System.EventHandler(this.btnAddTicket_Click);
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btnAddTicket);
             this.Controls.Add(this.btnAddUser);
             this.Controls.Add(this.btnPreview);
             this.Controls.Add(this.lbl4);
@@ -235,6 +248,7 @@
         private System.Windows.Forms.Label lbl4;
         private System.Windows.Forms.Button btnPreview;
         private System.Windows.Forms.Button btnAddUser;
+        private System.Windows.Forms.Button btnAddTicket;
     }
 }
 

@@ -15,7 +15,7 @@ namespace SupportService
 {
     public partial class FormMain : Form
     {
-        private MongoDatabase _connectedClient;
+        private MongoDatabase _OLDWAYconnectedClient;
 
         public FormMain()
         {
@@ -29,22 +29,22 @@ namespace SupportService
 
         private void UpdateLabels()
         {
-            if (_connectedClient == null) return;
+            if (_OLDWAYconnectedClient == null) return;
             lblConnectionStatus.Text = "Connected to client!";
-            if (_connectedClient.GetDatabaseName() != null)
+            if (_OLDWAYconnectedClient.GetDatabaseName() != null)
             {
-                lblDatabase.Text = $"Using database '{_connectedClient.GetDatabaseName()}'.";
+                lblDatabase.Text = $"Using database '{_OLDWAYconnectedClient.GetDatabaseName()}'.";
             }
         }
 
         private void UpdateDatabaseDropdown()
         {
-            if (_connectedClient != null)
+            if (_OLDWAYconnectedClient != null)
             {
                 try
                 {
                     cbDatabase.Items.Clear();
-                    foreach (var name in _connectedClient.DisplayDatabases())
+                    foreach (var name in _OLDWAYconnectedClient.DisplayDatabases())
                     {
                         cbDatabase.Items.Add(name);
                     }
@@ -66,7 +66,8 @@ namespace SupportService
             try
             {
                 Cursor.Current = Cursors.WaitCursor;
-                _connectedClient = new MongoDatabase();
+                MongoDatabaseLogic.Instance.ConnectClient(new MongoDatabase());
+                _OLDWAYconnectedClient = new MongoDatabase();
                 UpdateLabels();
                 Cursor.Current = Cursors.Default;
             }
@@ -81,12 +82,12 @@ namespace SupportService
         {
             if (cbDatabase.SelectedIndex > -1)
             {
-                if (_connectedClient != null)
+                if (_OLDWAYconnectedClient != null)
                 {
                     try
                     {
                         Cursor.Current = Cursors.WaitCursor;
-                        _connectedClient.ConnectToDatabase(cbDatabase.Text);
+                        _OLDWAYconnectedClient.ConnectToDatabase(cbDatabase.Text);
                         UpdateLabels();
                         Cursor.Current = Cursors.Default;
                     }
@@ -114,12 +115,12 @@ namespace SupportService
 
         private void cbTables_DropDown(object sender, EventArgs e)
         {
-            if (_connectedClient != null && (_connectedClient != null || _connectedClient.GetDatabaseName() != null))
+            if (_OLDWAYconnectedClient != null && (_OLDWAYconnectedClient != null || _OLDWAYconnectedClient.GetDatabaseName() != null))
             {
                 try
                 {
                     cbTables.Items.Clear();
-                    foreach (var name in _connectedClient.DisplayCollections())
+                    foreach (var name in _OLDWAYconnectedClient.DisplayCollections())
                     {
                         cbTables.Items.Add(name);
                     }
@@ -144,7 +145,7 @@ namespace SupportService
         private void LoadItems()
         {
             lvSelectedTable.Items.Clear();
-            var records = _connectedClient.LoadFromCollection<Person>(cbTables.Text);
+            var records = _OLDWAYconnectedClient.LoadFromCollection<Person>(cbTables.Text);
             foreach (var record in records)
             {
                 ListViewItem item = new ListViewItem(record.FirstName);
@@ -161,9 +162,17 @@ namespace SupportService
 
         private void btnAddUser_Click(object sender, EventArgs e)
         {
-            if (_connectedClient != null)
+            if (_OLDWAYconnectedClient == null)
             {
-                new FormAddUser(_connectedClient).Show();
+                new FormAddUser(_OLDWAYconnectedClient).Show();
+            }
+        }
+
+        private void btnAddTicket_Click(object sender, EventArgs e)
+        {
+            if (_OLDWAYconnectedClient != null)
+            {
+                new FormAddTicket().Show();
             }
         }
     }

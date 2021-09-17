@@ -1,4 +1,5 @@
 ﻿using System;
+using MongoDB.Bson;
 
 namespace SupportModel
 {
@@ -8,19 +9,23 @@ namespace SupportModel
 
     public class Ticket
     {
+        public ObjectId Id { get; set; }
         public DateTime TimeReported { get; set; }
         public string Subject { get; set; }
         public TypeOfIncident IncidentType { get; set; }
         public Person Person { get; set; }
+        public Person AssignedTo { get; set; }
+        public Priority Priority { get; set; }
         public DateTime TimeDueBy { get; set; }
         public string IncidentDescription { get; set; }
 
-        public Ticket(DateTime timeReported, string subject, TypeOfIncident incidentType, Person person, DateTime timeDueBy, string incidentDescription)
+        public Ticket(DateTime timeReported, string subject, TypeOfIncident incidentType, Person person, Priority priority,DateTime timeDueBy, string incidentDescription)
         {
             TimeReported = timeReported;
             Subject = subject;
             IncidentType = incidentType;
             Person = person;
+            Priority = priority;
             TimeDueBy = timeDueBy;
             IncidentDescription = incidentDescription;
         }

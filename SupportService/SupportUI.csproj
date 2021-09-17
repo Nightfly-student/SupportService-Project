@@ -54,6 +54,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FormAddTicket.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormAddTicket.Designer.cs">
+      <DependentUpon>FormAddTicket.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormAddUser.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -81,6 +87,9 @@
     <Compile Include="ListViewColumnSorter.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="FormAddTicket.resx">
+      <DependentUpon>FormAddTicket.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormAddUser.resx">
       <DependentUpon>FormAddUser.cs</DependentUpon>
     </EmbeddedResource>

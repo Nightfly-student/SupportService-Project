@@ -11,13 +11,13 @@ namespace SupportService
     public partial class FormAddUser : Form
     {
         private readonly ListViewColumnSorter _lvwColumnSorter;
-        private readonly MongoDatabaseLogic _supportLogic;
+        //private readonly MongoDatabaseLogic _supportLogic;
 
         public FormAddUser(MongoDatabase connectedClient)
         {
             InitializeComponent();
             _lvwColumnSorter = new ListViewColumnSorter();
-            _supportLogic = new MongoDatabaseLogic(connectedClient);
+            //_supportLogic = new MongoDatabaseLogic(connectedClient);
             lvEmployees.ListViewItemSorter = _lvwColumnSorter;
         }
 
@@ -30,31 +30,18 @@ namespace SupportService
                 "Service desk employee" => TypeOfUser.ServiceDeskEmployee,
                 _ => TypeOfUser.Employee
             };
-            _supportLogic.InsertItem(typeOfUser.ToString(),
+            MongoDatabaseLogic.Instance.InsertItem(typeOfUser.ToString(),
                 new Person(tbFirstName.Text, tbLastName.Text, tbEmail.Text, dtpDateOfBirth.Value, int.Parse(tbPhoneNumber.Text), tbWorkLocation.Text));
         }
 
-        private string GetEnumName<T>(T value)
-        {
-            Type type = value.GetType();
-            string name = Enum.GetName(type, value);
-            if (name == null) return value.ToString();
-            FieldInfo fieldInfo = type.GetField(name);
-            if (fieldInfo == null) return value.ToString();
-            if (Attribute.GetCustomAttribute(fieldInfo,
-                typeof(DescriptionAttribute)) is DescriptionAttribute attr)
-            {
-                return attr.Description;
-            }
-            return value.ToString();
-        }
+        
 
         private void FormAddUser_Shown(object sender, EventArgs e)
         {
             Cursor.Current = Cursors.WaitCursor;
             try
             {
-                _supportLogic.ConnectToDatabase("Employees");
+                MongoDatabaseLogic.Instance.ConnectToDatabase("Employees");
                 Cursor.Current = Cursors.Default;
             }
             catch (Exception exception)
@@ -66,7 +53,7 @@ namespace SupportService
             }
             foreach (var value in Enum.GetValues(typeof(TypeOfUser)))
             {
-                cbUserType.Items.Add(GetEnumName(value));
+                cbUserType.Items.Add(MongoDatabaseLogic.Instance.GetEnumName(value));
             }
             foreach (ColumnHeader ch in lvEmployees.Columns)
             {
@@ -75,7 +62,7 @@ namespace SupportService
         }
         private void LoadItems(string collectionName)
         {
-            foreach (var item in _supportLogic.LoadFromCollection(collectionName))
+            foreach (var item in MongoDatabaseLogic.Instance.ListViewItemsFromCollection(collectionName))
             {
                 lvEmployees.Items.Add(item);
             }
@@ -88,7 +75,7 @@ namespace SupportService
         private void btnRefreshList_Click(object sender, EventArgs e)
         {
             lvEmployees.Items.Clear();
-            foreach (var name in _supportLogic.DisplayCollections())
+            foreach (var name in MongoDatabaseLogic.Instance.DisplayCollections())
             {
                 LoadItems(name);
             }
