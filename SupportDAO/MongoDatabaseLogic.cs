@@ -83,5 +83,18 @@ namespace SupportLogic
         {
             return _connectedClient.DisplayCollections();
         }
+
+        public bool Exists(string username)
+        {
+            var records = _connectedClient.LoadFromCollection<Person>("Employees");
+            foreach(var record in records)
+            {
+                if (record.Username.Equals(username))
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
     }
 }

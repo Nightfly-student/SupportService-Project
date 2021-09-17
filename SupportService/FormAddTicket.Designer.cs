@@ -100,6 +100,7 @@ namespace SupportService
             this.dtpDateTimeReported.Size = new System.Drawing.Size(226, 29);
             this.dtpDateTimeReported.TabIndex = 6;
             this.dtpDateTimeReported.Value = new System.DateTime(2021, 9, 16, 0, 0, 0, 0);
+            this.dtpDateTimeReported.ValueChanged += new System.EventHandler(this.dtpDateTimeReported_ValueChanged);
             // 
             // lblReportedBy
             // 

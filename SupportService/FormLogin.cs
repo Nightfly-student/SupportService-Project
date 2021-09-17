@@ -7,6 +7,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using SupportDAL;
+using SupportDAO;
+using SupportLogic;
+using SupportModel;
 
 namespace SupportService
 {
@@ -15,12 +19,30 @@ namespace SupportService
         public FormLogin()
         {
             InitializeComponent();
+            try
+            {
+                Cursor.Current = Cursors.WaitCursor;
+                UserLogic.Instance.Connect();
+                Cursor.Current = Cursors.Default;
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show("Something went wrong connecting to the client!\n\n" + exception.Message, "Oops!",
+                    MessageBoxButtons.OK);
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            new FormMain().Show();
-            Hide();
+            if (UserLogic.Instance.AuthUser(tbUsername.Text, tbPassword.Text))
+            {
+                new FormMain().Show();
+                Hide();
+            } else
+            {
+                lblError.Text = "Wrong Login Credentials";
+            }
+
         }
 
         private void label2_Click(object sender, EventArgs e)

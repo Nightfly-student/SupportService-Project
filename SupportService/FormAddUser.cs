@@ -24,14 +24,14 @@ namespace SupportService
         private void btnAddUser_Click(object sender, EventArgs e)
         {
             if (cbUserType.SelectedIndex <= -1) return;
-            var typeOfUser = cbUserType.Text switch
+            if (!MongoDatabaseLogic.Instance.Exists(txtUsername.Text))
             {
-                "Employee" => TypeOfUser.Employee,
-                "Service desk employee" => TypeOfUser.ServiceDeskEmployee,
-                _ => TypeOfUser.Employee
-            };
-            MongoDatabaseLogic.Instance.InsertItem(typeOfUser.ToString(),
-                new Person(tbFirstName.Text, tbLastName.Text, tbEmail.Text, dtpDateOfBirth.Value, int.Parse(tbPhoneNumber.Text), tbWorkLocation.Text));
+                MongoDatabaseLogic.Instance.InsertItem("Employees",
+                new Person(tbFirstName.Text, tbLastName.Text, tbEmail.Text, dtpDateOfBirth.Value, int.Parse(tbPhoneNumber.Text), tbWorkLocation.Text, cbUserType.Text, txtUsername.Text, txtPassword.Text));
+            } else
+            {
+                MessageBox.Show("Username already exists");
+            }
         }
 
         
@@ -41,7 +41,7 @@ namespace SupportService
             Cursor.Current = Cursors.WaitCursor;
             try
             {
-                MongoDatabaseLogic.Instance.ConnectToDatabase("Employees");
+                MongoDatabaseLogic.Instance.ConnectToDatabase("NoDesk");
                 Cursor.Current = Cursors.Default;
             }
             catch (Exception exception)
@@ -51,10 +51,8 @@ namespace SupportService
                 Cursor.Current = Cursors.Default;
                 Close();
             }
-            foreach (var value in Enum.GetValues(typeof(TypeOfUser)))
-            {
-                cbUserType.Items.Add(MongoDatabaseLogic.Instance.GetEnumName(value));
-            }
+            cbUserType.Items.Add("Employee");
+            cbUserType.Items.Add("Service Desk");
             foreach (ColumnHeader ch in lvEmployees.Columns)
             {
                 ch.Width = -2;

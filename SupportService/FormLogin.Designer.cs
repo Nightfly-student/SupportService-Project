@@ -36,7 +36,7 @@ namespace SupportService
             this.tbPassword = new System.Windows.Forms.TextBox();
             this.lblPassword = new System.Windows.Forms.Label();
             this.pnlLogin = new System.Windows.Forms.Panel();
-            this.chboxRememberMe = new System.Windows.Forms.CheckBox();
+            this.lblError = new System.Windows.Forms.Label();
             this.lblExit = new System.Windows.Forms.Label();
             this.btnLogin = new System.Windows.Forms.Button();
             this.lblHelpDesk = new System.Windows.Forms.Label();
@@ -107,7 +107,7 @@ namespace SupportService
             // pnlLogin
             // 
             this.pnlLogin.BackColor = System.Drawing.Color.White;
-            this.pnlLogin.Controls.Add(this.chboxRememberMe);
+            this.pnlLogin.Controls.Add(this.lblError);
             this.pnlLogin.Controls.Add(this.lblExit);
             this.pnlLogin.Controls.Add(this.btnLogin);
             this.pnlLogin.Controls.Add(this.lblHelpDesk);
@@ -122,20 +122,15 @@ namespace SupportService
             this.pnlLogin.Size = new System.Drawing.Size(450, 498);
             this.pnlLogin.TabIndex = 4;
             // 
-            // chboxRememberMe
+            // lblError
             // 
-            this.chboxRememberMe.AutoSize = true;
-            this.chboxRememberMe.BackColor = System.Drawing.Color.Transparent;
-            this.chboxRememberMe.FlatAppearance.BorderSize = 0;
-            this.chboxRememberMe.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chboxRememberMe.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.chboxRememberMe.Location = new System.Drawing.Point(77, 309);
-            this.chboxRememberMe.Name = "chboxRememberMe";
-            this.chboxRememberMe.Size = new System.Drawing.Size(121, 20);
-            this.chboxRememberMe.TabIndex = 8;
-            this.chboxRememberMe.TabStop = false;
-            this.chboxRememberMe.Text = "Remember me";
-            this.chboxRememberMe.UseVisualStyleBackColor = false;
+            this.lblError.AutoSize = true;
+            this.lblError.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblError.ForeColor = System.Drawing.Color.Red;
+            this.lblError.Location = new System.Drawing.Point(121, 429);
+            this.lblError.Name = "lblError";
+            this.lblError.Size = new System.Drawing.Size(0, 16);
+            this.lblError.TabIndex = 9;
             // 
             // lblExit
             // 
@@ -230,6 +225,6 @@ namespace SupportService
         private System.Windows.Forms.Button btnLogin;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label lblExit;
-        private System.Windows.Forms.CheckBox chboxRememberMe;
+        private System.Windows.Forms.Label lblError;
     }
 }

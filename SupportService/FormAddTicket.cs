@@ -33,5 +33,10 @@ namespace SupportService
                 cbPriority.Items.Add(MongoDatabaseLogic.Instance.GetEnumName(value));
             }
         }
+
+        private void dtpDateTimeReported_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
