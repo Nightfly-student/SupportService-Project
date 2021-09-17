@@ -219,6 +219,7 @@ namespace SupportService
             this.lvEmployees.TabIndex = 9;
             this.lvEmployees.UseCompatibleStateImageBehavior = false;
             this.lvEmployees.View = System.Windows.Forms.View.Details;
+            this.lvEmployees.ColumnClick += new System.Windows.Forms.ColumnClickEventHandler(this.lvEmployees_ColumnClick);
             // 
             // chFirstName
             // 

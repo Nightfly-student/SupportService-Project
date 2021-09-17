@@ -96,7 +96,7 @@ namespace SupportDAL
         }
 
         // load specific item by ID
-        public T LoadItemById<T>(string collectionName, Guid id)
+        public T LoadItemById<T>(string collectionName, ObjectId id)
         {
             var collection = _db.GetCollection<T>(collectionName);
             var filter = Builders<T>.Filter.Eq("Id", id);

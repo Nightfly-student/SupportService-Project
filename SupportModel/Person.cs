@@ -1,6 +1,7 @@
 ﻿using MongoDB.Bson.Serialization.Attributes;
 using System;
 using System.ComponentModel;
+using MongoDB.Bson;
 
 namespace SupportModel
 {
@@ -8,9 +9,7 @@ namespace SupportModel
 
     public class Person
     {
-        [BsonId]
-        public Guid Id { get; set; }
-
+        public ObjectId Id { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public TypeOfUser UserType { get; set; }
