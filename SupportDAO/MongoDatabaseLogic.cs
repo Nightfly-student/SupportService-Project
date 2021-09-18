@@ -96,5 +96,23 @@ namespace SupportLogic
             }
             return false;
         }
+        ///User Management Screen (Should be in UserLogic)
+        public List<ListViewItem> UserCollection()
+        {
+            int counter = 0;
+            var records = _connectedClient.LoadFromCollection<Person>("Employees");
+            List<ListViewItem> items = new List<ListViewItem>();
+            foreach (var record in records)
+            {
+                counter++;
+                ListViewItem item = new ListViewItem(counter.ToString());
+                item.SubItems.Add(record.Email);
+                item.SubItems.Add(record.FirstName);
+                item.SubItems.Add(record.LastName);
+                item.SubItems.Add(record.WorkLocation);
+                items.Add(item);
+            }
+            return items;
+        }
     }
 }

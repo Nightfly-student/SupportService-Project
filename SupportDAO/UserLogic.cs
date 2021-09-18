@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace SupportDAO
 {
@@ -56,6 +57,21 @@ namespace SupportDAO
             }
             return false;
         }
-
+        public List<ListViewItem> UserCollection()
+        {
+            int counter = 0;
+            var records = _connectedClient.LoadFromCollection<Person>("Employees");
+            List<ListViewItem> items = new List<ListViewItem>();
+            foreach (var record in records)
+            {
+                counter++;
+                ListViewItem item = new ListViewItem(counter.ToString());
+                item.SubItems.Add(record.Email);
+                item.SubItems.Add(record.FirstName);
+                item.SubItems.Add(record.LastName);
+                item.SubItems.Add(record.WorkLocation);
+            }
+            return items;
+        }
     }
 }

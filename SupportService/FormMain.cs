@@ -166,7 +166,8 @@ namespace SupportService
 
         private void btnAddUser_Click(object sender, EventArgs e)
         {
-                new FormAddUser().Show();
+            new UserManagement().Show();
+            
         }
 
         private void btnAddTicket_Click(object sender, EventArgs e)
