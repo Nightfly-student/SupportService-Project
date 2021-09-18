@@ -92,6 +92,7 @@ namespace SupportService
         {
             Search(txtFilterUsers, lstUsers);
         }
+        //Search based on text and list
         public void Search(TextBox text, ListView list)
         {
             if (text.Text != "")
