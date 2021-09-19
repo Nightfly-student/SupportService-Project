@@ -55,7 +55,7 @@ namespace SupportService
             cbUserType.Items.Add("Service Desk");
             foreach (ColumnHeader ch in lvEmployees.Columns)
             {
-                ch.Width = -2;
+                ch.Width = -2; 
             }
         }
         private void LoadItems(string collectionName)
@@ -103,6 +103,11 @@ namespace SupportService
 
             // Perform the sort with these new sort options.
             lvEmployees.Sort();
+        }
+
+        private void FormAddUser_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

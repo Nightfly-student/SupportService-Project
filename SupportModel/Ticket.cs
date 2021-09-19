@@ -13,18 +13,19 @@ namespace SupportModel
         public DateTime TimeReported { get; set; }
         public string Subject { get; set; }
         public TypeOfIncident IncidentType { get; set; }
-        public Person Person { get; set; }
+
+        public ObjectId PersonId { get; set; }
         public Person AssignedTo { get; set; }
         public Priority Priority { get; set; }
         public DateTime TimeDueBy { get; set; }
         public string IncidentDescription { get; set; }
 
-        public Ticket(DateTime timeReported, string subject, TypeOfIncident incidentType, Person person, Priority priority,DateTime timeDueBy, string incidentDescription)
+        public Ticket(DateTime timeReported, string subject, TypeOfIncident incidentType, ObjectId person, Priority priority,DateTime timeDueBy, string incidentDescription)
         {
             TimeReported = timeReported;
             Subject = subject;
             IncidentType = incidentType;
-            Person = person;
+            PersonId = person;
             Priority = priority;
             TimeDueBy = timeDueBy;
             IncidentDescription = incidentDescription;

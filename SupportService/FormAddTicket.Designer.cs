@@ -36,11 +36,14 @@ namespace SupportService
             this.lblIncidentType = new System.Windows.Forms.Label();
             this.dtpDateTimeReported = new System.Windows.Forms.DateTimePicker();
             this.lblReportedBy = new System.Windows.Forms.Label();
-            this.tbReportedBy = new System.Windows.Forms.ComboBox();
+            this.cbReportedBy = new System.Windows.Forms.ComboBox();
             this.lblPriority = new System.Windows.Forms.Label();
             this.cbPriority = new System.Windows.Forms.ComboBox();
             this.lblDeadline = new System.Windows.Forms.Label();
             this.cbDeadline = new System.Windows.Forms.ComboBox();
+            this.btn_AddTicket = new System.Windows.Forms.Button();
+            this.lblDescription = new System.Windows.Forms.Label();
+            this.tbDescription = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // lblDateTime
@@ -112,14 +115,14 @@ namespace SupportService
             this.lblReportedBy.TabIndex = 0;
             this.lblReportedBy.Text = "Reported by user";
             // 
-            // tbReportedBy
+            // cbReportedBy
             // 
-            this.tbReportedBy.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbReportedBy.FormattingEnabled = true;
-            this.tbReportedBy.Location = new System.Drawing.Point(190, 141);
-            this.tbReportedBy.Name = "tbReportedBy";
-            this.tbReportedBy.Size = new System.Drawing.Size(196, 30);
-            this.tbReportedBy.TabIndex = 2;
+            this.cbReportedBy.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbReportedBy.FormattingEnabled = true;
+            this.cbReportedBy.Location = new System.Drawing.Point(190, 141);
+            this.cbReportedBy.Name = "cbReportedBy";
+            this.cbReportedBy.Size = new System.Drawing.Size(196, 30);
+            this.cbReportedBy.TabIndex = 2;
             // 
             // lblPriority
             // 
@@ -164,16 +167,48 @@ namespace SupportService
             this.cbDeadline.Size = new System.Drawing.Size(196, 30);
             this.cbDeadline.TabIndex = 2;
             // 
+            // btn_AddTicket
+            // 
+            this.btn_AddTicket.Location = new System.Drawing.Point(22, 433);
+            this.btn_AddTicket.Name = "btn_AddTicket";
+            this.btn_AddTicket.Size = new System.Drawing.Size(116, 78);
+            this.btn_AddTicket.TabIndex = 7;
+            this.btn_AddTicket.Text = "Add Ticket";
+            this.btn_AddTicket.UseVisualStyleBackColor = true;
+            this.btn_AddTicket.Click += new System.EventHandler(this.btn_AddTicket_Click);
+            // 
+            // lblDescription
+            // 
+            this.lblDescription.AutoSize = true;
+            this.lblDescription.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDescription.Location = new System.Drawing.Point(21, 278);
+            this.lblDescription.Name = "lblDescription";
+            this.lblDescription.Size = new System.Drawing.Size(106, 22);
+            this.lblDescription.TabIndex = 8;
+            this.lblDescription.Text = "Description";
+            // 
+            // tbDescription
+            // 
+            this.tbDescription.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbDescription.Location = new System.Drawing.Point(190, 278);
+            this.tbDescription.Multiline = true;
+            this.tbDescription.Name = "tbDescription";
+            this.tbDescription.Size = new System.Drawing.Size(389, 154);
+            this.tbDescription.TabIndex = 9;
+            // 
             // FormAddTicket
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1184, 561);
+            this.Controls.Add(this.tbDescription);
+            this.Controls.Add(this.lblDescription);
+            this.Controls.Add(this.btn_AddTicket);
             this.Controls.Add(this.dtpDateTimeReported);
             this.Controls.Add(this.cbDeadline);
             this.Controls.Add(this.cbPriority);
-            this.Controls.Add(this.tbReportedBy);
+            this.Controls.Add(this.cbReportedBy);
             this.Controls.Add(this.lblDeadline);
             this.Controls.Add(this.cbIncidentType);
             this.Controls.Add(this.lblPriority);
@@ -198,10 +233,13 @@ namespace SupportService
         private System.Windows.Forms.Label lblIncidentType;
         private System.Windows.Forms.DateTimePicker dtpDateTimeReported;
         private System.Windows.Forms.Label lblReportedBy;
-        private System.Windows.Forms.ComboBox tbReportedBy;
+        private System.Windows.Forms.ComboBox cbReportedBy;
         private System.Windows.Forms.Label lblPriority;
         private System.Windows.Forms.ComboBox cbPriority;
         private System.Windows.Forms.Label lblDeadline;
         private System.Windows.Forms.ComboBox cbDeadline;
+        private System.Windows.Forms.Button btn_AddTicket;
+        private System.Windows.Forms.Label lblDescription;
+        private System.Windows.Forms.TextBox tbDescription;
     }
 }

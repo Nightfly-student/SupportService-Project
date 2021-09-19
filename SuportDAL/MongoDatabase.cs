@@ -110,6 +110,13 @@ namespace SupportDAL
 
             collection.DeleteOne(filter);
         }
+
+        public static BsonObjectId Parse(string s)
+        {
+            return new BsonObjectId(ObjectId.Parse(s));
+        }
+
+      
         //UPDATE (GEEN IDEE HOE HET WERKT)//
 
         /*public async Task UpdateDocument<T>(ObjectId Id, T item)

@@ -330,6 +330,7 @@ namespace SupportService
             this.Controls.Add(this.lblFirstName);
             this.Name = "FormAddUser";
             this.Text = "AddUser";
+            this.Load += new System.EventHandler(this.FormAddUser_Load);
             this.Shown += new System.EventHandler(this.FormAddUser_Shown);
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -19,6 +19,7 @@ namespace SupportService
         public FormAddTicket()
         {
             InitializeComponent();
+          
             //_supportLogic = new MongoDatabaseLogic();
         }
 
@@ -38,5 +39,41 @@ namespace SupportService
         {
 
         }
+
+        private void FormAddTicket_Shown(object sender, EventArgs e)
+        {
+            Cursor.Current = Cursors.WaitCursor;
+            try
+            {
+                MongoDatabaseLogic.Instance.ConnectToDatabase("NoDesk");
+                Cursor.Current = Cursors.Default;
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show("Something went wrong connecting to the database!\n\n" + exception.Message,
+                    "Oops!", MessageBoxButtons.OK);
+                Cursor.Current = Cursors.Default;
+                Close();
+            }
+           
+        }
+
+     
+   
+
+
+        private void btn_AddTicket_Click(object sender, EventArgs e)
+        {
+            if (cbReportedBy.SelectedIndex <= -1) return;
+            else
+            {
+
+                //MongoDatabaseLogic.Instance.InsertItem("Tickets",
+                //new Ticket(dtpDateTimeReported.Value, tbSubject.Text, MongoDatabaseLogic.Instance.GetEnumName(cbIncidentType)), MongoDatabase.Parse(cbReportedBy.Text), cbPriority.Text, cbDeadline.Text, tbDescription.Text);
+            }
+
+        }
+
+
     }
 }
