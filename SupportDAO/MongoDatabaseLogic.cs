@@ -153,6 +153,24 @@ namespace SupportLogic
             return items;
         }
 
+        public List<ListViewItem> TicketCollection()
+        {
+            int counter = 0;
+            var records = _connectedClient.LoadFromCollection<Ticket>("Tickets");
+            List<ListViewItem> items = new List<ListViewItem>();
+            foreach (var record in records)
+            {
+                counter++;
+                ListViewItem item = new ListViewItem(counter.ToString());
+                item.SubItems.Add(record.Subject);
+                item.SubItems.Add(record.PersonId);
+                item.SubItems.Add(record.TimeReported.ToString("yyyy/MM/dd"));
+                item.SubItems.Add(record.Priority.ToString());
+                items.Add(item);
+            }
+            return items;
+        }
+
 
     }
 }

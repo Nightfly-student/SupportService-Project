@@ -172,7 +172,8 @@ namespace SupportService
 
         private void btnAddTicket_Click(object sender, EventArgs e)
         {
-                new FormAddTicket().Show();
+           
+            new FormOverviewTickets().Show();
         }
     }
 }
