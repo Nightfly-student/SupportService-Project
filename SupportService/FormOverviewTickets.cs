@@ -20,7 +20,7 @@ namespace SupportService
 
         private void FormOverviewTickets_Load(object sender, EventArgs e)
         {
-            checkConn();
+            CheckConnection();
             GetTickets();
            
         }
@@ -36,12 +36,10 @@ namespace SupportService
             {
                 lstTickets.Items.Add(item);
             }
-
-          
         }
 
 
-        public void checkConn()
+        public void CheckConnection()
         {
             try
             {

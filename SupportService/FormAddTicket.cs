@@ -1,35 +1,26 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using System.Reflection;
-using SupportDAL;
-using SupportLogic;
+﻿using SupportLogic;
 using SupportModel;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Windows.Forms;
+using SupportDAO;
 
 namespace SupportService
 {
     public partial class FormAddTicket : Form
     {
-        //private readonly MongoDatabaseLogic _supportLogic;
+        private readonly TicketLogic _ticketLogic;
 
-    
         public FormAddTicket()
         {
             InitializeComponent();
-          
-            //_supportLogic = new MongoDatabaseLogic();
+
+            _ticketLogic = new TicketLogic();
         }
 
         private void FormAddTicket_Load(object sender, EventArgs e)
         {
-            
-
             FormAddTicket_Shown(sender, e);
 
             foreach (var value in Enum.GetValues(typeof(TypeOfIncident)))
@@ -41,19 +32,13 @@ namespace SupportService
                 cbPriority.Items.Add(MongoDatabaseLogic.Instance.GetEnumName(value));
             }
 
-            foreach (var item in MongoDatabaseLogic.Instance.GetUserName())
+            List<Person> people = MongoDatabaseLogic.Instance.GetUsers();
+            foreach (Person item in MongoDatabaseLogic.Instance.GetUsers())
             {
                 cbReportedBy.Items.Add(item);
             }
 
-
-        }
-
-    
-
-        private void dtpDateTimeReported_ValueChanged(object sender, EventArgs e)
-        {
-
+            cbIncidentType.SelectedIndex = -1;
         }
 
         private void FormAddTicket_Shown(object sender, EventArgs e)
@@ -71,49 +56,85 @@ namespace SupportService
                 Cursor.Current = Cursors.Default;
                 Close();
             }
-           
         }
-
-     
-     
-
 
         private void btn_AddTicket_Click(object sender, EventArgs e)
         {
-
-            if (cbReportedBy.SelectedIndex <= -1) return;
-            if (!MongoDatabaseLogic.Instance.Exists(cbReportedBy.Text))
+            if (!CheckFields())
             {
-                int days = 0;
-                switch (cbDeadline.Text)
-                {
-                    case "7 days":
-                        days = 7;
-                        break;
-                    case "14 days":
-                        days = 14;
-                        break;
-                    case "28 days":
-                        days = 28;
-                        break;
-                    case "6 months":
-                        days = 182;
-                        break;
-                        
-                    default:
-                        break;
-                }
-                DateTime deadline = dtpDateTimeReported.Value.AddDays(days);
-                MongoDatabaseLogic.Instance.InsertItem("Tickets",
-                new Ticket(dtpDateTimeReported.Value, tbSubject.Text, MongoDatabaseLogic.Instance.GetEnumValue<TypeOfIncident>(cbIncidentType.Text.ToString()), cbReportedBy.Text, MongoDatabaseLogic.Instance.GetEnumValue<Priority>(cbPriority.Text.ToString()), deadline, tbDescription.Text));
+                MessageBox.Show("Please fill in all fields.", "Error!");
+                return;
             }
-            else
+            int days = 0;
+            switch (cbDeadline.Text)
             {
-                MessageBox.Show("Username already exists");
-            }
+                case "7 days":
+                    days = 7;
+                    break;
 
+                case "14 days":
+                    days = 14;
+                    break;
+
+                case "28 days":
+                    days = 28;
+                    break;
+
+                case "6 months":
+                    days = 182;
+                    break;
+
+                default:
+                    break;
+            }
+            DateTime time = DateTime.Now;
+            MongoDatabaseLogic.Instance.InsertItem("Tickets",
+            new Ticket(time, tbSubject.Text, MongoDatabaseLogic.Instance.GetEnumValue<TypeOfIncident>(cbIncidentType.Text), (Person)cbReportedBy.SelectedItem, MongoDatabaseLogic.Instance.GetEnumValue<Priority>(cbPriority.Text.ToString()), time.AddDays(days), tbDescription.Text));
         }
 
+        private bool CheckFields()
+        {
+            bool allChecked = true;
+            foreach (Control ctrl in pnlControls.Controls)
+            {
+                switch (ctrl)
+                {
+                    case TextBox textBox:
+                        if (!ValidationTextBox(textBox, "Field may not be empty!"))
+                            allChecked = false;
+                        break;
+                    case ComboBox comboBox:
+                        if (!ValidationComboBox(comboBox, "Field may not be empty!"))
+                            allChecked = false;
+                        break;
+                }
+            }
 
+            return allChecked;
+        }
+
+        private bool ValidationTextBox(TextBox textBox, string error)
+        {
+            // check if textboxes aren't empty
+            if (string.IsNullOrEmpty(textBox.Text))
+            {
+                errorProvider.SetError(textBox, error);
+                return false;
+            }
+            errorProvider.SetError(textBox, null);
+            return true;
+        }
+
+        private bool ValidationComboBox(ComboBox comboBox, string error)
+        {
+            // check if index is selected
+            if (comboBox.SelectedIndex == -1)
+            {
+                errorProvider.SetError(comboBox, error);
+                return false;
+            }
+            errorProvider.SetError(comboBox, null);
+            return true;
+        }
     }
 }

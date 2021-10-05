@@ -29,12 +29,11 @@ namespace SupportService
         /// </summary>
         private void InitializeComponent()
         {
-            this.lblDateTime = new System.Windows.Forms.Label();
+            this.components = new System.ComponentModel.Container();
             this.tbSubject = new System.Windows.Forms.TextBox();
             this.lblSubject = new System.Windows.Forms.Label();
             this.cbIncidentType = new System.Windows.Forms.ComboBox();
             this.lblIncidentType = new System.Windows.Forms.Label();
-            this.dtpDateTimeReported = new System.Windows.Forms.DateTimePicker();
             this.lblReportedBy = new System.Windows.Forms.Label();
             this.cbReportedBy = new System.Windows.Forms.ComboBox();
             this.lblPriority = new System.Windows.Forms.Label();
@@ -44,22 +43,17 @@ namespace SupportService
             this.btn_AddTicket = new System.Windows.Forms.Button();
             this.lblDescription = new System.Windows.Forms.Label();
             this.tbDescription = new System.Windows.Forms.TextBox();
+            this.btnAssign = new System.Windows.Forms.Button();
+            this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
+            this.pnlControls = new System.Windows.Forms.Panel();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
+            this.pnlControls.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // lblDateTime
-            // 
-            this.lblDateTime.AutoSize = true;
-            this.lblDateTime.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDateTime.Location = new System.Drawing.Point(18, 21);
-            this.lblDateTime.Name = "lblDateTime";
-            this.lblDateTime.Size = new System.Drawing.Size(168, 22);
-            this.lblDateTime.TabIndex = 0;
-            this.lblDateTime.Text = "Date/time reported";
             // 
             // tbSubject
             // 
             this.tbSubject.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbSubject.Location = new System.Drawing.Point(190, 55);
+            this.tbSubject.Location = new System.Drawing.Point(3, 7);
             this.tbSubject.Name = "tbSubject";
             this.tbSubject.Size = new System.Drawing.Size(196, 29);
             this.tbSubject.TabIndex = 1;
@@ -78,7 +72,7 @@ namespace SupportService
             // 
             this.cbIncidentType.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbIncidentType.FormattingEnabled = true;
-            this.cbIncidentType.Location = new System.Drawing.Point(190, 96);
+            this.cbIncidentType.Location = new System.Drawing.Point(3, 48);
             this.cbIncidentType.Name = "cbIncidentType";
             this.cbIncidentType.Size = new System.Drawing.Size(196, 30);
             this.cbIncidentType.TabIndex = 2;
@@ -92,18 +86,6 @@ namespace SupportService
             this.lblIncidentType.Size = new System.Drawing.Size(144, 22);
             this.lblIncidentType.TabIndex = 0;
             this.lblIncidentType.Text = "Type of incident";
-            // 
-            // dtpDateTimeReported
-            // 
-            this.dtpDateTimeReported.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtpDateTimeReported.Location = new System.Drawing.Point(190, 16);
-            this.dtpDateTimeReported.MaxDate = new System.DateTime(2021, 9, 17, 0, 0, 0, 0);
-            this.dtpDateTimeReported.MinDate = new System.DateTime(2000, 1, 1, 0, 0, 0, 0);
-            this.dtpDateTimeReported.Name = "dtpDateTimeReported";
-            this.dtpDateTimeReported.Size = new System.Drawing.Size(226, 29);
-            this.dtpDateTimeReported.TabIndex = 6;
-            this.dtpDateTimeReported.Value = new System.DateTime(2021, 9, 16, 0, 0, 0, 0);
-            this.dtpDateTimeReported.ValueChanged += new System.EventHandler(this.dtpDateTimeReported_ValueChanged);
             // 
             // lblReportedBy
             // 
@@ -119,10 +101,10 @@ namespace SupportService
             // 
             this.cbReportedBy.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbReportedBy.FormattingEnabled = true;
-            this.cbReportedBy.Location = new System.Drawing.Point(190, 141);
+            this.cbReportedBy.Location = new System.Drawing.Point(3, 93);
             this.cbReportedBy.Name = "cbReportedBy";
             this.cbReportedBy.Size = new System.Drawing.Size(196, 30);
-            this.cbReportedBy.TabIndex = 2;
+            this.cbReportedBy.TabIndex = 3;
             // 
             // lblPriority
             // 
@@ -138,10 +120,10 @@ namespace SupportService
             // 
             this.cbPriority.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbPriority.FormattingEnabled = true;
-            this.cbPriority.Location = new System.Drawing.Point(190, 187);
+            this.cbPriority.Location = new System.Drawing.Point(3, 139);
             this.cbPriority.Name = "cbPriority";
             this.cbPriority.Size = new System.Drawing.Size(196, 30);
-            this.cbPriority.TabIndex = 2;
+            this.cbPriority.TabIndex = 4;
             // 
             // lblDeadline
             // 
@@ -162,14 +144,14 @@ namespace SupportService
             "14 days",
             "28 days",
             "6 months"});
-            this.cbDeadline.Location = new System.Drawing.Point(190, 234);
+            this.cbDeadline.Location = new System.Drawing.Point(3, 186);
             this.cbDeadline.Name = "cbDeadline";
             this.cbDeadline.Size = new System.Drawing.Size(196, 30);
-            this.cbDeadline.TabIndex = 2;
+            this.cbDeadline.TabIndex = 5;
             // 
             // btn_AddTicket
             // 
-            this.btn_AddTicket.Location = new System.Drawing.Point(22, 433);
+            this.btn_AddTicket.Location = new System.Drawing.Point(22, 453);
             this.btn_AddTicket.Name = "btn_AddTicket";
             this.btn_AddTicket.Size = new System.Drawing.Size(116, 78);
             this.btn_AddTicket.TabIndex = 7;
@@ -181,7 +163,7 @@ namespace SupportService
             // 
             this.lblDescription.AutoSize = true;
             this.lblDescription.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDescription.Location = new System.Drawing.Point(21, 278);
+            this.lblDescription.Location = new System.Drawing.Point(18, 278);
             this.lblDescription.Name = "lblDescription";
             this.lblDescription.Size = new System.Drawing.Size(106, 22);
             this.lblDescription.TabIndex = 8;
@@ -190,11 +172,38 @@ namespace SupportService
             // tbDescription
             // 
             this.tbDescription.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbDescription.Location = new System.Drawing.Point(190, 278);
+            this.tbDescription.Location = new System.Drawing.Point(3, 227);
             this.tbDescription.Multiline = true;
             this.tbDescription.Name = "tbDescription";
             this.tbDescription.Size = new System.Drawing.Size(389, 154);
-            this.tbDescription.TabIndex = 9;
+            this.tbDescription.TabIndex = 6;
+            // 
+            // btnAssign
+            // 
+            this.btnAssign.Location = new System.Drawing.Point(190, 453);
+            this.btnAssign.Name = "btnAssign";
+            this.btnAssign.Size = new System.Drawing.Size(127, 78);
+            this.btnAssign.TabIndex = 10;
+            this.btnAssign.Text = "Assign ticket to employee";
+            this.btnAssign.UseVisualStyleBackColor = true;
+            // 
+            // errorProvider
+            // 
+            this.errorProvider.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
+            this.errorProvider.ContainerControl = this;
+            // 
+            // pnlControls
+            // 
+            this.pnlControls.Controls.Add(this.tbSubject);
+            this.pnlControls.Controls.Add(this.cbIncidentType);
+            this.pnlControls.Controls.Add(this.tbDescription);
+            this.pnlControls.Controls.Add(this.cbReportedBy);
+            this.pnlControls.Controls.Add(this.cbPriority);
+            this.pnlControls.Controls.Add(this.cbDeadline);
+            this.pnlControls.Location = new System.Drawing.Point(203, 48);
+            this.pnlControls.Name = "pnlControls";
+            this.pnlControls.Size = new System.Drawing.Size(422, 389);
+            this.pnlControls.TabIndex = 11;
             // 
             // FormAddTicket
             // 
@@ -202,36 +211,30 @@ namespace SupportService
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1184, 561);
-            this.Controls.Add(this.tbDescription);
+            this.Controls.Add(this.pnlControls);
+            this.Controls.Add(this.btnAssign);
             this.Controls.Add(this.lblDescription);
             this.Controls.Add(this.btn_AddTicket);
-            this.Controls.Add(this.dtpDateTimeReported);
-            this.Controls.Add(this.cbDeadline);
-            this.Controls.Add(this.cbPriority);
-            this.Controls.Add(this.cbReportedBy);
             this.Controls.Add(this.lblDeadline);
-            this.Controls.Add(this.cbIncidentType);
             this.Controls.Add(this.lblPriority);
-            this.Controls.Add(this.tbSubject);
             this.Controls.Add(this.lblReportedBy);
             this.Controls.Add(this.lblIncidentType);
             this.Controls.Add(this.lblSubject);
-            this.Controls.Add(this.lblDateTime);
             this.Name = "FormAddTicket";
             this.Load += new System.EventHandler(this.FormAddTicket_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
+            this.pnlControls.ResumeLayout(false);
+            this.pnlControls.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Label lblDateTime;
         private System.Windows.Forms.TextBox tbSubject;
         private System.Windows.Forms.Label lblSubject;
         private System.Windows.Forms.ComboBox cbIncidentType;
         private System.Windows.Forms.Label lblIncidentType;
-        private System.Windows.Forms.DateTimePicker dtpDateTimeReported;
         private System.Windows.Forms.Label lblReportedBy;
         private System.Windows.Forms.ComboBox cbReportedBy;
         private System.Windows.Forms.Label lblPriority;
@@ -241,5 +244,8 @@ namespace SupportService
         private System.Windows.Forms.Button btn_AddTicket;
         private System.Windows.Forms.Label lblDescription;
         private System.Windows.Forms.TextBox tbDescription;
+        private System.Windows.Forms.Button btnAssign;
+        private System.Windows.Forms.ErrorProvider errorProvider;
+        private System.Windows.Forms.Panel pnlControls;
     }
 }

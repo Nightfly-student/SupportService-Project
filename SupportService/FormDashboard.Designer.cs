@@ -45,6 +45,9 @@ namespace SupportService
             this.lblLowAmount = new System.Windows.Forms.Label();
             this.lblLowBorder = new System.Windows.Forms.Label();
             this.pnlPriorities = new System.Windows.Forms.Panel();
+            this.pnlLowBorder = new System.Windows.Forms.Panel();
+            this.pnlNormalBorder = new System.Windows.Forms.Panel();
+            this.pnlHighBorder = new System.Windows.Forms.Panel();
             this.btnNewTicket = new System.Windows.Forms.Button();
             this.btnUsers = new System.Windows.Forms.Button();
             this.lblRecent = new System.Windows.Forms.Label();
@@ -55,18 +58,15 @@ namespace SupportService
             this.chDate = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.chStatus = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.pnlBorder = new System.Windows.Forms.Panel();
-            this.pnlHighBorder = new System.Windows.Forms.Panel();
-            this.pnlNormalBorder = new System.Windows.Forms.Panel();
-            this.pnlLowBorder = new System.Windows.Forms.Panel();
             this.pnlDashboard.SuspendLayout();
             this.pnlHighPriority.SuspendLayout();
             this.pnlNormalPriority.SuspendLayout();
             this.pnlLowPriority.SuspendLayout();
             this.pnlPriorities.SuspendLayout();
-            this.pnlBorder.SuspendLayout();
-            this.pnlHighBorder.SuspendLayout();
-            this.pnlNormalBorder.SuspendLayout();
             this.pnlLowBorder.SuspendLayout();
+            this.pnlNormalBorder.SuspendLayout();
+            this.pnlHighBorder.SuspendLayout();
+            this.pnlBorder.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnlDashboard
@@ -92,7 +92,7 @@ namespace SupportService
             this.lblExit.Size = new System.Drawing.Size(28, 29);
             this.lblExit.TabIndex = 7;
             this.lblExit.Text = "X";
-            this.lblExit.Click += new System.EventHandler(this.label2_Click);
+            this.lblExit.Click += new System.EventHandler(this.lblExit_Click);
             // 
             // lblDashboard
             // 
@@ -252,6 +252,33 @@ namespace SupportService
             this.pnlPriorities.Size = new System.Drawing.Size(800, 145);
             this.pnlPriorities.TabIndex = 6;
             // 
+            // pnlLowBorder
+            // 
+            this.pnlLowBorder.BackColor = System.Drawing.Color.Transparent;
+            this.pnlLowBorder.Controls.Add(this.pnlLowPriority);
+            this.pnlLowBorder.Location = new System.Drawing.Point(540, 7);
+            this.pnlLowBorder.Name = "pnlLowBorder";
+            this.pnlLowBorder.Size = new System.Drawing.Size(250, 110);
+            this.pnlLowBorder.TabIndex = 6;
+            // 
+            // pnlNormalBorder
+            // 
+            this.pnlNormalBorder.BackColor = System.Drawing.Color.Transparent;
+            this.pnlNormalBorder.Controls.Add(this.pnlNormalPriority);
+            this.pnlNormalBorder.Location = new System.Drawing.Point(274, 7);
+            this.pnlNormalBorder.Name = "pnlNormalBorder";
+            this.pnlNormalBorder.Size = new System.Drawing.Size(250, 110);
+            this.pnlNormalBorder.TabIndex = 6;
+            // 
+            // pnlHighBorder
+            // 
+            this.pnlHighBorder.BackColor = System.Drawing.Color.Transparent;
+            this.pnlHighBorder.Controls.Add(this.pnlHighPriority);
+            this.pnlHighBorder.Location = new System.Drawing.Point(9, 7);
+            this.pnlHighBorder.Name = "pnlHighBorder";
+            this.pnlHighBorder.Size = new System.Drawing.Size(250, 110);
+            this.pnlHighBorder.TabIndex = 6;
+            // 
             // btnNewTicket
             // 
             this.btnNewTicket.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(200)))), ((int)(((byte)(150)))));
@@ -342,33 +369,6 @@ namespace SupportService
             this.pnlBorder.Size = new System.Drawing.Size(800, 151);
             this.pnlBorder.TabIndex = 6;
             // 
-            // pnlHighBorder
-            // 
-            this.pnlHighBorder.BackColor = System.Drawing.Color.Transparent;
-            this.pnlHighBorder.Controls.Add(this.pnlHighPriority);
-            this.pnlHighBorder.Location = new System.Drawing.Point(9, 7);
-            this.pnlHighBorder.Name = "pnlHighBorder";
-            this.pnlHighBorder.Size = new System.Drawing.Size(250, 110);
-            this.pnlHighBorder.TabIndex = 6;
-            // 
-            // pnlNormalBorder
-            // 
-            this.pnlNormalBorder.BackColor = System.Drawing.Color.Transparent;
-            this.pnlNormalBorder.Controls.Add(this.pnlNormalPriority);
-            this.pnlNormalBorder.Location = new System.Drawing.Point(274, 7);
-            this.pnlNormalBorder.Name = "pnlNormalBorder";
-            this.pnlNormalBorder.Size = new System.Drawing.Size(250, 110);
-            this.pnlNormalBorder.TabIndex = 6;
-            // 
-            // pnlLowBorder
-            // 
-            this.pnlLowBorder.BackColor = System.Drawing.Color.Transparent;
-            this.pnlLowBorder.Controls.Add(this.pnlLowPriority);
-            this.pnlLowBorder.Location = new System.Drawing.Point(540, 7);
-            this.pnlLowBorder.Name = "pnlLowBorder";
-            this.pnlLowBorder.Size = new System.Drawing.Size(250, 110);
-            this.pnlLowBorder.TabIndex = 6;
-            // 
             // FormDashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -394,10 +394,10 @@ namespace SupportService
             this.pnlLowPriority.ResumeLayout(false);
             this.pnlLowPriority.PerformLayout();
             this.pnlPriorities.ResumeLayout(false);
-            this.pnlBorder.ResumeLayout(false);
-            this.pnlHighBorder.ResumeLayout(false);
-            this.pnlNormalBorder.ResumeLayout(false);
             this.pnlLowBorder.ResumeLayout(false);
+            this.pnlNormalBorder.ResumeLayout(false);
+            this.pnlHighBorder.ResumeLayout(false);
+            this.pnlBorder.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -57,6 +57,28 @@ namespace SupportDAO
             }
             return false;
         }
+        public List<Person> GetUsers()
+        {
+            var records = _connectedClient.LoadFromCollection<Person>("Employees");
+            List<Person> peopleList = new List<Person>();
+            foreach (var record in records)
+            {
+                peopleList.Add(new Person
+                {
+                    Id = record.Id,
+                    FirstName = record.FirstName,
+                    LastName = record.LastName,
+                    UserType = record.UserType,
+                    Email = record.Email,
+                    DateOfBirth = record.DateOfBirth,
+                    PhoneNumber = record.PhoneNumber,
+                    WorkLocation = record.WorkLocation,
+                    Username = record.Username
+                });
+            }
+
+            return peopleList;
+        }
         public List<ListViewItem> UserCollection()
         {
             int counter = 0;

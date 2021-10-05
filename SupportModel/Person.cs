@@ -35,9 +35,17 @@ namespace SupportModel
             Username = username;
             Password = BCrypt.Net.BCrypt.HashPassword(password, GetRandomSalt());
         }
+
+        public Person(){}
+
         private static string GetRandomSalt()
         {
             return BCrypt.Net.BCrypt.GenerateSalt(12);
+        }
+
+        public override string ToString()
+        {
+            return FirstName + " " + LastName;
         }
     }
 }

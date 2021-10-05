@@ -140,17 +140,36 @@ namespace SupportLogic
 
         public List<string> GetUserName()
         {
-           
             var records = _connectedClient.LoadFromCollection<Person>("Employees");
             List<string> items = new List<string>();
             foreach (var record in records)
             {
-                items.Add(record.FirstName);
-                items.Add(record.LastName);
-               
+                items.Add($"{record.FirstName} {record.LastName}");
             }
 
             return items;
+        }
+        public List<Person> GetUsers()
+        {
+            var records = _connectedClient.LoadFromCollection<Person>("Employees");
+            List<Person> peopleList = new List<Person>();
+            foreach (var record in records)
+            {
+                peopleList.Add(new Person
+                {
+                    Id = record.Id,
+                    FirstName = record.FirstName,
+                    LastName = record.LastName,
+                    UserType = record.UserType,
+                    Email = record.Email,
+                    DateOfBirth = record.DateOfBirth,
+                    PhoneNumber = record.PhoneNumber,
+                    WorkLocation = record.WorkLocation,
+                    Username = record.Username
+                });
+            }
+
+            return peopleList;
         }
 
         public List<ListViewItem> TicketCollection()
@@ -163,7 +182,7 @@ namespace SupportLogic
                 counter++;
                 ListViewItem item = new ListViewItem(counter.ToString());
                 item.SubItems.Add(record.Subject);
-                item.SubItems.Add(record.PersonId);
+                item.SubItems.Add(record.MadeBy.ToString());
                 item.SubItems.Add(record.TimeReported.ToString("yyyy/MM/dd"));
                 item.SubItems.Add(record.Priority.ToString());
                 items.Add(item);

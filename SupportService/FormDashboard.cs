@@ -17,7 +17,7 @@ namespace SupportService
             InitializeComponent();
         }
 
-        private void label2_Click(object sender, EventArgs e)
+        private void lblExit_Click(object sender, EventArgs e)
         {
             Close();
         }
