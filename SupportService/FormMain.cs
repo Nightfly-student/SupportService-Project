@@ -161,7 +161,8 @@ namespace SupportService
 
         private void btnPreview_Click(object sender, EventArgs e)
         {
-            new FormDashboard().Show();
+            //new FormDashboard().Show(); 
+            new SupportUIDashboard1().Show();
         }
 
         private void btnAddUser_Click(object sender, EventArgs e)

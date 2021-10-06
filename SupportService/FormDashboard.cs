@@ -42,19 +42,18 @@ namespace SupportService
         {
             _personList = _userLogic.GetUsers();
             _ticketList = _ticketLogic.GetTickets();
+            lvRecentTickets.Items.Clear();
             foreach (var ticket in _ticketList.OrderByDescending(x => x.TimeReported))
             {
-                
                 lvRecentTickets.Items.Add(new ListViewItem
                 {
 
                     Text = ticket.Subject,
                     SubItems =
                     {
-                        ticket.MadeBy.ToString(),
-                        ticket.TimeReported.ToString("g"),
                         ticket.Status.ToString(),
-                        (ticket.TimeDueBy - DateTime.Now).TotalDays.ToString("## 'days'")
+                        (ticket.TimeDueBy - DateTime.Now).TotalDays.ToString("## 'days'"),
+                        ticket.AssignedTo == null ? "Unassigned" : ticket.AssignedTo.ToString()
                     }
                 });
             }
