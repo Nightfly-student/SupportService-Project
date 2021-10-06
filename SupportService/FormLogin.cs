@@ -1,16 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using SupportDAO;
+using System;
 using System.Windows.Forms;
-using SupportDAL;
-using SupportDAO;
-using SupportLogic;
-using SupportModel;
 
 namespace SupportService
 {
@@ -38,11 +28,11 @@ namespace SupportService
             {
                 new FormMain().Show();
                 Hide();
-            } else
+            }
+            else
             {
                 lblError.Text = "Wrong Login Credentials";
             }
-
         }
 
         private void label2_Click(object sender, EventArgs e)

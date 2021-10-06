@@ -1,15 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using SupportDAL;
+﻿using SupportDAL;
 using SupportLogic;
 using SupportModel;
+using System;
+using System.Windows.Forms;
 
 namespace SupportService
 {
@@ -161,19 +154,16 @@ namespace SupportService
 
         private void btnPreview_Click(object sender, EventArgs e)
         {
-            //new FormDashboard().Show(); 
-            new SupportUIDashboard1().Show();
+            new FormDashboard().Show();
         }
 
         private void btnAddUser_Click(object sender, EventArgs e)
         {
             new UserManagement().Show();
-            
         }
 
         private void btnAddTicket_Click(object sender, EventArgs e)
         {
-           
             new FormOverviewTickets().Show();
         }
     }
