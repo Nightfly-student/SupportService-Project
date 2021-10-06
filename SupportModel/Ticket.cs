@@ -7,9 +7,11 @@ namespace SupportModel
 
     public enum Priority { High, Normal, Low }
 
+    public enum Status{Unassigned, Assigned, Processing, Closed}
     public class Ticket
     {
         public ObjectId Id { get; set; }
+        public Status Status { get; set; }
         public DateTime TimeReported { get; set; }
         public string Subject { get; set; }
         public TypeOfIncident IncidentType { get; set; }
@@ -28,6 +30,7 @@ namespace SupportModel
             Priority = priority;
             TimeDueBy = timeDueBy;
             IncidentDescription = incidentDescription;
+            Status = Status.Unassigned;
         }
 
         public Ticket(){}
