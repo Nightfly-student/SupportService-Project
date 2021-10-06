@@ -11,7 +11,6 @@ namespace SupportService
 {
     public partial class SupportUIDashboard1 : Form
     {
-        // dynamic listview with search
         // sort by priority/type
         // other search? (radiobutton/label/   AND/OR
         private TicketLogic _ticketLogic;
@@ -76,12 +75,12 @@ namespace SupportService
 
         private void FillNormalListView()
         {
+            lvRecentTickets.Columns.Add("", 7);
             lvRecentTickets.Columns.Add("Subject", 240);
-            lvRecentTickets.Columns[0].ListView.Font = _normalHeaderFont;
             lvRecentTickets.Columns.Add("Status", 150);
             lvRecentTickets.Columns.Add("Due By", 150);
             lvRecentTickets.Columns.Add("Assigned To", 204);
-            lvRecentTickets.Columns.Add("Ticket Made", 181);
+            lvRecentTickets.Columns.Add("Ticket Made", 174);
             foreach (var ticket in _orderedList)
             {
                 if (!String.IsNullOrEmpty(_searchWord) && !ticket.Subject.ToLower().Contains(_searchWord.ToLower()) &&
@@ -91,39 +90,55 @@ namespace SupportService
                 ListViewItem lvItem = new ListViewItem
                 {
                     Tag = ticket,
-                    Text = ticket.Subject,
+                    Text = " ",
                     SubItems =
                     {
+                        ticket.Subject,
                         ticket.Status.ToString(),
                         (ticket.TimeDueBy - DateTime.Now).TotalDays.ToString("## 'days'"),
                         ticket.AssignedTo == null ? "-" : ticket.AssignedTo.ToString(),
                         GetTicketTime(ticket)
                     }
                 };
-                lvItem.Font = _normalItemFont;
+                switch (ticket.Priority)
+                {
+                    case Priority.High:
+                        lvItem.SubItems[0].BackColor = Color.Red;
+                        break;
 
+                    case Priority.Normal:
+                        lvItem.SubItems[0].BackColor = Color.Orange;
+                        break;
+
+                    case Priority.Low:
+                        lvItem.SubItems[0].BackColor = Color.Green;
+                        break;
+                }
+                lvItem.UseItemStyleForSubItems = false;
+                ListViewDesign(ticket, lvItem, _normalItemFont, _normalHeaderFont, lvRecentTickets);
                 lvRecentTickets.Items.Add(lvItem);
             }
         }
 
         private void FillExtendedListView()
         {
+            lvRecentTickets.Columns.Add("", 7);
             lvRecentTickets.Columns.Add("Subject", 220);
-            lvRecentTickets.Columns[0].ListView.Font = _smallHeaderFont;
             lvRecentTickets.Columns.Add("Status", 115);
             lvRecentTickets.Columns.Add("Due By", 98);
             lvRecentTickets.Columns.Add("Assigned To", 155);
             lvRecentTickets.Columns.Add("Ticket Made", 117);
-            lvRecentTickets.Columns.Add("Search Result", 220);
+            lvRecentTickets.Columns.Add("Search Description", 220);
             foreach (var ticket in _orderedList)
             {
                 if (!ticket.IncidentDescription.ToLower().Contains(_searchWord.ToLower())) continue;
                 ListViewItem lvItem = new ListViewItem
                 {
                     Tag = ticket,
-                    Text = ticket.Subject,
+                    Text = " ",
                     SubItems =
                     {
+                        ticket.Subject,
                         ticket.Status.ToString(),
                         (ticket.TimeDueBy - DateTime.Now).TotalDays.ToString("## 'days'"),
                         ticket.AssignedTo == null ? "-" : ticket.AssignedTo.ToString(),
@@ -131,9 +146,33 @@ namespace SupportService
                         GetMatchingDescription(ticket)
                     }
                 };
-                lvItem.Font = _smallItemFont;
-
+                lvItem.UseItemStyleForSubItems = false;
+                ListViewDesign(ticket, lvItem, _smallItemFont, _smallHeaderFont, lvRecentTickets);
                 lvRecentTickets.Items.Add(lvItem);
+            }
+        }
+
+        private void ListViewDesign(Ticket ticket, ListViewItem lvItem, Font itemFont, Font headerFont, ListView listView)
+        {
+            switch (ticket.Priority)
+            {
+                case Priority.High:
+                    lvItem.SubItems[0].BackColor = Color.Red;
+                    break;
+
+                case Priority.Normal:
+                    lvItem.SubItems[0].BackColor = Color.Orange;
+                    break;
+
+                case Priority.Low:
+                    lvItem.SubItems[0].BackColor = Color.Green;
+                    break;
+            }
+            lvItem.UseItemStyleForSubItems = false;
+            for (int i = 0; i < listView.Columns.Count; i++)
+            {
+                lvItem.SubItems[i].Font = itemFont;
+                lvRecentTickets.Columns[i].ListView.Font = headerFont;
             }
         }
 
@@ -146,7 +185,7 @@ namespace SupportService
             if (start != 0)
                 description = description.Insert(0, "...");
             if (start + end != ticket.IncidentDescription.Length)
-                description += "...";
+                description += "<b> ...";
 
             return description;
         }

@@ -32,7 +32,7 @@ namespace SupportService
             }
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void btnLogin_Click(object sender, EventArgs e)
         {
             if (UserLogic.Instance.AuthUser(tbUsername.Text, tbPassword.Text))
             {
@@ -48,6 +48,24 @@ namespace SupportService
         private void label2_Click(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+
+        private void tbUsername_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                e.SuppressKeyPress = true;
+                btnLogin_Click(this, new EventArgs());
+            }
+        }
+
+        private void tbPassword_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                e.SuppressKeyPress = true;
+                btnLogin_Click(this, new EventArgs());
+            }
         }
     }
 }

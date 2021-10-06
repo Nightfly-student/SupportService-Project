@@ -57,6 +57,7 @@ namespace SupportService
             this.tbUsername.Name = "tbUsername";
             this.tbUsername.Size = new System.Drawing.Size(290, 30);
             this.tbUsername.TabIndex = 0;
+            this.tbUsername.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tbUsername_KeyDown);
             // 
             // lblGardenGroup
             // 
@@ -92,6 +93,7 @@ namespace SupportService
             this.tbPassword.PasswordChar = '*';
             this.tbPassword.Size = new System.Drawing.Size(290, 30);
             this.tbPassword.TabIndex = 1;
+            this.tbPassword.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tbPassword_KeyDown);
             // 
             // lblPassword
             // 
@@ -158,7 +160,7 @@ namespace SupportService
             this.btnLogin.TabIndex = 2;
             this.btnLogin.Text = "Login";
             this.btnLogin.UseVisualStyleBackColor = false;
-            this.btnLogin.Click += new System.EventHandler(this.button1_Click);
+            this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
             // 
             // lblHelpDesk
             // 

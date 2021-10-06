@@ -64,6 +64,7 @@ namespace SupportService
             this.tbSearchBox = new System.Windows.Forms.TextBox();
             this.lblSearch = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.chPriority = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.pnlDashboard.SuspendLayout();
             this.pnlOpenTickets.SuspendLayout();
             this.pnlOpenAmount.SuspendLayout();
@@ -118,6 +119,7 @@ namespace SupportService
             // 
             this.lvRecentTickets.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.lvRecentTickets.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.chPriority,
             this.chSubject,
             this.chStatus,
             this.chDueBy,
@@ -139,21 +141,25 @@ namespace SupportService
             // 
             // chSubject
             // 
+            this.chSubject.DisplayIndex = 0;
             this.chSubject.Text = "Subject";
             this.chSubject.Width = 240;
             // 
             // chStatus
             // 
+            this.chStatus.DisplayIndex = 1;
             this.chStatus.Text = "Status";
             this.chStatus.Width = 150;
             // 
             // chDueBy
             // 
+            this.chDueBy.DisplayIndex = 2;
             this.chDueBy.Text = "Due By";
             this.chDueBy.Width = 150;
             // 
             // chAssignedTo
             // 
+            this.chAssignedTo.DisplayIndex = 3;
             this.chAssignedTo.Text = "Assigned To";
             this.chAssignedTo.Width = 204;
             // 
@@ -440,6 +446,11 @@ namespace SupportService
             this.panel1.Size = new System.Drawing.Size(235, 61);
             this.panel1.TabIndex = 12;
             // 
+            // chPriority
+            // 
+            this.chPriority.Text = "";
+            this.chPriority.Width = 5;
+            // 
             // SupportUIDashboard1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -519,5 +530,6 @@ namespace SupportService
         private System.Windows.Forms.TextBox tbSearchBox;
         private System.Windows.Forms.Label lblSearch;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.ColumnHeader chPriority;
     }
 }
