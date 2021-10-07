@@ -11,10 +11,9 @@ namespace SupportService
 {
     public partial class FormDashboard : Form
     {
-        // sort by priority/type
-        // other search? (radiobutton/label/
+        // show type?
         // AND/OR
-        // refresh button
+        // due by: less than a day
         
         private TicketLogic _ticketLogic;
 
@@ -96,7 +95,6 @@ namespace SupportService
             foreach (var ticket in _orderedList)
             {
                 if (!String.IsNullOrEmpty(_searchWord) && !ticket.Subject.ToLower().Contains(_searchWord.ToLower()) &&
-                    !ticket.IncidentDescription.ToLower().Contains(_searchWord.ToLower()) &&
                     !ticket.MadeBy.ToString().ToLower().Contains(_searchWord.ToLower()) && (ticket.AssignedTo == null ||
                         !ticket.AssignedTo.ToString().ToLower().Contains(_searchWord.ToLower()))) continue;
                 if (cbFilterPriority.Checked && (ticket.Priority != Priority.High || !_highFilter) &&
@@ -147,10 +145,14 @@ namespace SupportService
             lvRecentTickets.Columns.Add("Due By", 98);
             lvRecentTickets.Columns.Add("Assigned To", 148);
             lvRecentTickets.Columns.Add("Ticket Made", 117);
-            lvRecentTickets.Columns.Add("Search Description", 220);
+            lvRecentTickets.Columns.Add("Matching Description", 220);
             foreach (var ticket in _orderedList)
             {
-                if (!ticket.IncidentDescription.ToLower().Contains(_searchWord.ToLower())) continue;
+                //if (!ticket.IncidentDescription.ToLower().Contains(_searchWord.ToLower())) continue;
+                if (!String.IsNullOrEmpty(_searchWord) && !ticket.Subject.ToLower().Contains(_searchWord.ToLower()) &&
+                    !ticket.IncidentDescription.ToLower().Contains(_searchWord.ToLower()) &&
+                    !ticket.MadeBy.ToString().ToLower().Contains(_searchWord.ToLower()) && (ticket.AssignedTo == null ||
+                        !ticket.AssignedTo.ToString().ToLower().Contains(_searchWord.ToLower()))) continue;
                 if (cbFilterPriority.Checked && (ticket.Priority != Priority.High || !_highFilter) &&
                     (ticket.Priority != Priority.Normal || !_normalFilter) &&
                     (ticket.Priority != Priority.Low || !_lowFilter)) continue;
@@ -203,16 +205,25 @@ namespace SupportService
 
         private string GetMatchingDescription(Ticket ticket)
         {
-            int index = ticket.IncidentDescription.IndexOf(_searchWord, StringComparison.Ordinal);
-            int start = Math.Max(0, index - 15);
-            int end = Math.Min(index + 15, ticket.IncidentDescription.Length - start);
-            string description = $"{ticket.IncidentDescription.Substring(start, end)}";
-            if (start != 0)
-                description = description.Insert(0, "...");
-            if (start + end != ticket.IncidentDescription.Length)
-                description += "<b> ...";
+            if (ticket.IncidentDescription.ToLower().Contains(_searchWord.ToLower()))
+            {
 
-            return description;
+
+                int index = ticket.IncidentDescription.IndexOf(_searchWord, StringComparison.Ordinal);
+                int start = Math.Max(0, index - 15);
+                int end = Math.Min(index + 15, ticket.IncidentDescription.Length - start);
+                string description = $"{ticket.IncidentDescription.Substring(start, end)}";
+                if (start != 0)
+                    description = description.Insert(0, "...");
+                if (start + end != ticket.IncidentDescription.Length)
+                    description += "<b> ...";
+
+                return description;
+            }
+            else
+            {
+                return "";
+            }
         }
 
         private string GetTicketTime(Ticket ticket)
