@@ -14,6 +14,7 @@ namespace SupportService
         // sort by priority/type
         // other search? (radiobutton/label/
         // AND/OR
+        // refresh button
         
         private TicketLogic _ticketLogic;
 
@@ -26,6 +27,9 @@ namespace SupportService
         private bool _highFilter;
         private bool _normalFilter;
         private bool _lowFilter;
+        private bool _softwareFilter;
+        private bool _hardwareFilter;
+        private bool _serviceFilter;
         private readonly Font _smallItemFont;
         private readonly Font _smallHeaderFont;
         private readonly Font _normalItemFont;
@@ -98,6 +102,9 @@ namespace SupportService
                 if (cbFilterPriority.Checked && (ticket.Priority != Priority.High || !_highFilter) &&
                     (ticket.Priority != Priority.Normal || !_normalFilter) &&
                     (ticket.Priority != Priority.Low || !_lowFilter)) continue;
+                if (cbFilterType.Checked && (ticket.IncidentType != TypeOfIncident.Hardware || !_hardwareFilter) &&
+                    (ticket.IncidentType != TypeOfIncident.Software || !_softwareFilter) &&
+                    (ticket.IncidentType != TypeOfIncident.Service || !_serviceFilter)) continue;
                 ListViewItem lvItem = new ListViewItem
                 {
                     Tag = ticket,
@@ -147,6 +154,9 @@ namespace SupportService
                 if (cbFilterPriority.Checked && (ticket.Priority != Priority.High || !_highFilter) &&
                     (ticket.Priority != Priority.Normal || !_normalFilter) &&
                     (ticket.Priority != Priority.Low || !_lowFilter)) continue;
+                if (cbFilterType.Checked && (ticket.IncidentType != TypeOfIncident.Hardware || !_hardwareFilter) &&
+                    (ticket.IncidentType != TypeOfIncident.Software || !_softwareFilter) &&
+                    (ticket.IncidentType != TypeOfIncident.Service || !_serviceFilter)) continue;
                 ListViewItem lvItem = new ListViewItem
                 {
                     Tag = ticket,
@@ -381,23 +391,70 @@ namespace SupportService
         private void lblHighP_Click(object sender, EventArgs e)
         {
             _highFilter = FilterOptionSelected(_highFilter, (Label)sender);
-            RefreshListView();
+            if (cbFilterType.Checked)
+            {
+                RefreshListView();
+            }
         }
 
         private void lblNormalP_Click(object sender, EventArgs e)
         {
             _normalFilter = FilterOptionSelected(_normalFilter, (Label)sender);
-            RefreshListView();
+            if (cbFilterType.Checked)
+            {
+                RefreshListView();
+            }
         }
 
         private void lblLowP_Click(object sender, EventArgs e)
         {
             _lowFilter = FilterOptionSelected(_lowFilter, (Label)sender);
-            RefreshListView();
+            if (cbFilterType.Checked)
+            {
+                RefreshListView();
+            }
         }
 
         private void cbFilterPriority_CheckedChanged(object sender, EventArgs e)
         {
+            RefreshListView();
+        }
+
+        private void lblSoftware_Click(object sender, EventArgs e)
+        {
+            _softwareFilter = FilterOptionSelected(_softwareFilter, (Label)sender);
+            if (cbFilterType.Checked)
+            {
+                RefreshListView();
+            }
+        }
+
+        private void lblHardware_Click(object sender, EventArgs e)
+        {
+            _hardwareFilter = FilterOptionSelected(_hardwareFilter, (Label)sender);
+            if (cbFilterType.Checked)
+            {
+                RefreshListView();
+            }
+        }
+
+        private void lblService_Click(object sender, EventArgs e)
+        {
+            _serviceFilter = FilterOptionSelected(_serviceFilter, (Label)sender);
+            if (cbFilterType.Checked)
+            {
+                RefreshListView();
+            }
+        }
+
+        private void cbFilterType_CheckedChanged(object sender, EventArgs e)
+        {
+            RefreshListView();
+        }
+
+        private void btnRefreshTickets_Click(object sender, EventArgs e)
+        {
+            RefreshLists();
             RefreshListView();
         }
     }
