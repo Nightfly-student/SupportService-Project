@@ -14,6 +14,7 @@ namespace SupportService
         // show type?
         // AND/OR
         // due by: less than a day
+        // make fifth box for hardware/software/service?
         
         private TicketLogic _ticketLogic;
 

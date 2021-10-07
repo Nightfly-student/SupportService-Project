@@ -149,10 +149,10 @@ namespace SupportService
             this.lvRecentTickets.FullRowSelect = true;
             this.lvRecentTickets.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
             this.lvRecentTickets.HideSelection = false;
-            this.lvRecentTickets.Location = new System.Drawing.Point(12, 186);
+            this.lvRecentTickets.Location = new System.Drawing.Point(12, 148);
             this.lvRecentTickets.MultiSelect = false;
             this.lvRecentTickets.Name = "lvRecentTickets";
-            this.lvRecentTickets.Size = new System.Drawing.Size(925, 523);
+            this.lvRecentTickets.Size = new System.Drawing.Size(931, 575);
             this.lvRecentTickets.TabIndex = 7;
             this.lvRecentTickets.TabStop = false;
             this.lvRecentTickets.UseCompatibleStateImageBehavior = false;
@@ -193,7 +193,7 @@ namespace SupportService
             this.pnlOpenTickets.BackColor = System.Drawing.Color.White;
             this.pnlOpenTickets.Controls.Add(this.pnlOpenAmount);
             this.pnlOpenTickets.Controls.Add(this.lblOpenTickets);
-            this.pnlOpenTickets.Location = new System.Drawing.Point(12, 71);
+            this.pnlOpenTickets.Location = new System.Drawing.Point(12, 53);
             this.pnlOpenTickets.Name = "pnlOpenTickets";
             this.pnlOpenTickets.Padding = new System.Windows.Forms.Padding(20);
             this.pnlOpenTickets.Size = new System.Drawing.Size(167, 85);
@@ -234,7 +234,7 @@ namespace SupportService
             this.pnlHighPriority.BackColor = System.Drawing.Color.White;
             this.pnlHighPriority.Controls.Add(this.pnlHighAmount);
             this.pnlHighPriority.Controls.Add(this.lblHighPriority);
-            this.pnlHighPriority.Location = new System.Drawing.Point(204, 71);
+            this.pnlHighPriority.Location = new System.Drawing.Point(191, 53);
             this.pnlHighPriority.Name = "pnlHighPriority";
             this.pnlHighPriority.Padding = new System.Windows.Forms.Padding(20);
             this.pnlHighPriority.Size = new System.Drawing.Size(167, 85);
@@ -275,7 +275,7 @@ namespace SupportService
             this.pnlNormalPriority.BackColor = System.Drawing.Color.White;
             this.pnlNormalPriority.Controls.Add(this.pnlNormalAmount);
             this.pnlNormalPriority.Controls.Add(this.lblNormalPriority);
-            this.pnlNormalPriority.Location = new System.Drawing.Point(397, 71);
+            this.pnlNormalPriority.Location = new System.Drawing.Point(371, 53);
             this.pnlNormalPriority.Name = "pnlNormalPriority";
             this.pnlNormalPriority.Padding = new System.Windows.Forms.Padding(20);
             this.pnlNormalPriority.Size = new System.Drawing.Size(167, 85);
@@ -316,7 +316,7 @@ namespace SupportService
             this.pnlLowPriority.BackColor = System.Drawing.Color.White;
             this.pnlLowPriority.Controls.Add(this.pnlLowAmount);
             this.pnlLowPriority.Controls.Add(this.lblLowPriority);
-            this.pnlLowPriority.Location = new System.Drawing.Point(589, 71);
+            this.pnlLowPriority.Location = new System.Drawing.Point(551, 53);
             this.pnlLowPriority.Name = "pnlLowPriority";
             this.pnlLowPriority.Padding = new System.Windows.Forms.Padding(20);
             this.pnlLowPriority.Size = new System.Drawing.Size(167, 85);
@@ -367,7 +367,7 @@ namespace SupportService
             this.pnlSortBy.BackColor = System.Drawing.Color.White;
             this.pnlSortBy.Controls.Add(this.pnlSortOptions);
             this.pnlSortBy.Controls.Add(this.lblSortBy);
-            this.pnlSortBy.Location = new System.Drawing.Point(953, 186);
+            this.pnlSortBy.Location = new System.Drawing.Point(954, 218);
             this.pnlSortBy.Name = "pnlSortBy";
             this.pnlSortBy.Size = new System.Drawing.Size(235, 148);
             this.pnlSortBy.TabIndex = 10;
@@ -461,7 +461,7 @@ namespace SupportService
             this.pnlSearch.BackColor = System.Drawing.Color.White;
             this.pnlSearch.Controls.Add(this.tbSearchBox);
             this.pnlSearch.Controls.Add(this.lblSearch);
-            this.pnlSearch.Location = new System.Drawing.Point(953, 340);
+            this.pnlSearch.Location = new System.Drawing.Point(954, 148);
             this.pnlSearch.Name = "pnlSearch";
             this.pnlSearch.Size = new System.Drawing.Size(235, 61);
             this.pnlSearch.TabIndex = 12;
@@ -472,7 +472,7 @@ namespace SupportService
             this.pnlFilterPriority.Controls.Add(this.cbFilterPriority);
             this.pnlFilterPriority.Controls.Add(this.pnlOptionsPriority);
             this.pnlFilterPriority.Controls.Add(this.lblFilterPriority);
-            this.pnlFilterPriority.Location = new System.Drawing.Point(953, 407);
+            this.pnlFilterPriority.Location = new System.Drawing.Point(954, 376);
             this.pnlFilterPriority.Name = "pnlFilterPriority";
             this.pnlFilterPriority.Size = new System.Drawing.Size(235, 131);
             this.pnlFilterPriority.TabIndex = 10;
@@ -554,7 +554,7 @@ namespace SupportService
             this.pnlFilterType.Controls.Add(this.cbFilterType);
             this.pnlFilterType.Controls.Add(this.pnlOptionsType);
             this.pnlFilterType.Controls.Add(this.lblFilterType);
-            this.pnlFilterType.Location = new System.Drawing.Point(953, 544);
+            this.pnlFilterType.Location = new System.Drawing.Point(954, 516);
             this.pnlFilterType.Name = "pnlFilterType";
             this.pnlFilterType.Size = new System.Drawing.Size(235, 131);
             this.pnlFilterType.TabIndex = 10;
@@ -636,9 +636,9 @@ namespace SupportService
             this.btnRefreshTickets.FlatAppearance.BorderColor = System.Drawing.Color.Black;
             this.btnRefreshTickets.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnRefreshTickets.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRefreshTickets.Location = new System.Drawing.Point(953, 681);
+            this.btnRefreshTickets.Location = new System.Drawing.Point(954, 656);
             this.btnRefreshTickets.Name = "btnRefreshTickets";
-            this.btnRefreshTickets.Size = new System.Drawing.Size(235, 28);
+            this.btnRefreshTickets.Size = new System.Drawing.Size(235, 67);
             this.btnRefreshTickets.TabIndex = 13;
             this.btnRefreshTickets.TabStop = false;
             this.btnRefreshTickets.Text = "Refresh List";
@@ -650,7 +650,7 @@ namespace SupportService
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.ClientSize = new System.Drawing.Size(1200, 721);
+            this.ClientSize = new System.Drawing.Size(1200, 734);
             this.Controls.Add(this.btnRefreshTickets);
             this.Controls.Add(this.pnlSearch);
             this.Controls.Add(this.pnlFilterType);
