@@ -15,6 +15,7 @@ namespace SupportService
         // AND/OR
         // due by: less than a day
         // make fifth box for hardware/software/service?
+        // only show open tickets
         
         private TicketLogic _ticketLogic;
 
@@ -48,6 +49,7 @@ namespace SupportService
             _normalHeaderFont = new Font("Arial", 17, FontStyle.Bold);
             _smallItemFont = new Font("Arial", 13, FontStyle.Regular);
             _smallHeaderFont = new Font("Arial", 13, FontStyle.Bold);
+            btnEditTicket.Enabled = false;
             RefreshListView();
             OptionsClicked();
             RefreshCounts();
@@ -217,7 +219,7 @@ namespace SupportService
                 if (start != 0)
                     description = description.Insert(0, "...");
                 if (start + end != ticket.IncidentDescription.Length)
-                    description += "<b> ...";
+                    description += " ...";
 
                 return description;
             }
@@ -468,6 +470,20 @@ namespace SupportService
         {
             RefreshLists();
             RefreshListView();
+        }
+
+        private void btnEditTicket_Click(object sender, EventArgs e)
+        {
+            Ticket ticket = (Ticket)lvRecentTickets.SelectedItems[0].Tag;
+            new FormEditTicket(ticket).ShowDialog(); // add selected ticket from listview
+        }
+
+        private void lvRecentTickets_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e)
+        {
+            if (lvRecentTickets.SelectedItems != null)
+                btnEditTicket.Enabled = true;
+            else
+                btnEditTicket.Enabled = false;
         }
     }
 }

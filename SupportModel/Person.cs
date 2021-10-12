@@ -5,6 +5,7 @@ using MongoDB.Bson;
 
 namespace SupportModel
 {
+    public enum UserType { User, ServiceDesk}
     public class Person
     {
         public ObjectId Id { get; set; }

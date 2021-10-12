@@ -18,7 +18,6 @@ namespace SupportService
             InitializeComponent();
             _lvwColumnSorter = new ListViewColumnSorter();
             //_supportLogic = new MongoDatabaseLogic(connectedClient);
-            lvEmployees.ListViewItemSorter = _lvwColumnSorter;
         }
 
         private void btnAddUser_Click(object sender, EventArgs e)
@@ -53,30 +52,6 @@ namespace SupportService
             }
             cbUserType.Items.Add("Employee");
             cbUserType.Items.Add("Service Desk");
-            foreach (ColumnHeader ch in lvEmployees.Columns)
-            {
-                ch.Width = -2; 
-            }
-        }
-        private void LoadItems(string collectionName)
-        {
-            foreach (var item in MongoDatabaseLogic.Instance.ListViewItemsFromCollection(collectionName))
-            {
-                lvEmployees.Items.Add(item);
-            }
-
-            foreach (ColumnHeader ch in lvEmployees.Columns)
-            {
-                ch.Width = -2;
-            }
-        }
-        private void btnRefreshList_Click(object sender, EventArgs e)
-        {
-            lvEmployees.Items.Clear();
-            foreach (var name in MongoDatabaseLogic.Instance.DisplayCollections())
-            {
-                LoadItems(name);
-            }
         }
 
         private void lvEmployees_ColumnClick(object sender, ColumnClickEventArgs e)
@@ -100,9 +75,6 @@ namespace SupportService
                 _lvwColumnSorter.SortColumn = e.Column;
                 _lvwColumnSorter.Order = SortOrder.Ascending;
             }
-
-            // Perform the sort with these new sort options.
-            lvEmployees.Sort();
         }
 
         private void FormAddUser_Load(object sender, EventArgs e)
