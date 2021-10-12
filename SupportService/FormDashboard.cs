@@ -403,7 +403,7 @@ namespace SupportService
         private void lblHighP_Click(object sender, EventArgs e)
         {
             _highFilter = FilterOptionSelected(_highFilter, (Label)sender);
-            if (cbFilterType.Checked)
+            if (cbFilterPriority.Checked)
             {
                 RefreshListView();
             }
@@ -412,7 +412,7 @@ namespace SupportService
         private void lblNormalP_Click(object sender, EventArgs e)
         {
             _normalFilter = FilterOptionSelected(_normalFilter, (Label)sender);
-            if (cbFilterType.Checked)
+            if (cbFilterPriority.Checked)
             {
                 RefreshListView();
             }
@@ -421,7 +421,7 @@ namespace SupportService
         private void lblLowP_Click(object sender, EventArgs e)
         {
             _lowFilter = FilterOptionSelected(_lowFilter, (Label)sender);
-            if (cbFilterType.Checked)
+            if (cbFilterPriority.Checked)
             {
                 RefreshListView();
             }
