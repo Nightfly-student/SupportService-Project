@@ -43,7 +43,6 @@ namespace SupportService
             this.btn_AddTicket = new System.Windows.Forms.Button();
             this.lblDescription = new System.Windows.Forms.Label();
             this.tbDescription = new System.Windows.Forms.TextBox();
-            this.btnAssign = new System.Windows.Forms.Button();
             this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
             this.pnlControls = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
@@ -178,15 +177,6 @@ namespace SupportService
             this.tbDescription.Size = new System.Drawing.Size(389, 154);
             this.tbDescription.TabIndex = 6;
             // 
-            // btnAssign
-            // 
-            this.btnAssign.Location = new System.Drawing.Point(190, 453);
-            this.btnAssign.Name = "btnAssign";
-            this.btnAssign.Size = new System.Drawing.Size(127, 78);
-            this.btnAssign.TabIndex = 10;
-            this.btnAssign.Text = "Assign ticket to employee";
-            this.btnAssign.UseVisualStyleBackColor = true;
-            // 
             // errorProvider
             // 
             this.errorProvider.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
@@ -210,9 +200,8 @@ namespace SupportService
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1184, 561);
+            this.ClientSize = new System.Drawing.Size(644, 561);
             this.Controls.Add(this.pnlControls);
-            this.Controls.Add(this.btnAssign);
             this.Controls.Add(this.lblDescription);
             this.Controls.Add(this.btn_AddTicket);
             this.Controls.Add(this.lblDeadline);
@@ -244,7 +233,6 @@ namespace SupportService
         private System.Windows.Forms.Button btn_AddTicket;
         private System.Windows.Forms.Label lblDescription;
         private System.Windows.Forms.TextBox tbDescription;
-        private System.Windows.Forms.Button btnAssign;
         private System.Windows.Forms.ErrorProvider errorProvider;
         private System.Windows.Forms.Panel pnlControls;
     }

@@ -1,6 +1,7 @@
 ﻿using SupportDAO;
 using System;
 using System.Windows.Forms;
+using SupportModel;
 
 namespace SupportService
 {
@@ -25,9 +26,11 @@ namespace SupportService
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            if (UserLogic.Instance.AuthUser(tbUsername.Text, tbPassword.Text))
+            Person person = UserLogic.Instance.AuthUser(tbUsername.Text, tbPassword.Text);
+            if (person != null)
             {
-                new FormMain().Show();
+                new FormMain(person, this).Show();
+                tbPassword.Clear();
                 Hide();
             }
             else

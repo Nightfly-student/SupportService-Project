@@ -84,12 +84,6 @@
     <Compile Include="FormLogin.Designer.cs">
       <DependentUpon>FormLogin.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormOverviewTickets.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormOverviewTickets.Designer.cs">
-      <DependentUpon>FormOverviewTickets.cs</DependentUpon>
-    </Compile>
     <Compile Include="ListViewColumnSorter.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -117,9 +111,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormMain.resx">
       <DependentUpon>FormMain.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FormOverviewTickets.resx">
-      <DependentUpon>FormOverviewTickets.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

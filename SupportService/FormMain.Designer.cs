@@ -32,6 +32,7 @@
             this.btnDashboard = new System.Windows.Forms.Button();
             this.btnAddUser = new System.Windows.Forms.Button();
             this.btnAddTicket = new System.Windows.Forms.Button();
+            this.btnLogout = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lblConnectionStatus
@@ -52,7 +53,7 @@
             this.btnDashboard.TabIndex = 11;
             this.btnDashboard.Text = "DASHBOARD";
             this.btnDashboard.UseVisualStyleBackColor = true;
-            this.btnDashboard.Click += new System.EventHandler(this.btnPreview_Click);
+            this.btnDashboard.Click += new System.EventHandler(this.BtnDashboard_Click);
             // 
             // btnAddUser
             // 
@@ -76,11 +77,23 @@
             this.btnAddTicket.UseVisualStyleBackColor = true;
             this.btnAddTicket.Click += new System.EventHandler(this.btnAddTicket_Click);
             // 
+            // btnLogout
+            // 
+            this.btnLogout.Font = new System.Drawing.Font("Arial Black", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLogout.Location = new System.Drawing.Point(15, 302);
+            this.btnLogout.Name = "btnLogout";
+            this.btnLogout.Size = new System.Drawing.Size(191, 67);
+            this.btnLogout.TabIndex = 11;
+            this.btnLogout.Text = "LOGOUT";
+            this.btnLogout.UseVisualStyleBackColor = true;
+            this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(233, 323);
+            this.ClientSize = new System.Drawing.Size(233, 388);
+            this.Controls.Add(this.btnLogout);
             this.Controls.Add(this.btnAddTicket);
             this.Controls.Add(this.btnAddUser);
             this.Controls.Add(this.btnDashboard);
@@ -100,6 +113,7 @@
         private System.Windows.Forms.Button btnDashboard;
         private System.Windows.Forms.Button btnAddUser;
         private System.Windows.Forms.Button btnAddTicket;
+        private System.Windows.Forms.Button btnLogout;
     }
 }
 

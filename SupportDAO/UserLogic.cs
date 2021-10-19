@@ -45,7 +45,7 @@ namespace SupportDAO
             ConnectClient(new MongoDatabase());
             _connectedClient.ConnectToDatabase("NoDesk");
         }
-        public bool AuthUser(string username, string password)
+        public Person AuthUser(string username, string password)
         {
             List<Person> arr = _connectedClient.LoadFromCollection<Person>("Employees");
 
@@ -53,10 +53,10 @@ namespace SupportDAO
             {
                 if (p.Username == username && BCrypt.Net.BCrypt.Verify(password, p.Password))
                 {
-                    return true;
+                    return p;
                 }
             }
-            return false;
+            return null;
         }
         public List<Person> GetUsers()
         {

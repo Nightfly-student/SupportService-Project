@@ -1,4 +1,5 @@
-﻿using SupportDAO;
+﻿using MongoDB.Bson;
+using SupportDAO;
 using SupportModel;
 using System;
 using System.Collections.Generic;
@@ -6,20 +7,13 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
-using MongoDB.Bson;
 
 namespace SupportService
 {
     public partial class FormDashboard : Form
     {
-        // show type?
-        // AND/OR
-        // due by: less than a day
-        // make fifth box for hardware/software/service?
-        // only show open tickets
-        
         private TicketLogic _ticketLogic;
-
+        private Person _loggedInPerson;
         private UserLogic _userLogic;
         private List<Person> _personList;
         private List<Ticket> _ticketList;
@@ -37,10 +31,11 @@ namespace SupportService
         private readonly Font _normalItemFont;
         private readonly Font _normalHeaderFont;
 
-        public FormDashboard()
+        public FormDashboard(Person person)
         {
             InitializeComponent();
             CheckConnection();
+            _loggedInPerson = person;
             _listOrder = "NewOld";
             _orderedList = new List<Ticket>();
             _highFilter = false;
@@ -98,15 +93,16 @@ namespace SupportService
             lvRecentTickets.Columns.Add("Ticket Made", 174);
             foreach (var ticket in _orderedList)
             {
-                if (!String.IsNullOrEmpty(_searchWord) && !ticket.Subject.ToLower().Contains(_searchWord.ToLower()) &&
-                    !ticket.MadeBy.ToString().ToLower().Contains(_searchWord.ToLower()) && (ticket.AssignedTo == null ||
-                        !ticket.AssignedTo.ToString().ToLower().Contains(_searchWord.ToLower()))) continue;
-                if (cbFilterPriority.Checked && (ticket.Priority != Priority.High || !_highFilter) &&
-                    (ticket.Priority != Priority.Normal || !_normalFilter) &&
-                    (ticket.Priority != Priority.Low || !_lowFilter)) continue;
-                if (cbFilterType.Checked && (ticket.IncidentType != TypeOfIncident.Hardware || !_hardwareFilter) &&
-                    (ticket.IncidentType != TypeOfIncident.Software || !_softwareFilter) &&
-                    (ticket.IncidentType != TypeOfIncident.Service || !_serviceFilter)) continue;
+                if (!ShowPersonResults(ticket))
+                    continue;
+                if (!ShowOpenTickets(ticket))
+                    continue;
+                if (!ShowNormalSearchResults(ticket))
+                    continue;
+                if (!ShowPriorityResults(ticket))
+                    continue;
+                if (!ShowTypeResults(ticket))
+                    continue;
                 ListViewItem lvItem = new ListViewItem
                 {
                     Tag = ticket,
@@ -152,17 +148,16 @@ namespace SupportService
             lvRecentTickets.Columns.Add("Matching Description", 220);
             foreach (var ticket in _orderedList)
             {
-                //if (!ticket.IncidentDescription.ToLower().Contains(_searchWord.ToLower())) continue;
-                if (!String.IsNullOrEmpty(_searchWord) && !ticket.Subject.ToLower().Contains(_searchWord.ToLower()) &&
-                    !ticket.IncidentDescription.ToLower().Contains(_searchWord.ToLower()) &&
-                    !ticket.MadeBy.ToString().ToLower().Contains(_searchWord.ToLower()) && (ticket.AssignedTo == null ||
-                        !ticket.AssignedTo.ToString().ToLower().Contains(_searchWord.ToLower()))) continue;
-                if (cbFilterPriority.Checked && (ticket.Priority != Priority.High || !_highFilter) &&
-                    (ticket.Priority != Priority.Normal || !_normalFilter) &&
-                    (ticket.Priority != Priority.Low || !_lowFilter)) continue;
-                if (cbFilterType.Checked && (ticket.IncidentType != TypeOfIncident.Hardware || !_hardwareFilter) &&
-                    (ticket.IncidentType != TypeOfIncident.Software || !_softwareFilter) &&
-                    (ticket.IncidentType != TypeOfIncident.Service || !_serviceFilter)) continue;
+                if (!ShowPersonResults(ticket))
+                    continue;
+                if (!ShowOpenTickets(ticket))
+                    continue;
+                if (!ShowExtendedSearchResults(ticket))
+                    continue;
+                if (!ShowPriorityResults(ticket))
+                    continue;
+                if (!ShowTypeResults(ticket))
+                    continue;
                 ListViewItem lvItem = new ListViewItem
                 {
                     Tag = ticket,
@@ -175,9 +170,9 @@ namespace SupportService
                         GetAssignedTo(ticket.AssignedTo),
                         GetTicketTime(ticket),
                         GetMatchingDescription(ticket)
-                    }
+                    },
+                    UseItemStyleForSubItems = false
                 };
-                lvItem.UseItemStyleForSubItems = false;
                 ListViewDesign(ticket, lvItem, _smallItemFont, _smallHeaderFont, lvRecentTickets);
                 lvRecentTickets.Items.Add(lvItem);
             }
@@ -253,6 +248,55 @@ namespace SupportService
             return "";
         }
 
+        private bool ShowOpenTickets(Ticket ticket)
+        {
+            if (ticket.Status == Status.Closed)
+                return false;
+            return true;
+        }
+
+        private bool ShowPersonResults(Ticket ticket)
+        {
+            if (_loggedInPerson.UserType == UserType.Employee && ticket.MadeBy != _loggedInPerson.Id)
+                return false;
+            return true;
+        }
+
+        private bool ShowNormalSearchResults(Ticket ticket)
+        {
+            // if search has a keyword (not empty), and Subject DOES NOT contain the keyword, skip ticket
+            if (!String.IsNullOrEmpty(_searchWord) && !ticket.Subject.ToLower().Contains(_searchWord.ToLower()))
+                return false;
+            return true;
+        }
+
+        private bool ShowExtendedSearchResults(Ticket ticket)
+        {
+            // if search has a keyword (not empty), and Subject and Description DOES NOT contain the keyword, skip ticket
+            if (!String.IsNullOrEmpty(_searchWord) && !ticket.Subject.ToLower().Contains(_searchWord.ToLower()) &&
+                !ticket.IncidentDescription.ToLower().Contains(_searchWord.ToLower()))
+                return false;
+            return true;
+        }
+
+        private bool ShowPriorityResults(Ticket ticket)
+        {
+            if (cbFilterPriority.Checked && (ticket.Priority != Priority.High || !_highFilter) &&
+                (ticket.Priority != Priority.Normal || !_normalFilter) &&
+                (ticket.Priority != Priority.Low || !_lowFilter))
+                return false;
+            return true;
+        }
+
+        private bool ShowTypeResults(Ticket ticket)
+        {
+            if (cbFilterType.Checked && (ticket.IncidentType != TypeOfIncident.Hardware || !_hardwareFilter) &&
+                (ticket.IncidentType != TypeOfIncident.Software || !_softwareFilter) &&
+                (ticket.IncidentType != TypeOfIncident.Service || !_serviceFilter))
+                return false;
+            return true;
+        }
+
         private void OrderList()
         {
             DateTime timeNow;
@@ -280,10 +324,17 @@ namespace SupportService
 
         private void RefreshCounts()
         {
+            if (_loggedInPerson.UserType != UserType.Employee)
+            {
+                lblOpenAmount.Text = _ticketList.Count.ToString();
+                lblLowAmount.Text = _ticketList.Count(i => i.Priority == Priority.Low).ToString();
+                lblNormalAmount.Text = _ticketList.Count(i => i.Priority == Priority.Normal).ToString();
+                lblHighAmount.Text = _ticketList.Count(i => i.Priority == Priority.High).ToString();
+            }
             lblOpenAmount.Text = _ticketList.Count.ToString();
-            lblLowAmount.Text = _ticketList.Count(i => i.Priority == Priority.Low).ToString();
-            lblNormalAmount.Text = _ticketList.Count(i => i.Priority == Priority.Normal).ToString();
-            lblHighAmount.Text = _ticketList.Count(i => i.Priority == Priority.High).ToString();
+            lblLowAmount.Text = _ticketList.Count(i => i.Priority == Priority.Low && i.MadeBy == _loggedInPerson.Id).ToString();
+            lblNormalAmount.Text = _ticketList.Count(i => i.Priority == Priority.Normal && i.MadeBy == _loggedInPerson.Id).ToString();
+            lblHighAmount.Text = _ticketList.Count(i => i.Priority == Priority.High && i.MadeBy == _loggedInPerson.Id).ToString();
         }
 
         public void CheckConnection()

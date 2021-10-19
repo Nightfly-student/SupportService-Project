@@ -11,12 +11,13 @@ namespace SupportService
     public partial class FormAddTicket : Form
     {
         private readonly TicketLogic _ticketLogic;
+        private Person _loggedInPerson;
 
-        public FormAddTicket()
+        public FormAddTicket(Person person)
         {
             InitializeComponent();
-
             _ticketLogic = new TicketLogic();
+            _loggedInPerson = person;
         }
 
         private void FormAddTicket_Load(object sender, EventArgs e)
@@ -35,10 +36,13 @@ namespace SupportService
             List<Person> people = MongoDatabaseLogic.Instance.GetUsers();
             foreach (Person item in MongoDatabaseLogic.Instance.GetUsers())
             {
+                if (_loggedInPerson.UserType == UserType.Employee && _loggedInPerson.Id != item.Id)
+                    continue;
                 cbReportedBy.Items.Add(item);
             }
 
-            cbIncidentType.SelectedIndex = -1;
+            if (cbReportedBy.Items.Count == 1)
+                cbReportedBy.SelectedIndex = 0;
         }
 
         private void FormAddTicket_Shown(object sender, EventArgs e)
@@ -89,8 +93,18 @@ namespace SupportService
             }
             DateTime time = DateTime.Now;
             Person person = (Person) cbReportedBy.SelectedItem;
-            MongoDatabaseLogic.Instance.InsertItem("Tickets",
-            new Ticket(time, tbSubject.Text, MongoDatabaseLogic.Instance.GetEnumValue<TypeOfIncident>(cbIncidentType.Text), person.Id, MongoDatabaseLogic.Instance.GetEnumValue<Priority>(cbPriority.Text.ToString()), time.AddDays(days), tbDescription.Text));
+            try
+            {
+                MongoDatabaseLogic.Instance.InsertItem("Tickets",
+                    new Ticket(time, tbSubject.Text, MongoDatabaseLogic.Instance.GetEnumValue<TypeOfIncident>(cbIncidentType.Text), 
+                        person.Id, MongoDatabaseLogic.Instance.GetEnumValue<Priority>(cbPriority.Text.ToString()), time.AddDays(days), tbDescription.Text));
+                MessageBox.Show($"Ticket added!");
+            }
+            catch (Exception exception)
+            {
+               MessageBox.Show($"Something failed\n{exception.Message}\nTicket was not added");
+            }
+            
         }
 
         private bool CheckFields()
