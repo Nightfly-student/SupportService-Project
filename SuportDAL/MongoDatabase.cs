@@ -79,6 +79,12 @@ namespace SupportDAL
             _db.GetCollection<T>(typeof(T).Name).InsertOne(item);
         }
 
+        //public void Update<Person>(Person item) where Person : class, new()
+        //{
+        //    _db.GetCollection<Person>(typeof(Person).Name).ReplaceOne(doc => doc.Id == item.Id, item);
+
+        //}
+
         public void Delete<T>(T item) where T : class, new()
         {
             //WorkAround for DeleteOne parameter
@@ -94,6 +100,8 @@ namespace SupportDAL
 
             return collection.Find(new BsonDocument()).ToList();
         }
+
+
 
         // load specific item by ID
         public T LoadItemById<T>(string collectionName, ObjectId id)
@@ -118,6 +126,8 @@ namespace SupportDAL
 
             collection.DeleteOne(filter);
         }
+
+      
 
         public static BsonObjectId Parse(string s)
         {
