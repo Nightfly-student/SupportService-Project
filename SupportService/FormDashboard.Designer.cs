@@ -123,7 +123,7 @@ namespace SupportService
             this.lblExit.Size = new System.Drawing.Size(37, 38);
             this.lblExit.TabIndex = 7;
             this.lblExit.Text = "X";
-            this.lblExit.Click += new System.EventHandler(this.lblExit_Click);
+            this.lblExit.Click += new System.EventHandler(this.LblExit_Click);
             // 
             // lblDashboard
             // 
@@ -161,7 +161,7 @@ namespace SupportService
             this.lvRecentTickets.TabStop = false;
             this.lvRecentTickets.UseCompatibleStateImageBehavior = false;
             this.lvRecentTickets.View = System.Windows.Forms.View.Details;
-            this.lvRecentTickets.ItemSelectionChanged += new System.Windows.Forms.ListViewItemSelectionChangedEventHandler(this.lvRecentTickets_ItemSelectionChanged);
+            this.lvRecentTickets.ItemSelectionChanged += new System.Windows.Forms.ListViewItemSelectionChangedEventHandler(this.LvRecentTickets_ItemSelectionChanged);
             // 
             // chPriority
             // 
@@ -419,7 +419,7 @@ namespace SupportService
             this.lblDueByHL.Size = new System.Drawing.Size(190, 23);
             this.lblDueByHL.TabIndex = 9;
             this.lblDueByHL.Text = "Due By: High to Low";
-            this.lblDueByHL.Click += new System.EventHandler(this.lblDueByHL_Click);
+            this.lblDueByHL.Click += new System.EventHandler(this.LblDueByHL_Click);
             // 
             // lblRecentON
             // 
@@ -433,7 +433,7 @@ namespace SupportService
             this.lblRecentON.Size = new System.Drawing.Size(183, 23);
             this.lblRecentON.TabIndex = 9;
             this.lblRecentON.Text = "Recent: Old to New";
-            this.lblRecentON.Click += new System.EventHandler(this.lblRecentON_Click);
+            this.lblRecentON.Click += new System.EventHandler(this.LblRecentON_Click);
             // 
             // lblDueByLH
             // 
@@ -447,7 +447,7 @@ namespace SupportService
             this.lblDueByLH.Size = new System.Drawing.Size(190, 23);
             this.lblDueByLH.TabIndex = 9;
             this.lblDueByLH.Text = "Due By: Low to High";
-            this.lblDueByLH.Click += new System.EventHandler(this.lblDueByLH_Click);
+            this.lblDueByLH.Click += new System.EventHandler(this.LblDueByLH_Click);
             // 
             // lblRecentNO
             // 
@@ -461,7 +461,7 @@ namespace SupportService
             this.lblRecentNO.Size = new System.Drawing.Size(183, 23);
             this.lblRecentNO.TabIndex = 9;
             this.lblRecentNO.Text = "Recent: New to Old";
-            this.lblRecentNO.Click += new System.EventHandler(this.lblRecentNO_Click);
+            this.lblRecentNO.Click += new System.EventHandler(this.LblRecentNO_Click);
             // 
             // tbSearchBox
             // 
@@ -473,7 +473,7 @@ namespace SupportService
             this.tbSearchBox.Size = new System.Drawing.Size(304, 30);
             this.tbSearchBox.TabIndex = 1;
             this.tbSearchBox.TabStop = false;
-            this.tbSearchBox.TextChanged += new System.EventHandler(this.tbSearchBox_TextChanged);
+            this.tbSearchBox.TextChanged += new System.EventHandler(this.TbSearchBox_TextChanged);
             // 
             // lblSearch
             // 
@@ -520,7 +520,7 @@ namespace SupportService
             this.cbFilterPriority.TabIndex = 11;
             this.cbFilterPriority.TabStop = false;
             this.cbFilterPriority.UseVisualStyleBackColor = true;
-            this.cbFilterPriority.CheckedChanged += new System.EventHandler(this.cbFilterPriority_CheckedChanged);
+            this.cbFilterPriority.CheckedChanged += new System.EventHandler(this.CbFilterPriority_CheckedChanged);
             // 
             // pnlOptionsPriority
             // 
@@ -545,7 +545,7 @@ namespace SupportService
             this.lblNormalP.Size = new System.Drawing.Size(140, 23);
             this.lblNormalP.TabIndex = 9;
             this.lblNormalP.Text = "Normal Priority";
-            this.lblNormalP.Click += new System.EventHandler(this.lblNormalP_Click);
+            this.lblNormalP.Click += new System.EventHandler(this.LblNormalP_Click);
             // 
             // lblLowP
             // 
@@ -559,7 +559,7 @@ namespace SupportService
             this.lblLowP.Size = new System.Drawing.Size(115, 23);
             this.lblLowP.TabIndex = 9;
             this.lblLowP.Text = "Low Priority";
-            this.lblLowP.Click += new System.EventHandler(this.lblLowP_Click);
+            this.lblLowP.Click += new System.EventHandler(this.LblLowP_Click);
             // 
             // lblHighP
             // 
@@ -573,7 +573,7 @@ namespace SupportService
             this.lblHighP.Size = new System.Drawing.Size(116, 23);
             this.lblHighP.TabIndex = 9;
             this.lblHighP.Text = "High Priority";
-            this.lblHighP.Click += new System.EventHandler(this.lblHighP_Click);
+            this.lblHighP.Click += new System.EventHandler(this.LblHighP_Click);
             // 
             // lblFilterPriority
             // 
@@ -609,7 +609,7 @@ namespace SupportService
             this.cbFilterType.TabIndex = 11;
             this.cbFilterType.TabStop = false;
             this.cbFilterType.UseVisualStyleBackColor = true;
-            this.cbFilterType.CheckedChanged += new System.EventHandler(this.cbFilterType_CheckedChanged);
+            this.cbFilterType.CheckedChanged += new System.EventHandler(this.CbFilterType_CheckedChanged);
             // 
             // pnlOptionsType
             // 
@@ -634,7 +634,7 @@ namespace SupportService
             this.lblHardware.Size = new System.Drawing.Size(96, 23);
             this.lblHardware.TabIndex = 9;
             this.lblHardware.Text = "Hardware";
-            this.lblHardware.Click += new System.EventHandler(this.lblHardware_Click);
+            this.lblHardware.Click += new System.EventHandler(this.LblHardware_Click);
             // 
             // lblService
             // 
@@ -648,7 +648,7 @@ namespace SupportService
             this.lblService.Size = new System.Drawing.Size(75, 23);
             this.lblService.TabIndex = 9;
             this.lblService.Text = "Service";
-            this.lblService.Click += new System.EventHandler(this.lblService_Click);
+            this.lblService.Click += new System.EventHandler(this.LblService_Click);
             // 
             // lblSoftware
             // 
@@ -662,7 +662,7 @@ namespace SupportService
             this.lblSoftware.Size = new System.Drawing.Size(90, 23);
             this.lblSoftware.TabIndex = 9;
             this.lblSoftware.Text = "Software";
-            this.lblSoftware.Click += new System.EventHandler(this.lblSoftware_Click);
+            this.lblSoftware.Click += new System.EventHandler(this.LblSoftware_Click);
             // 
             // lblFilterType
             // 
@@ -689,7 +689,7 @@ namespace SupportService
             this.btnRefreshTickets.TabStop = false;
             this.btnRefreshTickets.Text = "Refresh List";
             this.btnRefreshTickets.UseVisualStyleBackColor = false;
-            this.btnRefreshTickets.Click += new System.EventHandler(this.btnRefreshTickets_Click);
+            this.btnRefreshTickets.Click += new System.EventHandler(this.BtnRefreshTickets_Click);
             // 
             // btnEditTicket
             // 
@@ -705,7 +705,7 @@ namespace SupportService
             this.btnEditTicket.TabStop = false;
             this.btnEditTicket.Text = "Edit Ticket";
             this.btnEditTicket.UseVisualStyleBackColor = false;
-            this.btnEditTicket.Click += new System.EventHandler(this.btnEditTicket_Click);
+            this.btnEditTicket.Click += new System.EventHandler(this.BtnEditTicket_Click);
             // 
             // FormDashboard
             // 

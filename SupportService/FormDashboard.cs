@@ -6,6 +6,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
+using MongoDB.Bson;
 
 namespace SupportService
 {
@@ -55,7 +56,7 @@ namespace SupportService
             RefreshCounts();
         }
 
-        private void lblExit_Click(object sender, EventArgs e)
+        private void LblExit_Click(object sender, EventArgs e)
         {
             Close();
         }
@@ -115,7 +116,7 @@ namespace SupportService
                         ticket.Subject,
                         ticket.Status.ToString(),
                         (ticket.TimeDueBy - DateTime.Now).TotalDays.ToString("## 'days'"),
-                        ticket.AssignedTo == null ? "-" : ticket.AssignedTo.ToString(),
+                        GetAssignedTo(ticket.AssignedTo),
                         GetTicketTime(ticket)
                     }
                 };
@@ -171,7 +172,7 @@ namespace SupportService
                         ticket.Subject,
                         ticket.Status.ToString(),
                         (ticket.TimeDueBy - DateTime.Now).TotalDays.ToString("## 'days'"),
-                        ticket.AssignedTo == null ? "-" : ticket.AssignedTo.ToString(),
+                        GetAssignedTo(ticket.AssignedTo),
                         GetTicketTime(ticket),
                         GetMatchingDescription(ticket)
                     }
@@ -210,8 +211,6 @@ namespace SupportService
         {
             if (ticket.IncidentDescription.ToLower().Contains(_searchWord.ToLower()))
             {
-
-
                 int index = ticket.IncidentDescription.IndexOf(_searchWord, StringComparison.Ordinal);
                 int start = Math.Max(0, index - 15);
                 int end = Math.Min(index + 15, ticket.IncidentDescription.Length - start);
@@ -223,10 +222,8 @@ namespace SupportService
 
                 return description;
             }
-            else
-            {
-                return "";
-            }
+
+            return "";
         }
 
         private string GetTicketTime(Ticket ticket)
@@ -330,6 +327,14 @@ namespace SupportService
             }
         }
 
+        private string GetAssignedTo(ObjectId id)
+        {
+            Person person = _personList.Find(person => person.Id == id);
+            if (person == null)
+                return "-";
+            return person.ToString();
+        }
+
         private void ResetLabels(Label label)
         {
             label.ForeColor = SystemColors.ControlDarkDark;
@@ -360,27 +365,27 @@ namespace SupportService
             SortOptionSelected();
         }
 
-        private void lblRecentNO_Click(object sender, EventArgs e)
+        private void LblRecentNO_Click(object sender, EventArgs e)
         {
             SortLabelClicked("NewOld");
         }
 
-        private void lblRecentON_Click(object sender, EventArgs e)
+        private void LblRecentON_Click(object sender, EventArgs e)
         {
             SortLabelClicked("OldNew");
         }
 
-        private void lblDueByLH_Click(object sender, EventArgs e)
+        private void LblDueByLH_Click(object sender, EventArgs e)
         {
             SortLabelClicked("LowHigh");
         }
 
-        private void lblDueByHL_Click(object sender, EventArgs e)
+        private void LblDueByHL_Click(object sender, EventArgs e)
         {
             SortLabelClicked("HighLow");
         }
 
-        private void tbSearchBox_TextChanged(object sender, EventArgs e)
+        private void TbSearchBox_TextChanged(object sender, EventArgs e)
         {
             _searchWord = tbSearchBox.Text;
             RefreshListView();
@@ -402,7 +407,7 @@ namespace SupportService
             }
         }
 
-        private void lblHighP_Click(object sender, EventArgs e)
+        private void LblHighP_Click(object sender, EventArgs e)
         {
             _highFilter = FilterOptionSelected(_highFilter, (Label)sender);
             if (cbFilterPriority.Checked)
@@ -411,7 +416,7 @@ namespace SupportService
             }
         }
 
-        private void lblNormalP_Click(object sender, EventArgs e)
+        private void LblNormalP_Click(object sender, EventArgs e)
         {
             _normalFilter = FilterOptionSelected(_normalFilter, (Label)sender);
             if (cbFilterPriority.Checked)
@@ -420,7 +425,7 @@ namespace SupportService
             }
         }
 
-        private void lblLowP_Click(object sender, EventArgs e)
+        private void LblLowP_Click(object sender, EventArgs e)
         {
             _lowFilter = FilterOptionSelected(_lowFilter, (Label)sender);
             if (cbFilterPriority.Checked)
@@ -429,12 +434,12 @@ namespace SupportService
             }
         }
 
-        private void cbFilterPriority_CheckedChanged(object sender, EventArgs e)
+        private void CbFilterPriority_CheckedChanged(object sender, EventArgs e)
         {
             RefreshListView();
         }
 
-        private void lblSoftware_Click(object sender, EventArgs e)
+        private void LblSoftware_Click(object sender, EventArgs e)
         {
             _softwareFilter = FilterOptionSelected(_softwareFilter, (Label)sender);
             if (cbFilterType.Checked)
@@ -443,7 +448,7 @@ namespace SupportService
             }
         }
 
-        private void lblHardware_Click(object sender, EventArgs e)
+        private void LblHardware_Click(object sender, EventArgs e)
         {
             _hardwareFilter = FilterOptionSelected(_hardwareFilter, (Label)sender);
             if (cbFilterType.Checked)
@@ -452,7 +457,7 @@ namespace SupportService
             }
         }
 
-        private void lblService_Click(object sender, EventArgs e)
+        private void LblService_Click(object sender, EventArgs e)
         {
             _serviceFilter = FilterOptionSelected(_serviceFilter, (Label)sender);
             if (cbFilterType.Checked)
@@ -461,24 +466,26 @@ namespace SupportService
             }
         }
 
-        private void cbFilterType_CheckedChanged(object sender, EventArgs e)
+        private void CbFilterType_CheckedChanged(object sender, EventArgs e)
         {
             RefreshListView();
         }
 
-        private void btnRefreshTickets_Click(object sender, EventArgs e)
+        private void BtnRefreshTickets_Click(object sender, EventArgs e)
         {
             RefreshLists();
             RefreshListView();
         }
 
-        private void btnEditTicket_Click(object sender, EventArgs e)
+        private void BtnEditTicket_Click(object sender, EventArgs e)
         {
             Ticket ticket = (Ticket)lvRecentTickets.SelectedItems[0].Tag;
             new FormEditTicket(ticket).ShowDialog(); // add selected ticket from listview
+            RefreshLists();
+            RefreshListView();
         }
 
-        private void lvRecentTickets_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e)
+        private void LvRecentTickets_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e)
         {
             if (lvRecentTickets.SelectedItems != null)
                 btnEditTicket.Enabled = true;

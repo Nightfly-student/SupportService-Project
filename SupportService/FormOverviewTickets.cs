@@ -22,7 +22,6 @@ namespace SupportService
         {
             CheckConnection();
             GetTickets();
-           
         }
 
         private void btnCreateIncident_Click(object sender, EventArgs e)

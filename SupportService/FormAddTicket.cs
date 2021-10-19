@@ -88,8 +88,9 @@ namespace SupportService
                     break;
             }
             DateTime time = DateTime.Now;
+            Person person = (Person) cbReportedBy.SelectedItem;
             MongoDatabaseLogic.Instance.InsertItem("Tickets",
-            new Ticket(time, tbSubject.Text, MongoDatabaseLogic.Instance.GetEnumValue<TypeOfIncident>(cbIncidentType.Text), (Person)cbReportedBy.SelectedItem, MongoDatabaseLogic.Instance.GetEnumValue<Priority>(cbPriority.Text.ToString()), time.AddDays(days), tbDescription.Text));
+            new Ticket(time, tbSubject.Text, MongoDatabaseLogic.Instance.GetEnumValue<TypeOfIncident>(cbIncidentType.Text), person.Id, MongoDatabaseLogic.Instance.GetEnumValue<Priority>(cbPriority.Text.ToString()), time.AddDays(days), tbDescription.Text));
         }
 
         private bool CheckFields()

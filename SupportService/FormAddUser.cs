@@ -26,7 +26,7 @@ namespace SupportService
             if (!MongoDatabaseLogic.Instance.Exists(txtUsername.Text))
             {
                 MongoDatabaseLogic.Instance.InsertItem("Employees",
-                new Person(tbFirstName.Text, tbLastName.Text, tbEmail.Text, dtpDateOfBirth.Value, int.Parse(tbPhoneNumber.Text), tbWorkLocation.Text, cbUserType.Text, txtUsername.Text, txtPassword.Text));
+                new Person(tbFirstName.Text, tbLastName.Text, tbEmail.Text, dtpDateOfBirth.Value, int.Parse(tbPhoneNumber.Text), tbWorkLocation.Text, MongoDatabaseLogic.Instance.GetEnumValue<UserType>(cbUserType.Text), txtUsername.Text, txtPassword.Text));
             } else
             {
                 MessageBox.Show("Username already exists");
@@ -50,8 +50,10 @@ namespace SupportService
                 Cursor.Current = Cursors.Default;
                 Close();
             }
-            cbUserType.Items.Add("Employee");
-            cbUserType.Items.Add("Service Desk");
+            foreach (var value in Enum.GetValues(typeof(UserType)))
+            {
+                cbUserType.Items.Add(MongoDatabaseLogic.Instance.GetEnumName(value));
+            }
         }
 
         private void lvEmployees_ColumnClick(object sender, ColumnClickEventArgs e)
