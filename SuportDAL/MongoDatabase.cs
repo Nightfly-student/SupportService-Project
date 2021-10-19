@@ -103,6 +103,14 @@ namespace SupportDAL
 
             return collection.Find(filter).First();
         }
+        //Jelle TOonen tel de items op en return het (#tickets)//
+        public int CountItemByName<T>(string collectionName, string item, string name)
+        {
+            var collection = _db.GetCollection<T>(collectionName);
+            var filter = Builders<T>.Filter.Eq(name, item);
+            var count = collection.Find(filter).CountDocuments();
+            return int.Parse(count.ToString());
+        }
         public void DeleteItemById<T>(string collectionName, ObjectId id)
         {
             var collection = _db.GetCollection<T>(collectionName);
@@ -115,33 +123,5 @@ namespace SupportDAL
         {
             return new BsonObjectId(ObjectId.Parse(s));
         }
-
-      
-        //UPDATE (GEEN IDEE HOE HET WERKT)//
-
-        /*public async Task UpdateDocument<T>(ObjectId Id, T item)
-       {
-           var startTime = DateTime.UtcNow;
-           try
-           {
-               var bsonWriter = new BsonDocumentWriter(new BsonDocument(), BsonDocumentWriterSettings.Defaults);
-               BsonSerializer.Serialize<GlobalModel_Root>(bsonWriter, GlobalModel.rootGM);
-               var doc = bsonWriter.Document;
-               var collection = _db.GetCollection<BsonDocument>(typeof(T).Name);
-               var filter = Builders<BsonDocument>.Filter.Eq("_id", Id);
-               var entity = collection.Find(filter).FirstOrDefault();
-               using (var timeoutCancellationTokenSource = new CancellationTokenSource(TimeSpan.FromSeconds(60)))
-               {
-                   await collection.ReplaceOneAsync(filter, doc, null, timeoutCancellationTokenSource.Token);
-               }
-           }
-           catch (OperationCanceledException ex)
-           {
-               var endTime = DateTime.UtcNow;
-               var elapsed = endTime - startTime;
-               Console.WriteLine("Operation was cancelled after {0} seconds.", elapsed.TotalSeconds);
-           }
-       }
-       */
     }
 }

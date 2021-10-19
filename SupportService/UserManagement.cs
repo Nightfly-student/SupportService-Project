@@ -7,6 +7,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using SupportDAO;
 using System.Windows.Forms;
 
 namespace SupportService
@@ -31,9 +32,9 @@ namespace SupportService
         {
             new FormAddUser().Show();
         }
-        private void LoadItems()
+        public void LoadItems()
         {
-            foreach (var item in MongoDatabaseLogic.Instance.UserCollection())
+            foreach (var item in UserLogic.Instance.UserCollection())
             {
                 lstUsers.Items.Add(item);
             }
@@ -51,7 +52,7 @@ namespace SupportService
         {
             try
             {
-                MongoDatabaseLogic.Instance.ConnectToDatabase("NoDesk");
+                UserLogic.Instance.ConnectToDatabase("NoDesk");
                 Cursor.Current = Cursors.Default;
             }
             catch (Exception exception)
@@ -90,7 +91,13 @@ namespace SupportService
 
         private void txtFilterUsers_TextChanged(object sender, EventArgs e)
         {
-            Search(txtFilterUsers, lstUsers);
+            SearchFunctionality searchFunctionality = new SearchFunctionality();
+
+            if (!searchFunctionality.Search(txtFilterUsers, lstUsers))
+            {
+                LoadItems();
+            }
+          //  Search(txtFilterUsers, lstUsers);
         }
         //Search based on text and list
         public void Search(TextBox text, ListView list)

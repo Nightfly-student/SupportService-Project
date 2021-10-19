@@ -10,6 +10,7 @@ using System.Windows.Forms;
 
 namespace SupportDAO
 {
+    //Jelle Toonen//
     public class UserLogic
     {
         private static UserLogic instance;
@@ -86,12 +87,14 @@ namespace SupportDAO
             List<ListViewItem> items = new List<ListViewItem>();
             foreach (var record in records)
             {
+                var count = _connectedClient.CountItemByName<Ticket>("Tickets", record.FirstName.ToString(), "MadeBy.FirstName");
                 counter++;
                 ListViewItem item = new ListViewItem(counter.ToString());
                 item.SubItems.Add(record.Email);
                 item.SubItems.Add(record.FirstName);
                 item.SubItems.Add(record.LastName);
-                item.SubItems.Add(record.WorkLocation);
+                item.SubItems.Add(count.ToString());
+                items.Add(item);
             }
             return items;
         }

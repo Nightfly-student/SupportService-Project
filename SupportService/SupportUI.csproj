@@ -99,6 +99,7 @@
     <Compile Include="FormDashboard.Designer.cs">
       <DependentUpon>FormDashboard.cs</DependentUpon>
     </Compile>
+    <Compile Include="SearchFunctionality.cs" />
     <Compile Include="UserManagement.cs">
       <SubType>Form</SubType>
     </Compile>
