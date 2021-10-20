@@ -60,7 +60,7 @@
             // 
             this.btnAddUser.BackColor = System.Drawing.Color.White;
             this.btnAddUser.Font = new System.Drawing.Font("Arial Black", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAddUser.Location = new System.Drawing.Point(15, 130);
+            this.btnAddUser.Location = new System.Drawing.Point(15, 214);
             this.btnAddUser.Name = "btnAddUser";
             this.btnAddUser.Size = new System.Drawing.Size(191, 67);
             this.btnAddUser.TabIndex = 2;
@@ -72,7 +72,7 @@
             // 
             this.btnAddTicket.BackColor = System.Drawing.Color.White;
             this.btnAddTicket.Font = new System.Drawing.Font("Arial Black", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAddTicket.Location = new System.Drawing.Point(15, 218);
+            this.btnAddTicket.Location = new System.Drawing.Point(15, 128);
             this.btnAddTicket.Name = "btnAddTicket";
             this.btnAddTicket.Size = new System.Drawing.Size(191, 67);
             this.btnAddTicket.TabIndex = 3;

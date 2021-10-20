@@ -19,6 +19,8 @@ namespace SupportService
             _formLogin = formLogin;
             btnAddTicket.Enabled = false;
             btnAddUser.Enabled = false;
+            if (_loggedInPerson.UserType == UserType.Employee)
+                btnAddUser.Hide();
             Connect();
         }
 
