@@ -27,20 +27,9 @@ namespace SupportDAO
         {
             var records = _connectedClient.LoadFromCollection<Ticket>("Tickets");
             List<Ticket> ticketList = new List<Ticket>();
-            foreach (var record in records)
+            foreach (var t in records)
             {
-                ticketList.Add(new Ticket
-                {
-                    Id = record.Id,
-                    TimeReported = record.TimeReported,
-                    Subject = record.Subject,
-                    IncidentType = record.IncidentType,
-                    MadeBy = record.MadeBy,
-                    AssignedTo = record.AssignedTo,
-                    Priority = record.Priority,
-                    TimeDueBy = record.TimeDueBy,
-                    IncidentDescription = record.IncidentDescription
-                });
+                ticketList.Add(t);
             }
 
             return ticketList;
