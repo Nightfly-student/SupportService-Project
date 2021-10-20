@@ -49,6 +49,10 @@ namespace SupportService
             RefreshListView();
             OptionsClicked();
             RefreshCounts();
+            if (_loggedInPerson.UserType == UserType.Employee)
+            {
+                btnEditTicket.Hide();
+            }
         }
 
         private void LblExit_Click(object sender, EventArgs e)
