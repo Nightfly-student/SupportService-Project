@@ -88,5 +88,9 @@ namespace SupportDAO
             }
             return items;
         }
+        public void deleteUser(string email)
+        {
+            _connectedClient.DeleteItemByName<Person>("Employees", email, "Email");
+        }
     }
 }

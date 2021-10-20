@@ -119,6 +119,13 @@ namespace SupportDAL
             var count = collection.Find(filter).CountDocuments();
             return int.Parse(count.ToString());
         }
+        public void DeleteItemByName<T>(string collectionName, string item, string name)
+        {
+            var collection = _db.GetCollection<T>(collectionName);
+            var filter = Builders<T>.Filter.Eq(name, item);
+
+            collection.DeleteOne(filter);
+        }
         public void DeleteItemById<T>(string collectionName, ObjectId id)
         {
             var collection = _db.GetCollection<T>(collectionName);

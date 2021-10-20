@@ -21,6 +21,7 @@ namespace SupportService
             InitializeComponent();
             _lvwColumnSorter = new ListViewColumnSorter();
             lstUsers.ListViewItemSorter = _lvwColumnSorter;
+            lstUsers.FullRowSelect = true;
         }
         private void UserManagement_Load(object sender, EventArgs e)
         {
@@ -31,6 +32,7 @@ namespace SupportService
         private void btnAddUser_Click(object sender, EventArgs e)
         {
             new FormAddUser().Show();
+            this.Close();
         }
         public void LoadItems()
         {
@@ -99,31 +101,39 @@ namespace SupportService
             }
           //  Search(txtFilterUsers, lstUsers);
         }
-        //Search based on text and list
-        public void Search(TextBox text, ListView list)
+        private void btnRefresh_Click(object sender, EventArgs e)
         {
-            if (text.Text != "")
+            lstUsers.Items.Clear();
+            LoadItems();
+        }
+        public void Reload()
+        {
+            lstUsers.Items.Clear();
+            LoadItems();
+        }
+
+        private void btnRemove_Click(object sender, EventArgs e)
+        {
+            if(lstUsers.SelectedItems.Count != 0)
             {
-                foreach (ListViewItem item in list.Items)
-                {
-                    if (item.SubItems[1].Text.ToLower().Contains(text.Text.ToLower()))
-                    {
-                        item.Selected = true;
-                    }
-                    else
-                    {
-                        list.Items.Remove(item);
-                    }
-                    if (list.SelectedItems.Count == 1)
-                    {
-                        list.Focus();
-                    }
-                }
-            }
-            else
-            {
-                list.Items.Clear();
+                UserLogic.Instance.deleteUser(lstUsers.SelectedItems[0].SubItems[1].Text);
+                MessageBox.Show("Deleted " + lstUsers.SelectedItems[0].SubItems[1].Text);
+                lstUsers.Items.Clear();
                 LoadItems();
+            } else
+            {
+                MessageBox.Show("Select an user first");
+            }
+        }
+
+        private void btnUpdateUser_Click(object sender, EventArgs e)
+        {
+            if (lstUsers.SelectedItems.Count != 0)
+            {
+
+            } else
+            {
+                MessageBox.Show("Select an user first");
             }
         }
     }

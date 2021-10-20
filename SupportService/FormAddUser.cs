@@ -22,18 +22,47 @@ namespace SupportService
 
         private void btnAddUser_Click(object sender, EventArgs e)
         {
-            if (cbUserType.SelectedIndex <= -1) return;
-            if (!MongoDatabaseLogic.Instance.Exists(txtUsername.Text))
+
+            if (tbFirstName.Text != "" || tbLastName.Text != "" || tbEmail.Text != "" || tbWorkLocation.Text != "" || tbPhoneNumber.Text != "")
             {
-                MongoDatabaseLogic.Instance.InsertItem("Employees",
-                new Person(tbFirstName.Text, tbLastName.Text, tbEmail.Text, dtpDateOfBirth.Value, int.Parse(tbPhoneNumber.Text), tbWorkLocation.Text, MongoDatabaseLogic.Instance.GetEnumValue<UserType>(cbUserType.Text), txtUsername.Text, txtPassword.Text));
-            } else
+                if (cbUserType.SelectedIndex <= -1)
+                {
+                    MessageBox.Show("Select User Type");
+                    return;
+                }
+                if (!MongoDatabaseLogic.Instance.Exists(txtUsername.Text) && txtUsername.Text.Length > 3)
+                {
+                    if (tbPhoneNumber.Text.Length <= 12)
+                    {
+                        if (tbEmail.Text.Contains("@"))
+                        {
+                            MongoDatabaseLogic.Instance.InsertItem("Employees",
+                            new Person(tbFirstName.Text, tbLastName.Text, tbEmail.Text, dtpDateOfBirth.Value, int.Parse(tbPhoneNumber.Text), tbWorkLocation.Text, MongoDatabaseLogic.Instance.GetEnumValue<UserType>(cbUserType.Text), txtUsername.Text, txtPassword.Text));
+                            new UserManagement().Show();
+                            this.Close();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Email is not valid");
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Phonenumber is too long");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Username already exists");
+                }
+            }
+            else
             {
-                MessageBox.Show("Username already exists");
+                MessageBox.Show("Please fill in all Textfields");
             }
         }
 
-        
+
 
         private void FormAddUser_Shown(object sender, EventArgs e)
         {
@@ -54,6 +83,7 @@ namespace SupportService
             {
                 cbUserType.Items.Add(MongoDatabaseLogic.Instance.GetEnumName(value));
             }
+            cbUserType.SelectedIndex = 1;
         }
 
         private void lvEmployees_ColumnClick(object sender, ColumnClickEventArgs e)
@@ -82,6 +112,12 @@ namespace SupportService
         private void FormAddUser_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            new UserManagement().Show();
+            this.Close();
         }
     }
 }

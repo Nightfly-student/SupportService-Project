@@ -380,10 +380,10 @@ namespace SupportService
 
         private string GetAssignedTo(ObjectId id)
         {
-            Person person;
+          Person person;
             try
             {
-                person = _ticketLogic.GetPerson(id);
+               person = _ticketLogic.GetPerson(id);
             }
             catch
             {
@@ -392,7 +392,7 @@ namespace SupportService
 
             if (person == null)
                 return "-";
-            return person.ToString();
+            return person.ToString(); 
         }
 
         private void ResetLabels(Label label)
