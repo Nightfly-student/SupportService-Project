@@ -14,6 +14,7 @@ namespace SupportDAO
         private MongoDatabase _connectedClient;
 
         public TicketLogic()
+
         {
             ConnectClient();
         }

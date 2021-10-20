@@ -48,5 +48,10 @@ namespace SupportModel
         {
             return FirstName + " " + LastName;
         }
+
+        public ObjectId GetID ()
+        {
+            return Id;
+        }
     }
 }
