@@ -46,61 +46,67 @@
             // 
             // btnDashboard
             // 
+            this.btnDashboard.BackColor = System.Drawing.Color.White;
             this.btnDashboard.Font = new System.Drawing.Font("Arial Black", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDashboard.Location = new System.Drawing.Point(15, 43);
             this.btnDashboard.Name = "btnDashboard";
             this.btnDashboard.Size = new System.Drawing.Size(191, 67);
-            this.btnDashboard.TabIndex = 11;
+            this.btnDashboard.TabIndex = 1;
             this.btnDashboard.Text = "DASHBOARD";
-            this.btnDashboard.UseVisualStyleBackColor = true;
+            this.btnDashboard.UseVisualStyleBackColor = false;
             this.btnDashboard.Click += new System.EventHandler(this.BtnDashboard_Click);
             // 
             // btnAddUser
             // 
+            this.btnAddUser.BackColor = System.Drawing.Color.White;
             this.btnAddUser.Font = new System.Drawing.Font("Arial Black", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAddUser.Location = new System.Drawing.Point(15, 130);
             this.btnAddUser.Name = "btnAddUser";
             this.btnAddUser.Size = new System.Drawing.Size(191, 67);
-            this.btnAddUser.TabIndex = 11;
+            this.btnAddUser.TabIndex = 2;
             this.btnAddUser.Text = "USERS/ADD USER";
-            this.btnAddUser.UseVisualStyleBackColor = true;
+            this.btnAddUser.UseVisualStyleBackColor = false;
             this.btnAddUser.Click += new System.EventHandler(this.btnAddUser_Click);
             // 
             // btnAddTicket
             // 
+            this.btnAddTicket.BackColor = System.Drawing.Color.White;
             this.btnAddTicket.Font = new System.Drawing.Font("Arial Black", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAddTicket.Location = new System.Drawing.Point(15, 218);
             this.btnAddTicket.Name = "btnAddTicket";
             this.btnAddTicket.Size = new System.Drawing.Size(191, 67);
-            this.btnAddTicket.TabIndex = 11;
+            this.btnAddTicket.TabIndex = 3;
             this.btnAddTicket.Text = "ADD TICKET";
-            this.btnAddTicket.UseVisualStyleBackColor = true;
+            this.btnAddTicket.UseVisualStyleBackColor = false;
             this.btnAddTicket.Click += new System.EventHandler(this.btnAddTicket_Click);
             // 
             // btnLogout
             // 
+            this.btnLogout.BackColor = System.Drawing.Color.White;
             this.btnLogout.Font = new System.Drawing.Font("Arial Black", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLogout.Location = new System.Drawing.Point(15, 302);
             this.btnLogout.Name = "btnLogout";
             this.btnLogout.Size = new System.Drawing.Size(191, 67);
-            this.btnLogout.TabIndex = 11;
+            this.btnLogout.TabIndex = 4;
             this.btnLogout.Text = "LOGOUT";
-            this.btnLogout.UseVisualStyleBackColor = true;
+            this.btnLogout.UseVisualStyleBackColor = false;
             this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
             // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(233, 388);
+            this.BackColor = System.Drawing.Color.White;
+            this.ClientSize = new System.Drawing.Size(223, 388);
             this.Controls.Add(this.btnLogout);
             this.Controls.Add(this.btnAddTicket);
             this.Controls.Add(this.btnAddUser);
             this.Controls.Add(this.btnDashboard);
             this.Controls.Add(this.lblConnectionStatus);
+            this.MaximizeBox = false;
             this.Name = "FormMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Form1";
+            this.Text = "Help Desk";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FormMain_FormClosed);
             this.ResumeLayout(false);
             this.PerformLayout();

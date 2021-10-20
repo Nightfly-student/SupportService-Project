@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MongoDB.Bson;
 using SupportDAL;
 using SupportModel;
 
@@ -42,6 +43,10 @@ namespace SupportDAO
             }
 
             return ticketList;
+        }
+        public Person GetPerson(ObjectId id)
+        {
+            return _connectedClient.LoadItemById<Person>("Employees", id);
         }
     }
 }

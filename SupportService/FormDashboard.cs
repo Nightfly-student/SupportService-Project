@@ -380,7 +380,16 @@ namespace SupportService
 
         private string GetAssignedTo(ObjectId id)
         {
-            Person person = _personList.Find(person => person.Id == id);
+            Person person;
+            try
+            {
+                person = _ticketLogic.GetPerson(id);
+            }
+            catch
+            {
+                person = null;
+            }
+
             if (person == null)
                 return "-";
             return person.ToString();
@@ -537,6 +546,11 @@ namespace SupportService
         }
 
         private void LvRecentTickets_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e)
+        {
+            TicketSelection();
+        }
+
+        private void TicketSelection()
         {
             if (lvRecentTickets.SelectedItems != null)
                 btnEditTicket.Enabled = true;

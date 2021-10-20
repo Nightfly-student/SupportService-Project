@@ -58,24 +58,14 @@ namespace SupportDAO
             }
             return null;
         }
+        // Tim Roffelsen
         public List<Person> GetUsers()
         {
             var records = _connectedClient.LoadFromCollection<Person>("Employees");
             List<Person> peopleList = new List<Person>();
-            foreach (var record in records)
+            foreach (var p in records)
             {
-                peopleList.Add(new Person
-                {
-                    Id = record.Id,
-                    FirstName = record.FirstName,
-                    LastName = record.LastName,
-                    UserType = record.UserType,
-                    Email = record.Email,
-                    DateOfBirth = record.DateOfBirth,
-                    PhoneNumber = record.PhoneNumber,
-                    WorkLocation = record.WorkLocation,
-                    Username = record.Username
-                });
+                peopleList.Add(p);
             }
 
             return peopleList;
