@@ -52,24 +52,28 @@ namespace SupportService
 
          
 
-            _listoftickets.Add(_selectedTicket);
+             _listoftickets.Add(_selectedTicket);
+
+
             
 
-            foreach (var ticket in _listoftickets)
-            {
+            string assignedPersonString = _ticketLogic.isAssignedToValid(_selectedTicket.AssignedTo) ? _ticketLogic.GetPerson(_selectedTicket.AssignedTo).ToString() : "";
+
+            
+
+
 
                 ListViewItem li = new ListViewItem();
                 li.Tag = _selectedTicket;
-               
-                li.SubItems.Add(_selectedTicket.Subject);
+                li.Text = _selectedTicket.Subject;
                 li.SubItems.Add(_selectedTicket.Status.ToString());
-                li.SubItems.Add(_selectedTicket.AssignedTo.ToString());
+                li.SubItems.Add(assignedPersonString);
                 li.SubItems.Add(_selectedTicket.Priority.ToString());
-                
+
 
                 lstEditTicket.Items.Add(li);
 
-            }
+            
 
             List<Person> people = MongoDatabaseLogic.Instance.GetUsers();
 
@@ -104,16 +108,38 @@ namespace SupportService
         private void btnAssignedTo_Click(object sender, EventArgs e)
         {
             Person selectedperson = (Person)cbAssignedToEdit.SelectedItem;
-           // Console.WriteLine(selectedperson.Id.ToString());
+           
+
+            Ticket oldticket = _selectedTicket;
+            Ticket newticket = oldticket;
+            newticket.AssignedTo = selectedperson.Id;
+
+            _ticketLogic.updateTicket(oldticket, newticket);
         }
 
         private void btnStatus_Click(object sender, EventArgs e)
         {
+            Status selectedStatus = (Status)System.Enum.Parse(typeof(Status), cbStatusEdit.SelectedItem.ToString());
+
+            Ticket oldticket = _selectedTicket;
+            Ticket newticket = oldticket;
+            newticket.Status = selectedStatus;
+
+            _ticketLogic.updateTicket(oldticket, newticket);
 
         }
 
         private void btnPriority_Click(object sender, EventArgs e)
         {
+            Priority selectedPriority = (Priority)System.Enum.Parse(typeof(Priority), cbPriorityEdit.SelectedItem.ToString());
+
+            
+
+            Ticket oldticket = _selectedTicket;
+            Ticket newticket = oldticket;
+            newticket.Priority = selectedPriority;
+
+            _ticketLogic.updateTicket(oldticket, newticket);
 
         }
     }

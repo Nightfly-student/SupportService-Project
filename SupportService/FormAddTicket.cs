@@ -46,6 +46,15 @@ namespace SupportService
                 cbReportedBy.Items.Add(item);
             }
 
+            foreach (Person item in MongoDatabaseLogic.Instance.GetUsers())
+            {
+                if (_loggedInPerson.UserType == UserType.ServiceDesk && _loggedInPerson.Id != item.Id)
+                {
+                    cbAssignedTo.Items.Add(item);
+                }
+            }
+
+
             if (cbReportedBy.Items.Count == 1)
                 cbReportedBy.SelectedIndex = 0;
         }
@@ -94,12 +103,27 @@ namespace SupportService
                     break;
             }
             DateTime time = DateTime.Now;
+
             Person person = (Person) cbReportedBy.SelectedItem;
+            Person assignedTo = (Person)cbAssignedTo.SelectedItem;
+
+           
+             
             try
             {
-                MongoDatabaseLogic.Instance.InsertItem("Tickets",
-                    new Ticket(time, tbSubject.Text, MongoDatabaseLogic.Instance.GetEnumValue<TypeOfIncident>(cbIncidentType.Text), 
-                        person.Id, MongoDatabaseLogic.Instance.GetEnumValue<Priority>(cbPriority.Text), time.AddDays(days), tbDescription.Text));
+                Ticket ticket;
+                if (_loggedInPerson.UserType == UserType.ServiceDesk)
+                {
+                    ticket = new Ticket(time, tbSubject.Text, MongoDatabaseLogic.Instance.GetEnumValue<TypeOfIncident>(cbIncidentType.Text),
+                        person.Id, assignedTo.Id, MongoDatabaseLogic.Instance.GetEnumValue<Priority>(cbPriority.Text), time.AddDays(days), tbDescription.Text);
+                }
+                else 
+                {
+                    ticket = new Ticket(time, tbSubject.Text, MongoDatabaseLogic.Instance.GetEnumValue<TypeOfIncident>(cbIncidentType.Text),
+                       person.Id, MongoDatabaseLogic.Instance.GetEnumValue<Priority>(cbPriority.Text), time.AddDays(days), tbDescription.Text);
+                }
+
+                MongoDatabaseLogic.Instance.InsertItem("Tickets", ticket); 
                 MessageBox.Show($"Ticket added!");
             }
             catch (Exception exception)

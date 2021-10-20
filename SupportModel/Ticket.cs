@@ -21,7 +21,20 @@ namespace SupportModel
         public DateTime TimeDueBy { get; set; }
         public string IncidentDescription { get; set; }
 
-        public Ticket(DateTime timeReported, string subject, TypeOfIncident incidentType, ObjectId person,  Priority priority, DateTime timeDueBy, string incidentDescription)
+        public Ticket(DateTime timeReported, string subject, TypeOfIncident incidentType, ObjectId person, ObjectId assignedTo, Priority priority, DateTime timeDueBy, string incidentDescription)
+        {
+            TimeReported = timeReported;
+            Subject = subject;
+            IncidentType = incidentType;
+            MadeBy = person;
+            AssignedTo = assignedTo;
+            Priority = priority;
+            TimeDueBy = timeDueBy;
+            IncidentDescription = incidentDescription;
+            Status = Status.Unassigned;
+        }
+
+        public Ticket(DateTime timeReported, string subject, TypeOfIncident incidentType, ObjectId person, Priority priority, DateTime timeDueBy, string incidentDescription)
         {
             TimeReported = timeReported;
             Subject = subject;
@@ -33,7 +46,11 @@ namespace SupportModel
             Status = Status.Unassigned;
         }
 
+
+
         public Ticket(){}
+
+        
 
     }
 }

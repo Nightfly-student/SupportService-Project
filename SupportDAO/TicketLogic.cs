@@ -38,5 +38,16 @@ namespace SupportDAO
         {
             return _connectedClient.LoadItemById<Person>("Employees", id);
         }
+
+        public void updateTicket(Ticket oldT, Ticket newT)
+        {
+            _connectedClient.UpdateItemByObjectID("Tickets", oldT.Id, "_id", newT);
+        }
+
+        public bool isAssignedToValid(ObjectId id)
+        {
+            // returns if a Id is not assigned yet which means it is the default value of MongoDB
+            return id.ToString() != "000000000000000000000000";
+        }
     }
 }

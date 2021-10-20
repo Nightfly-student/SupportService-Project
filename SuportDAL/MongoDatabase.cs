@@ -133,6 +133,16 @@ namespace SupportDAL
 
             collection.FindOneAndReplace(filter, replace);
         }
+
+        public void UpdateItemByObjectID<T>(string collectionName, ObjectId item, string name, T replace)
+        {
+            var collection = _db.GetCollection<T>(collectionName);
+            var filter = Builders<T>.Filter.Eq(name, item);
+
+            collection.FindOneAndReplace(filter, replace);
+        }
+
+
         public void DeleteItemByName<T>(string collectionName, string item, string name)
         {
             var collection = _db.GetCollection<T>(collectionName);
