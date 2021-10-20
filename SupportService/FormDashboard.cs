@@ -541,6 +541,8 @@ namespace SupportService
         {
             Ticket ticket = (Ticket)lvRecentTickets.SelectedItems[0].Tag;
             new FormEditTicket(ticket).ShowDialog(); // add selected ticket from listview
+
+            btnEditTicket.Enabled = false;
             RefreshLists();
             RefreshListView();
         }
@@ -552,10 +554,7 @@ namespace SupportService
 
         private void TicketSelection()
         {
-            if (lvRecentTickets.SelectedItems != null)
-                btnEditTicket.Enabled = true;
-            else
-                btnEditTicket.Enabled = false;
+            btnEditTicket.Enabled = true;
         }
     }
 }
