@@ -18,6 +18,11 @@ namespace SupportService
             InitializeComponent();
             _ticketLogic = new TicketLogic();
             _loggedInPerson = person;
+            if (_loggedInPerson.UserType == UserType.Employee)
+            {
+                cbAssignedTo.Hide();
+                lblAssignedTo.Hide();
+            }
         }
 
         private void FormAddTicket_Load(object sender, EventArgs e)
@@ -87,9 +92,6 @@ namespace SupportService
                 case "6 months":
                     days = 182;
                     break;
-
-                default:
-                    break;
             }
             DateTime time = DateTime.Now;
             Person person = (Person) cbReportedBy.SelectedItem;
@@ -97,7 +99,7 @@ namespace SupportService
             {
                 MongoDatabaseLogic.Instance.InsertItem("Tickets",
                     new Ticket(time, tbSubject.Text, MongoDatabaseLogic.Instance.GetEnumValue<TypeOfIncident>(cbIncidentType.Text), 
-                        person.Id, MongoDatabaseLogic.Instance.GetEnumValue<Priority>(cbPriority.Text.ToString()), time.AddDays(days), tbDescription.Text));
+                        person.Id, MongoDatabaseLogic.Instance.GetEnumValue<Priority>(cbPriority.Text), time.AddDays(days), tbDescription.Text));
                 MessageBox.Show($"Ticket added!");
             }
             catch (Exception exception)

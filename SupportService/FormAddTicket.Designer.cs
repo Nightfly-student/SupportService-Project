@@ -46,7 +46,7 @@ namespace SupportService
             this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
             this.pnlControls = new System.Windows.Forms.Panel();
             this.cbAssignedTo = new System.Windows.Forms.ComboBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.lblAssignedTo = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             this.pnlControls.SuspendLayout();
             this.SuspendLayout();
@@ -54,18 +54,16 @@ namespace SupportService
             // tbSubject
             // 
             this.tbSubject.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbSubject.Location = new System.Drawing.Point(6, 13);
-            this.tbSubject.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.tbSubject.Location = new System.Drawing.Point(3, 5);
             this.tbSubject.Name = "tbSubject";
-            this.tbSubject.Size = new System.Drawing.Size(388, 29);
+            this.tbSubject.Size = new System.Drawing.Size(196, 29);
             this.tbSubject.TabIndex = 1;
             // 
             // lblSubject
             // 
             this.lblSubject.AutoSize = true;
             this.lblSubject.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSubject.Location = new System.Drawing.Point(40, 112);
-            this.lblSubject.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.lblSubject.Location = new System.Drawing.Point(18, 56);
             this.lblSubject.Name = "lblSubject";
             this.lblSubject.Size = new System.Drawing.Size(166, 22);
             this.lblSubject.TabIndex = 0;
@@ -75,18 +73,16 @@ namespace SupportService
             // 
             this.cbIncidentType.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbIncidentType.FormattingEnabled = true;
-            this.cbIncidentType.Location = new System.Drawing.Point(6, 72);
-            this.cbIncidentType.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.cbIncidentType.Location = new System.Drawing.Point(3, 39);
             this.cbIncidentType.Name = "cbIncidentType";
-            this.cbIncidentType.Size = new System.Drawing.Size(388, 30);
+            this.cbIncidentType.Size = new System.Drawing.Size(196, 30);
             this.cbIncidentType.TabIndex = 2;
             // 
             // lblIncidentType
             // 
             this.lblIncidentType.AutoSize = true;
             this.lblIncidentType.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblIncidentType.Location = new System.Drawing.Point(32, 172);
-            this.lblIncidentType.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.lblIncidentType.Location = new System.Drawing.Point(18, 90);
             this.lblIncidentType.Name = "lblIncidentType";
             this.lblIncidentType.Size = new System.Drawing.Size(144, 22);
             this.lblIncidentType.TabIndex = 0;
@@ -96,8 +92,7 @@ namespace SupportService
             // 
             this.lblReportedBy.AutoSize = true;
             this.lblReportedBy.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblReportedBy.Location = new System.Drawing.Point(32, 239);
-            this.lblReportedBy.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.lblReportedBy.Location = new System.Drawing.Point(18, 126);
             this.lblReportedBy.Name = "lblReportedBy";
             this.lblReportedBy.Size = new System.Drawing.Size(157, 22);
             this.lblReportedBy.TabIndex = 0;
@@ -107,18 +102,16 @@ namespace SupportService
             // 
             this.cbReportedBy.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbReportedBy.FormattingEnabled = true;
-            this.cbReportedBy.Location = new System.Drawing.Point(6, 139);
-            this.cbReportedBy.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.cbReportedBy.Location = new System.Drawing.Point(3, 75);
             this.cbReportedBy.Name = "cbReportedBy";
-            this.cbReportedBy.Size = new System.Drawing.Size(388, 30);
+            this.cbReportedBy.Size = new System.Drawing.Size(196, 30);
             this.cbReportedBy.TabIndex = 3;
             // 
             // lblPriority
             // 
             this.lblPriority.AutoSize = true;
             this.lblPriority.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPriority.Location = new System.Drawing.Point(32, 390);
-            this.lblPriority.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.lblPriority.Location = new System.Drawing.Point(18, 202);
             this.lblPriority.Name = "lblPriority";
             this.lblPriority.Size = new System.Drawing.Size(68, 22);
             this.lblPriority.TabIndex = 0;
@@ -128,18 +121,16 @@ namespace SupportService
             // 
             this.cbPriority.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbPriority.FormattingEnabled = true;
-            this.cbPriority.Location = new System.Drawing.Point(6, 290);
-            this.cbPriority.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.cbPriority.Location = new System.Drawing.Point(3, 151);
             this.cbPriority.Name = "cbPriority";
-            this.cbPriority.Size = new System.Drawing.Size(388, 30);
+            this.cbPriority.Size = new System.Drawing.Size(196, 30);
             this.cbPriority.TabIndex = 4;
             // 
             // lblDeadline
             // 
             this.lblDeadline.AutoSize = true;
             this.lblDeadline.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDeadline.Location = new System.Drawing.Point(32, 464);
-            this.lblDeadline.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.lblDeadline.Location = new System.Drawing.Point(18, 240);
             this.lblDeadline.Name = "lblDeadline";
             this.lblDeadline.Size = new System.Drawing.Size(165, 22);
             this.lblDeadline.TabIndex = 0;
@@ -154,18 +145,16 @@ namespace SupportService
             "14 days",
             "28 days",
             "6 months"});
-            this.cbDeadline.Location = new System.Drawing.Point(6, 364);
-            this.cbDeadline.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.cbDeadline.Location = new System.Drawing.Point(3, 189);
             this.cbDeadline.Name = "cbDeadline";
-            this.cbDeadline.Size = new System.Drawing.Size(388, 30);
+            this.cbDeadline.Size = new System.Drawing.Size(196, 30);
             this.cbDeadline.TabIndex = 5;
             // 
             // btn_AddTicket
             // 
-            this.btn_AddTicket.Location = new System.Drawing.Point(44, 871);
-            this.btn_AddTicket.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.btn_AddTicket.Location = new System.Drawing.Point(22, 453);
             this.btn_AddTicket.Name = "btn_AddTicket";
-            this.btn_AddTicket.Size = new System.Drawing.Size(232, 150);
+            this.btn_AddTicket.Size = new System.Drawing.Size(116, 78);
             this.btn_AddTicket.TabIndex = 7;
             this.btn_AddTicket.Text = "Add Ticket";
             this.btn_AddTicket.UseVisualStyleBackColor = true;
@@ -175,8 +164,7 @@ namespace SupportService
             // 
             this.lblDescription.AutoSize = true;
             this.lblDescription.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDescription.Location = new System.Drawing.Point(32, 532);
-            this.lblDescription.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.lblDescription.Location = new System.Drawing.Point(18, 278);
             this.lblDescription.Name = "lblDescription";
             this.lblDescription.Size = new System.Drawing.Size(106, 22);
             this.lblDescription.TabIndex = 8;
@@ -185,11 +173,10 @@ namespace SupportService
             // tbDescription
             // 
             this.tbDescription.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbDescription.Location = new System.Drawing.Point(6, 437);
-            this.tbDescription.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.tbDescription.Location = new System.Drawing.Point(3, 227);
             this.tbDescription.Multiline = true;
             this.tbDescription.Name = "tbDescription";
-            this.tbDescription.Size = new System.Drawing.Size(774, 292);
+            this.tbDescription.Size = new System.Drawing.Size(389, 154);
             this.tbDescription.TabIndex = 6;
             // 
             // errorProvider
@@ -199,47 +186,44 @@ namespace SupportService
             // 
             // pnlControls
             // 
-            this.pnlControls.Controls.Add(this.cbAssignedTo);
             this.pnlControls.Controls.Add(this.tbSubject);
             this.pnlControls.Controls.Add(this.cbIncidentType);
             this.pnlControls.Controls.Add(this.tbDescription);
             this.pnlControls.Controls.Add(this.cbReportedBy);
             this.pnlControls.Controls.Add(this.cbPriority);
             this.pnlControls.Controls.Add(this.cbDeadline);
-            this.pnlControls.Location = new System.Drawing.Point(406, 92);
-            this.pnlControls.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.pnlControls.Location = new System.Drawing.Point(203, 48);
             this.pnlControls.Name = "pnlControls";
-            this.pnlControls.Size = new System.Drawing.Size(844, 748);
+            this.pnlControls.Size = new System.Drawing.Size(422, 389);
             this.pnlControls.TabIndex = 11;
             // 
             // cbAssignedTo
             // 
             this.cbAssignedTo.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbAssignedTo.FormattingEnabled = true;
-            this.cbAssignedTo.Location = new System.Drawing.Point(6, 213);
-            this.cbAssignedTo.Margin = new System.Windows.Forms.Padding(6);
+            this.cbAssignedTo.Location = new System.Drawing.Point(206, 160);
             this.cbAssignedTo.Name = "cbAssignedTo";
-            this.cbAssignedTo.Size = new System.Drawing.Size(388, 30);
+            this.cbAssignedTo.Size = new System.Drawing.Size(196, 30);
             this.cbAssignedTo.TabIndex = 7;
             // 
-            // label1
+            // lblAssignedTo
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(32, 313);
-            this.label1.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(111, 22);
-            this.label1.TabIndex = 12;
-            this.label1.Text = "Assigned to";
+            this.lblAssignedTo.AutoSize = true;
+            this.lblAssignedTo.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAssignedTo.Location = new System.Drawing.Point(18, 163);
+            this.lblAssignedTo.Name = "lblAssignedTo";
+            this.lblAssignedTo.Size = new System.Drawing.Size(111, 22);
+            this.lblAssignedTo.TabIndex = 12;
+            this.lblAssignedTo.Text = "Assigned to";
             // 
             // FormAddTicket
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1288, 1079);
-            this.Controls.Add(this.label1);
+            this.ClientSize = new System.Drawing.Size(644, 552);
+            this.Controls.Add(this.cbAssignedTo);
+            this.Controls.Add(this.lblAssignedTo);
             this.Controls.Add(this.pnlControls);
             this.Controls.Add(this.lblDescription);
             this.Controls.Add(this.btn_AddTicket);
@@ -248,7 +232,6 @@ namespace SupportService
             this.Controls.Add(this.lblReportedBy);
             this.Controls.Add(this.lblIncidentType);
             this.Controls.Add(this.lblSubject);
-            this.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.Name = "FormAddTicket";
             this.Load += new System.EventHandler(this.FormAddTicket_Load);
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
@@ -275,7 +258,7 @@ namespace SupportService
         private System.Windows.Forms.TextBox tbDescription;
         private System.Windows.Forms.ErrorProvider errorProvider;
         private System.Windows.Forms.Panel pnlControls;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblAssignedTo;
         private System.Windows.Forms.ComboBox cbAssignedTo;
     }
 }
