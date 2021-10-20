@@ -49,6 +49,10 @@ namespace SupportService
             RefreshListView();
             OptionsClicked();
             RefreshCounts();
+            if (_loggedInPerson.UserType == UserType.Employee)
+            {
+                btnEditTicket.Hide();
+            }
         }
 
         private void LblExit_Click(object sender, EventArgs e)
@@ -331,10 +335,13 @@ namespace SupportService
                 lblNormalAmount.Text = _ticketList.Count(i => i.Priority == Priority.Normal).ToString();
                 lblHighAmount.Text = _ticketList.Count(i => i.Priority == Priority.High).ToString();
             }
-            lblOpenAmount.Text = _ticketList.Count.ToString();
-            lblLowAmount.Text = _ticketList.Count(i => i.Priority == Priority.Low && i.MadeBy == _loggedInPerson.Id).ToString();
-            lblNormalAmount.Text = _ticketList.Count(i => i.Priority == Priority.Normal && i.MadeBy == _loggedInPerson.Id).ToString();
-            lblHighAmount.Text = _ticketList.Count(i => i.Priority == Priority.High && i.MadeBy == _loggedInPerson.Id).ToString();
+            else
+            {
+                lblOpenAmount.Text = _ticketList.Count.ToString();
+                lblLowAmount.Text = _ticketList.Count(i => i.Priority == Priority.Low && i.MadeBy == _loggedInPerson.Id).ToString();
+                lblNormalAmount.Text = _ticketList.Count(i => i.Priority == Priority.Normal && i.MadeBy == _loggedInPerson.Id).ToString();
+                lblHighAmount.Text = _ticketList.Count(i => i.Priority == Priority.High && i.MadeBy == _loggedInPerson.Id).ToString();
+            }
         }
 
         public void CheckConnection()

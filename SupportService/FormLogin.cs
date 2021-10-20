@@ -31,6 +31,7 @@ namespace SupportService
             {
                 new FormMain(person, this).Show();
                 tbPassword.Clear();
+                lblError.Enabled = false;
                 Hide();
             }
             else
