@@ -137,18 +137,7 @@ namespace SupportLogic
             List<Person> peopleList = new List<Person>();
             foreach (var record in records)
             {
-                peopleList.Add(new Person
-                {
-                    Id = record.Id,
-                    FirstName = record.FirstName,
-                    LastName = record.LastName,
-                    UserType = record.UserType,
-                    Email = record.Email,
-                    DateOfBirth = record.DateOfBirth,
-                    PhoneNumber = record.PhoneNumber,
-                    WorkLocation = record.WorkLocation,
-                    Username = record.Username
-                });
+                peopleList.Add(record);
             }
 
             return peopleList;
