@@ -24,7 +24,17 @@ namespace SupportModel
             Username = username;
             Password = password;
         }
-        public Person(string firstName, string lastName, string email, DateTime dateOfBirth, int phoneNumber, string workLocation, UserType userType, string username, string password)
+        public Person(string firstName, string lastName, string email, DateTime dateOfBirth, int phoneNumber, string workLocation, UserType userType)
+        {
+            FirstName = firstName;
+            LastName = lastName;
+            Email = email;
+            DateOfBirth = dateOfBirth;
+            PhoneNumber = phoneNumber;
+            WorkLocation = workLocation;
+            UserType = userType;
+        }
+        public Person(string firstName, string lastName, string email, DateTime dateOfBirth, int phoneNumber, string workLocation, UserType userType, string username, string password) : this()
         {
             FirstName = firstName;
             LastName = lastName;

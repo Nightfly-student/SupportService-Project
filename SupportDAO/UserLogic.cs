@@ -70,6 +70,7 @@ namespace SupportDAO
 
             return peopleList;
         }
+        //
         public List<ListViewItem> UserCollection()
         {
             int counter = 0;
@@ -91,6 +92,16 @@ namespace SupportDAO
         public void deleteUser(string email)
         {
             _connectedClient.DeleteItemByName<Person>("Employees", email, "Email");
+        }
+        public Person findUser(string email)
+        {
+            var user = _connectedClient.FindItemByName<Person>("Employees",email,"Email");
+
+            return (user);
+        }
+        public void updateUser(Person oldP, Person newP)
+        {
+            _connectedClient.UpdateItemByName("Employees", oldP.Email, "Email", newP);
         }
     }
 }

@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using SupportDAO;
 using System.Windows.Forms;
+using SupportModel;
 
 namespace SupportService
 {
@@ -106,11 +107,6 @@ namespace SupportService
             lstUsers.Items.Clear();
             LoadItems();
         }
-        public void Reload()
-        {
-            lstUsers.Items.Clear();
-            LoadItems();
-        }
 
         private void btnRemove_Click(object sender, EventArgs e)
         {
@@ -130,7 +126,9 @@ namespace SupportService
         {
             if (lstUsers.SelectedItems.Count != 0)
             {
-
+              Person p =  UserLogic.Instance.findUser(lstUsers.SelectedItems[0].SubItems[1].Text);
+              new FormUpdateUser(p).Show();
+              this.Close();
             } else
             {
                 MessageBox.Show("Select an user first");
