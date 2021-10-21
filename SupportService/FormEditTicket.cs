@@ -17,18 +17,14 @@ namespace SupportService
     public partial class FormEditTicket : Form
     {
         Ticket _selectedTicket;
-        private List<Ticket> _listoftickets;
-        private TicketLogic _ticketlogics;
         private readonly TicketLogic _ticketLogic;
         private TransferTicket _transferticket;
-        
+
 
         public FormEditTicket(Ticket ticket)
         {
             InitializeComponent();
             _selectedTicket = ticket;
-            _ticketlogics = new TicketLogic();
-            _listoftickets = new List<Ticket>();
             _ticketLogic = new TicketLogic();
             _transferticket = new TransferTicket();
             btnStatus.Hide();

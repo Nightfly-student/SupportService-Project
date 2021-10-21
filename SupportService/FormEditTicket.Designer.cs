@@ -53,6 +53,7 @@ namespace SupportService
             this.Status,
             this.AssignedTo,
             this.Priority});
+            this.lstEditTicket.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lstEditTicket.HideSelection = false;
             this.lstEditTicket.Location = new System.Drawing.Point(6, 13);
             this.lstEditTicket.Margin = new System.Windows.Forms.Padding(2);
@@ -65,7 +66,7 @@ namespace SupportService
             // Subject
             // 
             this.Subject.Text = "Subject";
-            this.Subject.Width = 140;
+            this.Subject.Width = 200;
             // 
             // Status
             // 
@@ -150,45 +151,49 @@ namespace SupportService
             // 
             // btnStatus
             // 
+            this.btnStatus.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.btnStatus.Location = new System.Drawing.Point(147, 171);
             this.btnStatus.Margin = new System.Windows.Forms.Padding(2);
             this.btnStatus.Name = "btnStatus";
             this.btnStatus.Size = new System.Drawing.Size(117, 79);
             this.btnStatus.TabIndex = 9;
             this.btnStatus.Text = "Status aanpassen";
-            this.btnStatus.UseVisualStyleBackColor = true;
+            this.btnStatus.UseVisualStyleBackColor = false;
             this.btnStatus.Click += new System.EventHandler(this.btnStatus_Click);
             // 
             // btnAssignedTo
             // 
+            this.btnAssignedTo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.btnAssignedTo.Location = new System.Drawing.Point(291, 171);
             this.btnAssignedTo.Margin = new System.Windows.Forms.Padding(2);
             this.btnAssignedTo.Name = "btnAssignedTo";
             this.btnAssignedTo.Size = new System.Drawing.Size(117, 79);
             this.btnAssignedTo.TabIndex = 10;
             this.btnAssignedTo.Text = "Assigned to aanpassen";
-            this.btnAssignedTo.UseVisualStyleBackColor = true;
+            this.btnAssignedTo.UseVisualStyleBackColor = false;
             this.btnAssignedTo.Click += new System.EventHandler(this.btnAssignedTo_Click);
             // 
             // btnPriority
             // 
+            this.btnPriority.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.btnPriority.Location = new System.Drawing.Point(427, 171);
             this.btnPriority.Margin = new System.Windows.Forms.Padding(2);
             this.btnPriority.Name = "btnPriority";
             this.btnPriority.Size = new System.Drawing.Size(112, 79);
             this.btnPriority.TabIndex = 11;
             this.btnPriority.Text = "Priority aanpassen";
-            this.btnPriority.UseVisualStyleBackColor = true;
+            this.btnPriority.UseVisualStyleBackColor = false;
             this.btnPriority.Click += new System.EventHandler(this.btnPriority_Click);
             // 
             // btnRefreshEditTicket
             // 
+            this.btnRefreshEditTicket.BackColor = System.Drawing.SystemColors.Highlight;
             this.btnRefreshEditTicket.Location = new System.Drawing.Point(476, 327);
             this.btnRefreshEditTicket.Name = "btnRefreshEditTicket";
             this.btnRefreshEditTicket.Size = new System.Drawing.Size(101, 38);
             this.btnRefreshEditTicket.TabIndex = 12;
             this.btnRefreshEditTicket.Text = "Refresh";
-            this.btnRefreshEditTicket.UseVisualStyleBackColor = true;
+            this.btnRefreshEditTicket.UseVisualStyleBackColor = false;
             this.btnRefreshEditTicket.Click += new System.EventHandler(this.btnRefreshEditTicket_Click);
             // 
             // FormEditTicket

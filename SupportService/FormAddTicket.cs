@@ -10,13 +10,11 @@ namespace SupportService
 {
     public partial class FormAddTicket : Form
     {
-        private readonly TicketLogic _ticketLogic;
         private Person _loggedInPerson;
 
         public FormAddTicket(Person person)
         {
             InitializeComponent();
-            _ticketLogic = new TicketLogic();
             _loggedInPerson = person;
             if (_loggedInPerson.UserType == UserType.Employee)
             {
