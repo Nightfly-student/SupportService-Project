@@ -557,6 +557,7 @@ namespace SupportService
         {
             RefreshLists();
             RefreshListView();
+            btnEditTicket.Enabled = false;
         }
 
         private void BtnEditTicket_Click(object sender, EventArgs e)
