@@ -41,6 +41,7 @@
             this.btnRefresh = new System.Windows.Forms.Button();
             this.btnRemove = new System.Windows.Forms.Button();
             this.btnUpdateUser = new System.Windows.Forms.Button();
+            this.UserType = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.SuspendLayout();
             // 
             // label1
@@ -72,13 +73,14 @@
             this.Email,
             this.firstName,
             this.lastname,
+            this.UserType,
             this.tickets});
             this.lstUsers.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lstUsers.HideSelection = false;
             this.lstUsers.Location = new System.Drawing.Point(38, 125);
             this.lstUsers.MultiSelect = false;
             this.lstUsers.Name = "lstUsers";
-            this.lstUsers.Size = new System.Drawing.Size(498, 415);
+            this.lstUsers.Size = new System.Drawing.Size(642, 415);
             this.lstUsers.TabIndex = 2;
             this.lstUsers.UseCompatibleStateImageBehavior = false;
             this.lstUsers.View = System.Windows.Forms.View.Details;
@@ -116,7 +118,7 @@
             this.btnAddUser.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAddUser.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAddUser.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.btnAddUser.Location = new System.Drawing.Point(415, 76);
+            this.btnAddUser.Location = new System.Drawing.Point(559, 70);
             this.btnAddUser.Name = "btnAddUser";
             this.btnAddUser.Size = new System.Drawing.Size(121, 32);
             this.btnAddUser.TabIndex = 3;
@@ -140,7 +142,7 @@
             this.btnRefresh.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnRefresh.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRefresh.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnRefresh.Location = new System.Drawing.Point(451, 546);
+            this.btnRefresh.Location = new System.Drawing.Point(595, 546);
             this.btnRefresh.Name = "btnRefresh";
             this.btnRefresh.Size = new System.Drawing.Size(85, 32);
             this.btnRefresh.TabIndex = 5;
@@ -178,11 +180,16 @@
             this.btnUpdateUser.UseVisualStyleBackColor = false;
             this.btnUpdateUser.Click += new System.EventHandler(this.btnUpdateUser_Click);
             // 
+            // UserType
+            // 
+            this.UserType.Text = "User Type";
+            this.UserType.Width = 143;
+            // 
             // UserManagement
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(597, 616);
+            this.ClientSize = new System.Drawing.Size(762, 616);
             this.Controls.Add(this.btnUpdateUser);
             this.Controls.Add(this.btnRemove);
             this.Controls.Add(this.btnRefresh);
@@ -214,5 +221,6 @@
         private System.Windows.Forms.Button btnRefresh;
         private System.Windows.Forms.Button btnRemove;
         private System.Windows.Forms.Button btnUpdateUser;
+        private System.Windows.Forms.ColumnHeader UserType;
     }
 }
