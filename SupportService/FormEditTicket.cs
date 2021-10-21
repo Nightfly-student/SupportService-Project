@@ -60,9 +60,11 @@ namespace SupportService
                 cbStatusEdit.Items.Add(MongoDatabaseLogic.Instance.GetEnumName(value));
             }
 
-            foreach (Person item in MongoDatabaseLogic.Instance.GetUsers())
+            foreach (Person person in MongoDatabaseLogic.Instance.GetUsers())
             {
-                cbAssignedToEdit.Items.Add(item);
+                if (person.UserType == UserType.Employee)
+                    continue;
+                cbAssignedToEdit.Items.Add(person);
             }
         }
 

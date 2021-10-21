@@ -1,9 +1,6 @@
-﻿using SupportDAL;
-using SupportModel;
+﻿using SupportModel;
 using SupportLogic;
 using System;
-using System.ComponentModel;
-using System.Reflection;
 using System.Windows.Forms;
 
 namespace SupportService

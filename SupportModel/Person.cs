@@ -18,11 +18,6 @@ namespace SupportModel
         public string Username { get; set; }
         public string Password { get; set; }
 
-        public Person(string username, string password)
-        {
-            Username = username;
-            Password = password;
-        }
         public Person(string firstName, string lastName, string email, int phoneNumber, string workLocation, UserType userType, string username, string password) : this()
         {
             FirstName = firstName;

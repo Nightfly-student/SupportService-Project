@@ -81,6 +81,8 @@ namespace SupportService
             this.lblFilterType = new System.Windows.Forms.Label();
             this.btnRefreshTickets = new System.Windows.Forms.Button();
             this.btnEditTicket = new System.Windows.Forms.Button();
+            this.btnAddTicket = new System.Windows.Forms.Button();
+            this.btnUserManagement = new System.Windows.Forms.Button();
             this.pnlDashboard.SuspendLayout();
             this.pnlOpenTickets.SuspendLayout();
             this.pnlOpenAmount.SuspendLayout();
@@ -107,7 +109,7 @@ namespace SupportService
             this.pnlDashboard.Location = new System.Drawing.Point(0, 0);
             this.pnlDashboard.Margin = new System.Windows.Forms.Padding(0);
             this.pnlDashboard.Name = "pnlDashboard";
-            this.pnlDashboard.Size = new System.Drawing.Size(1600, 52);
+            this.pnlDashboard.Size = new System.Drawing.Size(1200, 42);
             this.pnlDashboard.TabIndex = 0;
             // 
             // lblExit
@@ -117,10 +119,9 @@ namespace SupportService
             this.lblExit.Cursor = System.Windows.Forms.Cursors.Hand;
             this.lblExit.Font = new System.Drawing.Font("Comic Sans MS", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblExit.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.lblExit.Location = new System.Drawing.Point(1565, -2);
-            this.lblExit.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblExit.Location = new System.Drawing.Point(1174, -2);
             this.lblExit.Name = "lblExit";
-            this.lblExit.Size = new System.Drawing.Size(37, 38);
+            this.lblExit.Size = new System.Drawing.Size(28, 29);
             this.lblExit.TabIndex = 7;
             this.lblExit.Text = "X";
             this.lblExit.Click += new System.EventHandler(this.LblExit_Click);
@@ -130,10 +131,9 @@ namespace SupportService
             this.lblDashboard.AutoSize = true;
             this.lblDashboard.Font = new System.Drawing.Font("Arial", 15F);
             this.lblDashboard.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.lblDashboard.Location = new System.Drawing.Point(16, 11);
-            this.lblDashboard.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblDashboard.Location = new System.Drawing.Point(12, 9);
             this.lblDashboard.Name = "lblDashboard";
-            this.lblDashboard.Size = new System.Drawing.Size(135, 28);
+            this.lblDashboard.Size = new System.Drawing.Size(106, 23);
             this.lblDashboard.TabIndex = 1;
             this.lblDashboard.Text = "Dashboard";
             // 
@@ -152,11 +152,10 @@ namespace SupportService
             this.lvRecentTickets.FullRowSelect = true;
             this.lvRecentTickets.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
             this.lvRecentTickets.HideSelection = false;
-            this.lvRecentTickets.Location = new System.Drawing.Point(16, 182);
-            this.lvRecentTickets.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.lvRecentTickets.Location = new System.Drawing.Point(12, 148);
             this.lvRecentTickets.MultiSelect = false;
             this.lvRecentTickets.Name = "lvRecentTickets";
-            this.lvRecentTickets.Size = new System.Drawing.Size(1241, 708);
+            this.lvRecentTickets.Size = new System.Drawing.Size(931, 575);
             this.lvRecentTickets.TabIndex = 7;
             this.lvRecentTickets.TabStop = false;
             this.lvRecentTickets.UseCompatibleStateImageBehavior = false;
@@ -198,20 +197,18 @@ namespace SupportService
             this.pnlOpenTickets.BackColor = System.Drawing.Color.White;
             this.pnlOpenTickets.Controls.Add(this.pnlOpenAmount);
             this.pnlOpenTickets.Controls.Add(this.lblOpenTickets);
-            this.pnlOpenTickets.Location = new System.Drawing.Point(16, 65);
-            this.pnlOpenTickets.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pnlOpenTickets.Location = new System.Drawing.Point(12, 53);
             this.pnlOpenTickets.Name = "pnlOpenTickets";
-            this.pnlOpenTickets.Padding = new System.Windows.Forms.Padding(27, 25, 27, 25);
-            this.pnlOpenTickets.Size = new System.Drawing.Size(223, 105);
+            this.pnlOpenTickets.Padding = new System.Windows.Forms.Padding(20, 20, 20, 20);
+            this.pnlOpenTickets.Size = new System.Drawing.Size(167, 85);
             this.pnlOpenTickets.TabIndex = 8;
             // 
             // pnlOpenAmount
             // 
             this.pnlOpenAmount.Controls.Add(this.lblOpenAmount);
-            this.pnlOpenAmount.Location = new System.Drawing.Point(0, 48);
-            this.pnlOpenAmount.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pnlOpenAmount.Location = new System.Drawing.Point(0, 39);
             this.pnlOpenAmount.Name = "pnlOpenAmount";
-            this.pnlOpenAmount.Size = new System.Drawing.Size(223, 50);
+            this.pnlOpenAmount.Size = new System.Drawing.Size(167, 41);
             this.pnlOpenAmount.TabIndex = 1;
             // 
             // lblOpenAmount
@@ -220,9 +217,8 @@ namespace SupportService
             this.lblOpenAmount.Font = new System.Drawing.Font("Arial", 17F);
             this.lblOpenAmount.ForeColor = System.Drawing.SystemColors.Highlight;
             this.lblOpenAmount.Location = new System.Drawing.Point(0, 0);
-            this.lblOpenAmount.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblOpenAmount.Name = "lblOpenAmount";
-            this.lblOpenAmount.Size = new System.Drawing.Size(223, 50);
+            this.lblOpenAmount.Size = new System.Drawing.Size(167, 41);
             this.lblOpenAmount.TabIndex = 0;
             this.lblOpenAmount.Text = "0";
             this.lblOpenAmount.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -231,10 +227,9 @@ namespace SupportService
             // 
             this.lblOpenTickets.AutoSize = true;
             this.lblOpenTickets.Font = new System.Drawing.Font("Arial", 15F, System.Drawing.FontStyle.Bold);
-            this.lblOpenTickets.Location = new System.Drawing.Point(25, 14);
-            this.lblOpenTickets.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblOpenTickets.Location = new System.Drawing.Point(19, 11);
             this.lblOpenTickets.Name = "lblOpenTickets";
-            this.lblOpenTickets.Size = new System.Drawing.Size(162, 30);
+            this.lblOpenTickets.Size = new System.Drawing.Size(130, 24);
             this.lblOpenTickets.TabIndex = 0;
             this.lblOpenTickets.Text = "Open tickets";
             // 
@@ -243,20 +238,18 @@ namespace SupportService
             this.pnlHighPriority.BackColor = System.Drawing.Color.White;
             this.pnlHighPriority.Controls.Add(this.pnlHighAmount);
             this.pnlHighPriority.Controls.Add(this.lblHighPriority);
-            this.pnlHighPriority.Location = new System.Drawing.Point(255, 65);
-            this.pnlHighPriority.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pnlHighPriority.Location = new System.Drawing.Point(191, 53);
             this.pnlHighPriority.Name = "pnlHighPriority";
-            this.pnlHighPriority.Padding = new System.Windows.Forms.Padding(27, 25, 27, 25);
-            this.pnlHighPriority.Size = new System.Drawing.Size(223, 105);
+            this.pnlHighPriority.Padding = new System.Windows.Forms.Padding(20, 20, 20, 20);
+            this.pnlHighPriority.Size = new System.Drawing.Size(167, 85);
             this.pnlHighPriority.TabIndex = 8;
             // 
             // pnlHighAmount
             // 
             this.pnlHighAmount.Controls.Add(this.lblHighAmount);
-            this.pnlHighAmount.Location = new System.Drawing.Point(0, 47);
-            this.pnlHighAmount.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pnlHighAmount.Location = new System.Drawing.Point(0, 38);
             this.pnlHighAmount.Name = "pnlHighAmount";
-            this.pnlHighAmount.Size = new System.Drawing.Size(223, 50);
+            this.pnlHighAmount.Size = new System.Drawing.Size(167, 41);
             this.pnlHighAmount.TabIndex = 1;
             // 
             // lblHighAmount
@@ -265,9 +258,8 @@ namespace SupportService
             this.lblHighAmount.Font = new System.Drawing.Font("Arial", 17F);
             this.lblHighAmount.ForeColor = System.Drawing.Color.Red;
             this.lblHighAmount.Location = new System.Drawing.Point(0, 0);
-            this.lblHighAmount.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblHighAmount.Name = "lblHighAmount";
-            this.lblHighAmount.Size = new System.Drawing.Size(223, 50);
+            this.lblHighAmount.Size = new System.Drawing.Size(167, 41);
             this.lblHighAmount.TabIndex = 0;
             this.lblHighAmount.Text = "0";
             this.lblHighAmount.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -276,10 +268,9 @@ namespace SupportService
             // 
             this.lblHighPriority.AutoSize = true;
             this.lblHighPriority.Font = new System.Drawing.Font("Arial", 15F, System.Drawing.FontStyle.Bold);
-            this.lblHighPriority.Location = new System.Drawing.Point(27, 14);
-            this.lblHighPriority.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblHighPriority.Location = new System.Drawing.Point(20, 11);
             this.lblHighPriority.Name = "lblHighPriority";
-            this.lblHighPriority.Size = new System.Drawing.Size(162, 30);
+            this.lblHighPriority.Size = new System.Drawing.Size(128, 24);
             this.lblHighPriority.TabIndex = 0;
             this.lblHighPriority.Text = "High Priority";
             // 
@@ -288,20 +279,18 @@ namespace SupportService
             this.pnlNormalPriority.BackColor = System.Drawing.Color.White;
             this.pnlNormalPriority.Controls.Add(this.pnlNormalAmount);
             this.pnlNormalPriority.Controls.Add(this.lblNormalPriority);
-            this.pnlNormalPriority.Location = new System.Drawing.Point(495, 65);
-            this.pnlNormalPriority.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pnlNormalPriority.Location = new System.Drawing.Point(371, 53);
             this.pnlNormalPriority.Name = "pnlNormalPriority";
-            this.pnlNormalPriority.Padding = new System.Windows.Forms.Padding(27, 25, 27, 25);
-            this.pnlNormalPriority.Size = new System.Drawing.Size(223, 105);
+            this.pnlNormalPriority.Padding = new System.Windows.Forms.Padding(20, 20, 20, 20);
+            this.pnlNormalPriority.Size = new System.Drawing.Size(167, 85);
             this.pnlNormalPriority.TabIndex = 8;
             // 
             // pnlNormalAmount
             // 
             this.pnlNormalAmount.Controls.Add(this.lblNormalAmount);
-            this.pnlNormalAmount.Location = new System.Drawing.Point(0, 47);
-            this.pnlNormalAmount.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pnlNormalAmount.Location = new System.Drawing.Point(0, 38);
             this.pnlNormalAmount.Name = "pnlNormalAmount";
-            this.pnlNormalAmount.Size = new System.Drawing.Size(223, 50);
+            this.pnlNormalAmount.Size = new System.Drawing.Size(167, 41);
             this.pnlNormalAmount.TabIndex = 1;
             // 
             // lblNormalAmount
@@ -310,9 +299,8 @@ namespace SupportService
             this.lblNormalAmount.Font = new System.Drawing.Font("Arial", 17F);
             this.lblNormalAmount.ForeColor = System.Drawing.Color.DarkOrange;
             this.lblNormalAmount.Location = new System.Drawing.Point(0, 0);
-            this.lblNormalAmount.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblNormalAmount.Name = "lblNormalAmount";
-            this.lblNormalAmount.Size = new System.Drawing.Size(223, 50);
+            this.lblNormalAmount.Size = new System.Drawing.Size(167, 41);
             this.lblNormalAmount.TabIndex = 0;
             this.lblNormalAmount.Text = "0";
             this.lblNormalAmount.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -321,10 +309,9 @@ namespace SupportService
             // 
             this.lblNormalPriority.AutoSize = true;
             this.lblNormalPriority.Font = new System.Drawing.Font("Arial", 15F, System.Drawing.FontStyle.Bold);
-            this.lblNormalPriority.Location = new System.Drawing.Point(11, 14);
-            this.lblNormalPriority.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblNormalPriority.Location = new System.Drawing.Point(8, 11);
             this.lblNormalPriority.Name = "lblNormalPriority";
-            this.lblNormalPriority.Size = new System.Drawing.Size(192, 30);
+            this.lblNormalPriority.Size = new System.Drawing.Size(152, 24);
             this.lblNormalPriority.TabIndex = 0;
             this.lblNormalPriority.Text = "Normal Priority";
             // 
@@ -333,20 +320,18 @@ namespace SupportService
             this.pnlLowPriority.BackColor = System.Drawing.Color.White;
             this.pnlLowPriority.Controls.Add(this.pnlLowAmount);
             this.pnlLowPriority.Controls.Add(this.lblLowPriority);
-            this.pnlLowPriority.Location = new System.Drawing.Point(735, 65);
-            this.pnlLowPriority.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pnlLowPriority.Location = new System.Drawing.Point(551, 53);
             this.pnlLowPriority.Name = "pnlLowPriority";
-            this.pnlLowPriority.Padding = new System.Windows.Forms.Padding(27, 25, 27, 25);
-            this.pnlLowPriority.Size = new System.Drawing.Size(223, 105);
+            this.pnlLowPriority.Padding = new System.Windows.Forms.Padding(20, 20, 20, 20);
+            this.pnlLowPriority.Size = new System.Drawing.Size(167, 85);
             this.pnlLowPriority.TabIndex = 8;
             // 
             // pnlLowAmount
             // 
             this.pnlLowAmount.Controls.Add(this.lblLowAmount);
-            this.pnlLowAmount.Location = new System.Drawing.Point(0, 47);
-            this.pnlLowAmount.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pnlLowAmount.Location = new System.Drawing.Point(0, 38);
             this.pnlLowAmount.Name = "pnlLowAmount";
-            this.pnlLowAmount.Size = new System.Drawing.Size(223, 50);
+            this.pnlLowAmount.Size = new System.Drawing.Size(167, 41);
             this.pnlLowAmount.TabIndex = 1;
             // 
             // lblLowAmount
@@ -355,9 +340,8 @@ namespace SupportService
             this.lblLowAmount.Font = new System.Drawing.Font("Arial", 17F);
             this.lblLowAmount.ForeColor = System.Drawing.Color.Green;
             this.lblLowAmount.Location = new System.Drawing.Point(0, 0);
-            this.lblLowAmount.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblLowAmount.Name = "lblLowAmount";
-            this.lblLowAmount.Size = new System.Drawing.Size(223, 50);
+            this.lblLowAmount.Size = new System.Drawing.Size(167, 41);
             this.lblLowAmount.TabIndex = 0;
             this.lblLowAmount.Text = "0";
             this.lblLowAmount.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -366,10 +350,9 @@ namespace SupportService
             // 
             this.lblLowPriority.AutoSize = true;
             this.lblLowPriority.Font = new System.Drawing.Font("Arial", 15F, System.Drawing.FontStyle.Bold);
-            this.lblLowPriority.Location = new System.Drawing.Point(29, 14);
-            this.lblLowPriority.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblLowPriority.Location = new System.Drawing.Point(22, 11);
             this.lblLowPriority.Name = "lblLowPriority";
-            this.lblLowPriority.Size = new System.Drawing.Size(156, 30);
+            this.lblLowPriority.Size = new System.Drawing.Size(124, 24);
             this.lblLowPriority.TabIndex = 0;
             this.lblLowPriority.Text = "Low Priority";
             // 
@@ -377,10 +360,9 @@ namespace SupportService
             // 
             this.lblSortBy.AutoSize = true;
             this.lblSortBy.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSortBy.Location = new System.Drawing.Point(4, 4);
-            this.lblSortBy.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblSortBy.Location = new System.Drawing.Point(3, 3);
             this.lblSortBy.Name = "lblSortBy";
-            this.lblSortBy.Size = new System.Drawing.Size(96, 29);
+            this.lblSortBy.Size = new System.Drawing.Size(77, 22);
             this.lblSortBy.TabIndex = 9;
             this.lblSortBy.Text = "Sort by";
             // 
@@ -389,10 +371,9 @@ namespace SupportService
             this.pnlSortBy.BackColor = System.Drawing.Color.White;
             this.pnlSortBy.Controls.Add(this.pnlSortOptions);
             this.pnlSortBy.Controls.Add(this.lblSortBy);
-            this.pnlSortBy.Location = new System.Drawing.Point(1272, 268);
-            this.pnlSortBy.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pnlSortBy.Location = new System.Drawing.Point(954, 218);
             this.pnlSortBy.Name = "pnlSortBy";
-            this.pnlSortBy.Size = new System.Drawing.Size(313, 182);
+            this.pnlSortBy.Size = new System.Drawing.Size(235, 148);
             this.pnlSortBy.TabIndex = 10;
             // 
             // pnlSortOptions
@@ -401,10 +382,9 @@ namespace SupportService
             this.pnlSortOptions.Controls.Add(this.lblRecentON);
             this.pnlSortOptions.Controls.Add(this.lblDueByLH);
             this.pnlSortOptions.Controls.Add(this.lblRecentNO);
-            this.pnlSortOptions.Location = new System.Drawing.Point(47, 34);
-            this.pnlSortOptions.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pnlSortOptions.Location = new System.Drawing.Point(35, 28);
             this.pnlSortOptions.Name = "pnlSortOptions";
-            this.pnlSortOptions.Size = new System.Drawing.Size(263, 138);
+            this.pnlSortOptions.Size = new System.Drawing.Size(197, 112);
             this.pnlSortOptions.TabIndex = 10;
             // 
             // lblDueByHL
@@ -413,10 +393,9 @@ namespace SupportService
             this.lblDueByHL.Cursor = System.Windows.Forms.Cursors.Hand;
             this.lblDueByHL.Font = new System.Drawing.Font("Arial", 12F);
             this.lblDueByHL.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.lblDueByHL.Location = new System.Drawing.Point(20, 107);
-            this.lblDueByHL.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblDueByHL.Location = new System.Drawing.Point(15, 87);
             this.lblDueByHL.Name = "lblDueByHL";
-            this.lblDueByHL.Size = new System.Drawing.Size(190, 23);
+            this.lblDueByHL.Size = new System.Drawing.Size(149, 18);
             this.lblDueByHL.TabIndex = 9;
             this.lblDueByHL.Text = "Due By: High to Low";
             this.lblDueByHL.Click += new System.EventHandler(this.LblDueByHL_Click);
@@ -427,10 +406,9 @@ namespace SupportService
             this.lblRecentON.Cursor = System.Windows.Forms.Cursors.Hand;
             this.lblRecentON.Font = new System.Drawing.Font("Arial", 12F);
             this.lblRecentON.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.lblRecentON.Location = new System.Drawing.Point(20, 41);
-            this.lblRecentON.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblRecentON.Location = new System.Drawing.Point(15, 33);
             this.lblRecentON.Name = "lblRecentON";
-            this.lblRecentON.Size = new System.Drawing.Size(183, 23);
+            this.lblRecentON.Size = new System.Drawing.Size(141, 18);
             this.lblRecentON.TabIndex = 9;
             this.lblRecentON.Text = "Recent: Old to New";
             this.lblRecentON.Click += new System.EventHandler(this.LblRecentON_Click);
@@ -441,10 +419,9 @@ namespace SupportService
             this.lblDueByLH.Cursor = System.Windows.Forms.Cursors.Hand;
             this.lblDueByLH.Font = new System.Drawing.Font("Arial", 12F);
             this.lblDueByLH.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.lblDueByLH.Location = new System.Drawing.Point(20, 74);
-            this.lblDueByLH.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblDueByLH.Location = new System.Drawing.Point(15, 60);
             this.lblDueByLH.Name = "lblDueByLH";
-            this.lblDueByLH.Size = new System.Drawing.Size(190, 23);
+            this.lblDueByLH.Size = new System.Drawing.Size(149, 18);
             this.lblDueByLH.TabIndex = 9;
             this.lblDueByLH.Text = "Due By: Low to High";
             this.lblDueByLH.Click += new System.EventHandler(this.LblDueByLH_Click);
@@ -455,10 +432,9 @@ namespace SupportService
             this.lblRecentNO.Cursor = System.Windows.Forms.Cursors.Hand;
             this.lblRecentNO.Font = new System.Drawing.Font("Arial", 12F);
             this.lblRecentNO.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.lblRecentNO.Location = new System.Drawing.Point(20, 7);
-            this.lblRecentNO.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblRecentNO.Location = new System.Drawing.Point(15, 6);
             this.lblRecentNO.Name = "lblRecentNO";
-            this.lblRecentNO.Size = new System.Drawing.Size(183, 23);
+            this.lblRecentNO.Size = new System.Drawing.Size(141, 18);
             this.lblRecentNO.TabIndex = 9;
             this.lblRecentNO.Text = "Recent: New to Old";
             this.lblRecentNO.Click += new System.EventHandler(this.LblRecentNO_Click);
@@ -466,11 +442,10 @@ namespace SupportService
             // tbSearchBox
             // 
             this.tbSearchBox.Font = new System.Drawing.Font("Arial", 12F);
-            this.tbSearchBox.Location = new System.Drawing.Point(4, 34);
-            this.tbSearchBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tbSearchBox.Location = new System.Drawing.Point(3, 28);
             this.tbSearchBox.MaxLength = 50;
             this.tbSearchBox.Name = "tbSearchBox";
-            this.tbSearchBox.Size = new System.Drawing.Size(304, 30);
+            this.tbSearchBox.Size = new System.Drawing.Size(229, 26);
             this.tbSearchBox.TabIndex = 1;
             this.tbSearchBox.TabStop = false;
             this.tbSearchBox.TextChanged += new System.EventHandler(this.TbSearchBox_TextChanged);
@@ -479,10 +454,9 @@ namespace SupportService
             // 
             this.lblSearch.AutoSize = true;
             this.lblSearch.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSearch.Location = new System.Drawing.Point(4, 4);
-            this.lblSearch.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblSearch.Location = new System.Drawing.Point(3, 3);
             this.lblSearch.Name = "lblSearch";
-            this.lblSearch.Size = new System.Drawing.Size(92, 29);
+            this.lblSearch.Size = new System.Drawing.Size(76, 22);
             this.lblSearch.TabIndex = 9;
             this.lblSearch.Text = "Search";
             // 
@@ -491,10 +465,9 @@ namespace SupportService
             this.pnlSearch.BackColor = System.Drawing.Color.White;
             this.pnlSearch.Controls.Add(this.tbSearchBox);
             this.pnlSearch.Controls.Add(this.lblSearch);
-            this.pnlSearch.Location = new System.Drawing.Point(1272, 182);
-            this.pnlSearch.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pnlSearch.Location = new System.Drawing.Point(954, 148);
             this.pnlSearch.Name = "pnlSearch";
-            this.pnlSearch.Size = new System.Drawing.Size(313, 75);
+            this.pnlSearch.Size = new System.Drawing.Size(235, 61);
             this.pnlSearch.TabIndex = 12;
             // 
             // pnlFilterPriority
@@ -503,20 +476,18 @@ namespace SupportService
             this.pnlFilterPriority.Controls.Add(this.cbFilterPriority);
             this.pnlFilterPriority.Controls.Add(this.pnlOptionsPriority);
             this.pnlFilterPriority.Controls.Add(this.lblFilterPriority);
-            this.pnlFilterPriority.Location = new System.Drawing.Point(1272, 463);
-            this.pnlFilterPriority.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pnlFilterPriority.Location = new System.Drawing.Point(954, 376);
             this.pnlFilterPriority.Name = "pnlFilterPriority";
-            this.pnlFilterPriority.Size = new System.Drawing.Size(313, 161);
+            this.pnlFilterPriority.Size = new System.Drawing.Size(235, 131);
             this.pnlFilterPriority.TabIndex = 10;
             // 
             // cbFilterPriority
             // 
             this.cbFilterPriority.AutoSize = true;
             this.cbFilterPriority.Font = new System.Drawing.Font("Arial Narrow", 18.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbFilterPriority.Location = new System.Drawing.Point(289, 4);
-            this.cbFilterPriority.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cbFilterPriority.Location = new System.Drawing.Point(217, 3);
             this.cbFilterPriority.Name = "cbFilterPriority";
-            this.cbFilterPriority.Size = new System.Drawing.Size(18, 17);
+            this.cbFilterPriority.Size = new System.Drawing.Size(15, 14);
             this.cbFilterPriority.TabIndex = 11;
             this.cbFilterPriority.TabStop = false;
             this.cbFilterPriority.UseVisualStyleBackColor = true;
@@ -527,10 +498,9 @@ namespace SupportService
             this.pnlOptionsPriority.Controls.Add(this.lblNormalP);
             this.pnlOptionsPriority.Controls.Add(this.lblLowP);
             this.pnlOptionsPriority.Controls.Add(this.lblHighP);
-            this.pnlOptionsPriority.Location = new System.Drawing.Point(47, 42);
-            this.pnlOptionsPriority.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pnlOptionsPriority.Location = new System.Drawing.Point(35, 34);
             this.pnlOptionsPriority.Name = "pnlOptionsPriority";
-            this.pnlOptionsPriority.Size = new System.Drawing.Size(263, 103);
+            this.pnlOptionsPriority.Size = new System.Drawing.Size(197, 84);
             this.pnlOptionsPriority.TabIndex = 10;
             // 
             // lblNormalP
@@ -539,10 +509,9 @@ namespace SupportService
             this.lblNormalP.Cursor = System.Windows.Forms.Cursors.Hand;
             this.lblNormalP.Font = new System.Drawing.Font("Arial", 12F);
             this.lblNormalP.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.lblNormalP.Location = new System.Drawing.Point(20, 41);
-            this.lblNormalP.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblNormalP.Location = new System.Drawing.Point(15, 33);
             this.lblNormalP.Name = "lblNormalP";
-            this.lblNormalP.Size = new System.Drawing.Size(140, 23);
+            this.lblNormalP.Size = new System.Drawing.Size(111, 18);
             this.lblNormalP.TabIndex = 9;
             this.lblNormalP.Text = "Normal Priority";
             this.lblNormalP.Click += new System.EventHandler(this.LblNormalP_Click);
@@ -553,10 +522,9 @@ namespace SupportService
             this.lblLowP.Cursor = System.Windows.Forms.Cursors.Hand;
             this.lblLowP.Font = new System.Drawing.Font("Arial", 12F);
             this.lblLowP.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.lblLowP.Location = new System.Drawing.Point(20, 74);
-            this.lblLowP.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblLowP.Location = new System.Drawing.Point(15, 60);
             this.lblLowP.Name = "lblLowP";
-            this.lblLowP.Size = new System.Drawing.Size(115, 23);
+            this.lblLowP.Size = new System.Drawing.Size(90, 18);
             this.lblLowP.TabIndex = 9;
             this.lblLowP.Text = "Low Priority";
             this.lblLowP.Click += new System.EventHandler(this.LblLowP_Click);
@@ -567,10 +535,9 @@ namespace SupportService
             this.lblHighP.Cursor = System.Windows.Forms.Cursors.Hand;
             this.lblHighP.Font = new System.Drawing.Font("Arial", 12F);
             this.lblHighP.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.lblHighP.Location = new System.Drawing.Point(20, 7);
-            this.lblHighP.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblHighP.Location = new System.Drawing.Point(15, 6);
             this.lblHighP.Name = "lblHighP";
-            this.lblHighP.Size = new System.Drawing.Size(116, 23);
+            this.lblHighP.Size = new System.Drawing.Size(93, 18);
             this.lblHighP.TabIndex = 9;
             this.lblHighP.Text = "High Priority";
             this.lblHighP.Click += new System.EventHandler(this.LblHighP_Click);
@@ -579,10 +546,9 @@ namespace SupportService
             // 
             this.lblFilterPriority.AutoSize = true;
             this.lblFilterPriority.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblFilterPriority.Location = new System.Drawing.Point(4, 4);
-            this.lblFilterPriority.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblFilterPriority.Location = new System.Drawing.Point(3, 3);
             this.lblFilterPriority.Name = "lblFilterPriority";
-            this.lblFilterPriority.Size = new System.Drawing.Size(162, 29);
+            this.lblFilterPriority.Size = new System.Drawing.Size(129, 22);
             this.lblFilterPriority.TabIndex = 9;
             this.lblFilterPriority.Text = "Filter priority";
             // 
@@ -592,20 +558,18 @@ namespace SupportService
             this.pnlFilterType.Controls.Add(this.cbFilterType);
             this.pnlFilterType.Controls.Add(this.pnlOptionsType);
             this.pnlFilterType.Controls.Add(this.lblFilterType);
-            this.pnlFilterType.Location = new System.Drawing.Point(1272, 635);
-            this.pnlFilterType.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pnlFilterType.Location = new System.Drawing.Point(954, 516);
             this.pnlFilterType.Name = "pnlFilterType";
-            this.pnlFilterType.Size = new System.Drawing.Size(313, 161);
+            this.pnlFilterType.Size = new System.Drawing.Size(235, 131);
             this.pnlFilterType.TabIndex = 10;
             // 
             // cbFilterType
             // 
             this.cbFilterType.AutoSize = true;
             this.cbFilterType.Font = new System.Drawing.Font("Arial Narrow", 18.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbFilterType.Location = new System.Drawing.Point(289, 4);
-            this.cbFilterType.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cbFilterType.Location = new System.Drawing.Point(217, 3);
             this.cbFilterType.Name = "cbFilterType";
-            this.cbFilterType.Size = new System.Drawing.Size(18, 17);
+            this.cbFilterType.Size = new System.Drawing.Size(15, 14);
             this.cbFilterType.TabIndex = 11;
             this.cbFilterType.TabStop = false;
             this.cbFilterType.UseVisualStyleBackColor = true;
@@ -616,10 +580,9 @@ namespace SupportService
             this.pnlOptionsType.Controls.Add(this.lblHardware);
             this.pnlOptionsType.Controls.Add(this.lblService);
             this.pnlOptionsType.Controls.Add(this.lblSoftware);
-            this.pnlOptionsType.Location = new System.Drawing.Point(47, 42);
-            this.pnlOptionsType.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pnlOptionsType.Location = new System.Drawing.Point(35, 34);
             this.pnlOptionsType.Name = "pnlOptionsType";
-            this.pnlOptionsType.Size = new System.Drawing.Size(263, 103);
+            this.pnlOptionsType.Size = new System.Drawing.Size(197, 84);
             this.pnlOptionsType.TabIndex = 10;
             // 
             // lblHardware
@@ -628,10 +591,9 @@ namespace SupportService
             this.lblHardware.Cursor = System.Windows.Forms.Cursors.Hand;
             this.lblHardware.Font = new System.Drawing.Font("Arial", 12F);
             this.lblHardware.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.lblHardware.Location = new System.Drawing.Point(20, 41);
-            this.lblHardware.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblHardware.Location = new System.Drawing.Point(15, 33);
             this.lblHardware.Name = "lblHardware";
-            this.lblHardware.Size = new System.Drawing.Size(96, 23);
+            this.lblHardware.Size = new System.Drawing.Size(76, 18);
             this.lblHardware.TabIndex = 9;
             this.lblHardware.Text = "Hardware";
             this.lblHardware.Click += new System.EventHandler(this.LblHardware_Click);
@@ -642,10 +604,9 @@ namespace SupportService
             this.lblService.Cursor = System.Windows.Forms.Cursors.Hand;
             this.lblService.Font = new System.Drawing.Font("Arial", 12F);
             this.lblService.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.lblService.Location = new System.Drawing.Point(20, 74);
-            this.lblService.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblService.Location = new System.Drawing.Point(15, 60);
             this.lblService.Name = "lblService";
-            this.lblService.Size = new System.Drawing.Size(75, 23);
+            this.lblService.Size = new System.Drawing.Size(61, 18);
             this.lblService.TabIndex = 9;
             this.lblService.Text = "Service";
             this.lblService.Click += new System.EventHandler(this.LblService_Click);
@@ -656,10 +617,9 @@ namespace SupportService
             this.lblSoftware.Cursor = System.Windows.Forms.Cursors.Hand;
             this.lblSoftware.Font = new System.Drawing.Font("Arial", 12F);
             this.lblSoftware.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.lblSoftware.Location = new System.Drawing.Point(20, 7);
-            this.lblSoftware.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblSoftware.Location = new System.Drawing.Point(15, 6);
             this.lblSoftware.Name = "lblSoftware";
-            this.lblSoftware.Size = new System.Drawing.Size(90, 23);
+            this.lblSoftware.Size = new System.Drawing.Size(70, 18);
             this.lblSoftware.TabIndex = 9;
             this.lblSoftware.Text = "Software";
             this.lblSoftware.Click += new System.EventHandler(this.LblSoftware_Click);
@@ -668,10 +628,9 @@ namespace SupportService
             // 
             this.lblFilterType.AutoSize = true;
             this.lblFilterType.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblFilterType.Location = new System.Drawing.Point(4, 4);
-            this.lblFilterType.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblFilterType.Location = new System.Drawing.Point(3, 3);
             this.lblFilterType.Name = "lblFilterType";
-            this.lblFilterType.Size = new System.Drawing.Size(128, 29);
+            this.lblFilterType.Size = new System.Drawing.Size(102, 22);
             this.lblFilterType.TabIndex = 9;
             this.lblFilterType.Text = "Filter type";
             // 
@@ -681,10 +640,9 @@ namespace SupportService
             this.btnRefreshTickets.FlatAppearance.BorderColor = System.Drawing.Color.Black;
             this.btnRefreshTickets.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnRefreshTickets.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRefreshTickets.Location = new System.Drawing.Point(1272, 807);
-            this.btnRefreshTickets.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnRefreshTickets.Location = new System.Drawing.Point(954, 656);
             this.btnRefreshTickets.Name = "btnRefreshTickets";
-            this.btnRefreshTickets.Size = new System.Drawing.Size(313, 82);
+            this.btnRefreshTickets.Size = new System.Drawing.Size(235, 67);
             this.btnRefreshTickets.TabIndex = 13;
             this.btnRefreshTickets.TabStop = false;
             this.btnRefreshTickets.Text = "Refresh List";
@@ -697,22 +655,53 @@ namespace SupportService
             this.btnEditTicket.FlatAppearance.BorderColor = System.Drawing.Color.Black;
             this.btnEditTicket.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEditTicket.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEditTicket.Location = new System.Drawing.Point(975, 65);
-            this.btnEditTicket.Margin = new System.Windows.Forms.Padding(4);
+            this.btnEditTicket.Location = new System.Drawing.Point(889, 53);
             this.btnEditTicket.Name = "btnEditTicket";
-            this.btnEditTicket.Size = new System.Drawing.Size(282, 105);
+            this.btnEditTicket.Size = new System.Drawing.Size(145, 85);
             this.btnEditTicket.TabIndex = 14;
             this.btnEditTicket.TabStop = false;
             this.btnEditTicket.Text = "Edit Ticket";
             this.btnEditTicket.UseVisualStyleBackColor = false;
             this.btnEditTicket.Click += new System.EventHandler(this.BtnEditTicket_Click);
             // 
+            // btnAddTicket
+            // 
+            this.btnAddTicket.BackColor = System.Drawing.Color.White;
+            this.btnAddTicket.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.btnAddTicket.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAddTicket.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAddTicket.Location = new System.Drawing.Point(733, 53);
+            this.btnAddTicket.Name = "btnAddTicket";
+            this.btnAddTicket.Size = new System.Drawing.Size(145, 85);
+            this.btnAddTicket.TabIndex = 14;
+            this.btnAddTicket.TabStop = false;
+            this.btnAddTicket.Text = "Add Ticket";
+            this.btnAddTicket.UseVisualStyleBackColor = false;
+            this.btnAddTicket.Click += new System.EventHandler(this.BtnAddTicket_Click);
+            // 
+            // btnUserManagement
+            // 
+            this.btnUserManagement.BackColor = System.Drawing.Color.White;
+            this.btnUserManagement.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.btnUserManagement.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnUserManagement.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnUserManagement.Location = new System.Drawing.Point(1044, 53);
+            this.btnUserManagement.Name = "btnUserManagement";
+            this.btnUserManagement.Size = new System.Drawing.Size(145, 85);
+            this.btnUserManagement.TabIndex = 14;
+            this.btnUserManagement.TabStop = false;
+            this.btnUserManagement.Text = "User Management";
+            this.btnUserManagement.UseVisualStyleBackColor = false;
+            this.btnUserManagement.Click += new System.EventHandler(this.BtnUserManagement_Click);
+            // 
             // FormDashboard
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.ClientSize = new System.Drawing.Size(1600, 903);
+            this.ClientSize = new System.Drawing.Size(1200, 734);
+            this.Controls.Add(this.btnUserManagement);
+            this.Controls.Add(this.btnAddTicket);
             this.Controls.Add(this.btnEditTicket);
             this.Controls.Add(this.btnRefreshTickets);
             this.Controls.Add(this.pnlSearch);
@@ -726,7 +715,6 @@ namespace SupportService
             this.Controls.Add(this.lvRecentTickets);
             this.Controls.Add(this.pnlDashboard);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "FormDashboard";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "SupportUIDashboard1";
@@ -816,5 +804,7 @@ namespace SupportService
         private System.Windows.Forms.Label lblFilterType;
         private System.Windows.Forms.Button btnRefreshTickets;
         private System.Windows.Forms.Button btnEditTicket;
+        private System.Windows.Forms.Button btnAddTicket;
+        private System.Windows.Forms.Button btnUserManagement;
     }
 }
