@@ -34,26 +34,6 @@ namespace SupportLogic
                 return instance;
             }
         }
-
-        public List<ListViewItem> ListViewItemsFromCollection(string collectionName)
-        {
-            var records = _connectedClient.LoadFromCollection<Person>(collectionName);
-            List<ListViewItem> items = new List<ListViewItem>();
-            foreach (var record in records)
-            {
-                ListViewItem item = new ListViewItem(record.FirstName) { Tag = record.Id };
-                item.SubItems.Add(record.LastName);
-                item.SubItems.Add(collectionName);
-                item.SubItems.Add(record.Email);
-                item.SubItems.Add(record.DateOfBirth.ToString("yyyy/MM/dd"));
-                item.SubItems.Add(record.PhoneNumber.ToString());
-                item.SubItems.Add(record.WorkLocation);
-                items.Add(item);
-            }
-
-            return items;
-        }
-
         public string GetEnumName<T>(T value)
         {
             Type type = value.GetType();
@@ -77,11 +57,6 @@ namespace SupportLogic
         public void ConnectToDatabase(string databaseName)
         {
             _connectedClient.ConnectToDatabase(databaseName);
-        }
-
-        public List<string> DisplayCollections()
-        {
-            return _connectedClient.DisplayCollections();
         }
 
         public bool Exists(string username)
@@ -119,18 +94,6 @@ namespace SupportLogic
             return val;
         }
 
-        public List<string> GetUserName()
-        {
-            var records = _connectedClient.LoadFromCollection<Person>("Employees");
-            List<string> items = new List<string>();
-            foreach (var record in records)
-            {
-                items.Add($"{record.FirstName} {record.LastName}");
-            }
-
-            return items;
-        }
-
         public List<Person> GetUsers()
         {
             var records = _connectedClient.LoadFromCollection<Person>("Employees");
@@ -141,24 +104,6 @@ namespace SupportLogic
             }
 
             return peopleList;
-        }
-
-        public List<ListViewItem> TicketCollection()
-        {
-            int counter = 0;
-            var records = _connectedClient.LoadFromCollection<Ticket>("Tickets");
-            List<ListViewItem> items = new List<ListViewItem>();
-            foreach (var record in records)
-            {
-                counter++;
-                ListViewItem item = new ListViewItem(counter.ToString());
-                item.SubItems.Add(record.Subject);
-                item.SubItems.Add(record.MadeBy.ToString());
-                item.SubItems.Add(record.TimeReported.ToString("yyyy/MM/dd"));
-                item.SubItems.Add(record.Priority.ToString());
-                items.Add(item);
-            }
-            return items;
         }
     }
 }

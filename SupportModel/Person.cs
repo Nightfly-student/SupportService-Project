@@ -13,7 +13,6 @@ namespace SupportModel
         public string LastName { get; set; }
         public UserType UserType { get; set; }
         public string Email { get; set; }
-        public DateTime DateOfBirth { get; set; }
         public int PhoneNumber { get; set; }
         public string WorkLocation { get; set; }
         public string Username { get; set; }
@@ -24,22 +23,11 @@ namespace SupportModel
             Username = username;
             Password = password;
         }
-        public Person(string firstName, string lastName, string email, DateTime dateOfBirth, int phoneNumber, string workLocation, UserType userType)
+        public Person(string firstName, string lastName, string email, int phoneNumber, string workLocation, UserType userType, string username, string password) : this()
         {
             FirstName = firstName;
             LastName = lastName;
             Email = email;
-            DateOfBirth = dateOfBirth;
-            PhoneNumber = phoneNumber;
-            WorkLocation = workLocation;
-            UserType = userType;
-        }
-        public Person(string firstName, string lastName, string email, DateTime dateOfBirth, int phoneNumber, string workLocation, UserType userType, string username, string password) : this()
-        {
-            FirstName = firstName;
-            LastName = lastName;
-            Email = email;
-            DateOfBirth = dateOfBirth;
             PhoneNumber = phoneNumber;
             WorkLocation = workLocation;
             UserType = userType;

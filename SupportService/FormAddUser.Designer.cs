@@ -37,8 +37,6 @@ namespace SupportService
             this.lblTypeOfUser = new System.Windows.Forms.Label();
             this.lblEmail = new System.Windows.Forms.Label();
             this.tbEmail = new System.Windows.Forms.TextBox();
-            this.dtpDateOfBirth = new System.Windows.Forms.DateTimePicker();
-            this.lblDateOfBirth = new System.Windows.Forms.Label();
             this.lblPhoneNumber = new System.Windows.Forms.Label();
             this.tbPhoneNumber = new System.Windows.Forms.TextBox();
             this.lblWorkLocation = new System.Windows.Forms.Label();
@@ -55,7 +53,7 @@ namespace SupportService
             // 
             this.lblFirstName.AutoSize = true;
             this.lblFirstName.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblFirstName.Location = new System.Drawing.Point(12, 9);
+            this.lblFirstName.Location = new System.Drawing.Point(12, 71);
             this.lblFirstName.Name = "lblFirstName";
             this.lblFirstName.Size = new System.Drawing.Size(99, 22);
             this.lblFirstName.TabIndex = 0;
@@ -64,8 +62,8 @@ namespace SupportService
             // tbFirstName
             // 
             this.tbFirstName.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbFirstName.Location = new System.Drawing.Point(16, 34);
-            this.tbFirstName.MaxLength = 100;
+            this.tbFirstName.Location = new System.Drawing.Point(16, 96);
+            this.tbFirstName.MaxLength = 40;
             this.tbFirstName.Name = "tbFirstName";
             this.tbFirstName.Size = new System.Drawing.Size(226, 29);
             this.tbFirstName.TabIndex = 1;
@@ -74,7 +72,7 @@ namespace SupportService
             // 
             this.lblLastName.AutoSize = true;
             this.lblLastName.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblLastName.Location = new System.Drawing.Point(12, 66);
+            this.lblLastName.Location = new System.Drawing.Point(12, 128);
             this.lblLastName.Name = "lblLastName";
             this.lblLastName.Size = new System.Drawing.Size(98, 22);
             this.lblLastName.TabIndex = 0;
@@ -83,8 +81,8 @@ namespace SupportService
             // tbLastName
             // 
             this.tbLastName.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbLastName.Location = new System.Drawing.Point(16, 91);
-            this.tbLastName.MaxLength = 100;
+            this.tbLastName.Location = new System.Drawing.Point(16, 153);
+            this.tbLastName.MaxLength = 40;
             this.tbLastName.Name = "tbLastName";
             this.tbLastName.Size = new System.Drawing.Size(226, 29);
             this.tbLastName.TabIndex = 2;
@@ -93,7 +91,7 @@ namespace SupportService
             // 
             this.cbUserType.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbUserType.FormattingEnabled = true;
-            this.cbUserType.Location = new System.Drawing.Point(16, 147);
+            this.cbUserType.Location = new System.Drawing.Point(16, 209);
             this.cbUserType.Name = "cbUserType";
             this.cbUserType.Size = new System.Drawing.Size(226, 30);
             this.cbUserType.TabIndex = 3;
@@ -102,7 +100,7 @@ namespace SupportService
             // 
             this.lblTypeOfUser.AutoSize = true;
             this.lblTypeOfUser.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTypeOfUser.Location = new System.Drawing.Point(12, 122);
+            this.lblTypeOfUser.Location = new System.Drawing.Point(12, 184);
             this.lblTypeOfUser.Name = "lblTypeOfUser";
             this.lblTypeOfUser.Size = new System.Drawing.Size(119, 22);
             this.lblTypeOfUser.TabIndex = 0;
@@ -112,7 +110,7 @@ namespace SupportService
             // 
             this.lblEmail.AutoSize = true;
             this.lblEmail.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblEmail.Location = new System.Drawing.Point(12, 180);
+            this.lblEmail.Location = new System.Drawing.Point(12, 242);
             this.lblEmail.Name = "lblEmail";
             this.lblEmail.Size = new System.Drawing.Size(57, 22);
             this.lblEmail.TabIndex = 0;
@@ -121,32 +119,11 @@ namespace SupportService
             // tbEmail
             // 
             this.tbEmail.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbEmail.Location = new System.Drawing.Point(16, 205);
-            this.tbEmail.MaxLength = 100;
+            this.tbEmail.Location = new System.Drawing.Point(16, 267);
+            this.tbEmail.MaxLength = 50;
             this.tbEmail.Name = "tbEmail";
             this.tbEmail.Size = new System.Drawing.Size(226, 29);
             this.tbEmail.TabIndex = 4;
-            // 
-            // dtpDateOfBirth
-            // 
-            this.dtpDateOfBirth.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtpDateOfBirth.Location = new System.Drawing.Point(16, 263);
-            this.dtpDateOfBirth.MaxDate = new System.DateTime(2021, 9, 16, 0, 0, 0, 0);
-            this.dtpDateOfBirth.MinDate = new System.DateTime(1910, 1, 1, 0, 0, 0, 0);
-            this.dtpDateOfBirth.Name = "dtpDateOfBirth";
-            this.dtpDateOfBirth.Size = new System.Drawing.Size(226, 29);
-            this.dtpDateOfBirth.TabIndex = 5;
-            this.dtpDateOfBirth.Value = new System.DateTime(2021, 9, 16, 0, 0, 0, 0);
-            // 
-            // lblDateOfBirth
-            // 
-            this.lblDateOfBirth.AutoSize = true;
-            this.lblDateOfBirth.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDateOfBirth.Location = new System.Drawing.Point(12, 237);
-            this.lblDateOfBirth.Name = "lblDateOfBirth";
-            this.lblDateOfBirth.Size = new System.Drawing.Size(115, 22);
-            this.lblDateOfBirth.TabIndex = 0;
-            this.lblDateOfBirth.Text = "Date of Birth";
             // 
             // lblPhoneNumber
             // 
@@ -162,7 +139,7 @@ namespace SupportService
             // 
             this.tbPhoneNumber.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbPhoneNumber.Location = new System.Drawing.Point(16, 320);
-            this.tbPhoneNumber.MaxLength = 25;
+            this.tbPhoneNumber.MaxLength = 16;
             this.tbPhoneNumber.Name = "tbPhoneNumber";
             this.tbPhoneNumber.Size = new System.Drawing.Size(226, 29);
             this.tbPhoneNumber.TabIndex = 6;
@@ -181,7 +158,7 @@ namespace SupportService
             // 
             this.tbWorkLocation.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbWorkLocation.Location = new System.Drawing.Point(16, 377);
-            this.tbWorkLocation.MaxLength = 100;
+            this.tbWorkLocation.MaxLength = 50;
             this.tbWorkLocation.Name = "tbWorkLocation";
             this.tbWorkLocation.Size = new System.Drawing.Size(226, 29);
             this.tbWorkLocation.TabIndex = 7;
@@ -204,7 +181,7 @@ namespace SupportService
             // 
             this.txtUsername.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtUsername.Location = new System.Drawing.Point(267, 148);
-            this.txtUsername.MaxLength = 100;
+            this.txtUsername.MaxLength = 40;
             this.txtUsername.Name = "txtUsername";
             this.txtUsername.Size = new System.Drawing.Size(226, 29);
             this.txtUsername.TabIndex = 10;
@@ -233,7 +210,7 @@ namespace SupportService
             // 
             this.txtPassword.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPassword.Location = new System.Drawing.Point(267, 205);
-            this.txtPassword.MaxLength = 100;
+            this.txtPassword.MaxLength = 40;
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.Size = new System.Drawing.Size(226, 29);
             this.txtPassword.TabIndex = 13;
@@ -263,7 +240,6 @@ namespace SupportService
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtUsername);
             this.Controls.Add(this.btnAddUser);
-            this.Controls.Add(this.dtpDateOfBirth);
             this.Controls.Add(this.cbUserType);
             this.Controls.Add(this.tbPhoneNumber);
             this.Controls.Add(this.tbWorkLocation);
@@ -271,7 +247,6 @@ namespace SupportService
             this.Controls.Add(this.tbLastName);
             this.Controls.Add(this.tbFirstName);
             this.Controls.Add(this.lblTypeOfUser);
-            this.Controls.Add(this.lblDateOfBirth);
             this.Controls.Add(this.lblPhoneNumber);
             this.Controls.Add(this.lblWorkLocation);
             this.Controls.Add(this.lblEmail);
@@ -296,8 +271,6 @@ namespace SupportService
         private System.Windows.Forms.Label lblTypeOfUser;
         private System.Windows.Forms.Label lblEmail;
         private System.Windows.Forms.TextBox tbEmail;
-        private System.Windows.Forms.DateTimePicker dtpDateOfBirth;
-        private System.Windows.Forms.Label lblDateOfBirth;
         private System.Windows.Forms.Label lblPhoneNumber;
         private System.Windows.Forms.TextBox tbPhoneNumber;
         private System.Windows.Forms.Label lblWorkLocation;

@@ -11,13 +11,12 @@ namespace SupportService
     public partial class FormAddUser : Form
     {
         private readonly ListViewColumnSorter _lvwColumnSorter;
-        //private readonly MongoDatabaseLogic _supportLogic;
 
         public FormAddUser()
         {
             InitializeComponent();
             _lvwColumnSorter = new ListViewColumnSorter();
-            //_supportLogic = new MongoDatabaseLogic(connectedClient);
+            cbUserType.DropDownStyle = ComboBoxStyle.DropDownList;
         }
 
         private void btnAddUser_Click(object sender, EventArgs e)
@@ -37,7 +36,7 @@ namespace SupportService
                         if (tbEmail.Text.Contains("@"))
                         {
                             MongoDatabaseLogic.Instance.InsertItem("Employees",
-                            new Person(tbFirstName.Text, tbLastName.Text, tbEmail.Text, dtpDateOfBirth.Value, int.Parse(tbPhoneNumber.Text), tbWorkLocation.Text, MongoDatabaseLogic.Instance.GetEnumValue<UserType>(cbUserType.Text), txtUsername.Text, txtPassword.Text));
+                            new Person(tbFirstName.Text, tbLastName.Text, tbEmail.Text, int.Parse(tbPhoneNumber.Text), tbWorkLocation.Text, MongoDatabaseLogic.Instance.GetEnumValue<UserType>(cbUserType.Text), txtUsername.Text, txtPassword.Text));
                             new UserManagement().Show();
                             this.Close();
                         }

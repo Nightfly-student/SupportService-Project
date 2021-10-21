@@ -1,4 +1,5 @@
-﻿using SupportDAL;
+﻿using MongoDB.Bson;
+using SupportDAL;
 using SupportLogic;
 using SupportModel;
 using System;
@@ -78,7 +79,7 @@ namespace SupportDAO
             List<ListViewItem> items = new List<ListViewItem>();
             foreach (var record in records)
             {
-                var count = _connectedClient.CountItemByName<Ticket>("Tickets", record.FirstName.ToString(), "MadeBy.FirstName");
+                var count = _connectedClient.CountItemByName<Ticket>("Tickets", record.Id, "AssignedTo");
                 counter++;
                 ListViewItem item = new ListViewItem(counter.ToString());
                 item.SubItems.Add(record.Email);
@@ -102,6 +103,15 @@ namespace SupportDAO
         public void updateUser(Person oldP, Person newP)
         {
             _connectedClient.UpdateItemByName("Employees", oldP.Email, "Email", newP);
+        }
+        public void updateCredentials(ObjectId id, Person newP)
+        {
+            newP.Password = BCrypt.Net.BCrypt.HashPassword(newP.Password, GetRandomSalt());
+            _connectedClient.UpdateItemByObjectID("Employees", id, "Id", newP);
+        }
+        private static string GetRandomSalt()
+        {
+            return BCrypt.Net.BCrypt.GenerateSalt(12);
         }
     }
 }

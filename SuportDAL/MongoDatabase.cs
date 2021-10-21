@@ -104,7 +104,7 @@ namespace SupportDAL
         }
 
         //Jelle TOonen tel de items op en return het (#tickets)//
-        public int CountItemByName<T>(string collectionName, string item, string name)
+        public int CountItemByName<T>(string collectionName, ObjectId item, string name)
         {
             var collection = _db.GetCollection<T>(collectionName);
             var filter = Builders<T>.Filter.Eq(name, item);

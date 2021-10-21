@@ -25,6 +25,8 @@ namespace SupportService
             tbEmail.Text = p.Email;
             tbWorkLocation.Text = p.WorkLocation;
             person = p;
+            lblSetUsername.Text += p.Username;
+            cbUserType.DropDownStyle = ComboBoxStyle.DropDownList;
         }
 
         private void btnUpdateUser_Click(object sender, EventArgs e)
@@ -40,7 +42,7 @@ namespace SupportService
                     {
                         if (tbEmail.Text.Contains("@"))
                         {
-                        newPerson = new Person(tbFirstName.Text, tbLastName.Text, tbEmail.Text, dtpDateOfBirth.Value, int.Parse(tbPhoneNumber.Text), tbWorkLocation.Text, MongoDatabaseLogic.Instance.GetEnumValue<UserType>(cbUserType.Text), person.Username, person.Password);
+                        newPerson = new Person(tbFirstName.Text, tbLastName.Text, tbEmail.Text, int.Parse(tbPhoneNumber.Text), tbWorkLocation.Text, MongoDatabaseLogic.Instance.GetEnumValue<UserType>(cbUserType.Text), person.Username, person.Password);
                         newPerson.Id = person.Id;
                         UserLogic.Instance.updateUser(person, newPerson);
                         MessageBox.Show("User has been updated");
@@ -88,6 +90,31 @@ namespace SupportService
                 counter++;
             }
         }
+
+        private void btnCredentials_Click(object sender, EventArgs e)
+        {
+            if(tbOldPassword.Text != "" || tbConfirmPassword.Text != "")
+            {
+                Person p = UserLogic.Instance.AuthUser(lblSetUsername.Text, tbOldPassword.Text);
+
+                if(p != null)
+                {
+                    Person newP = p;
+                    newP.Password = tbConfirmPassword.Text;
+                    UserLogic.Instance.updateCredentials(p.Id, newP);
+                    MessageBox.Show("Updated Credentials");
+                } else
+                {
+                    MessageBox.Show("Invalid Credentials");
+                }
+            } else
+            {
+                MessageBox.Show("Please fill in old password and new password");
+            }
+
+
+        }
+
         private void btnReturn_Click(object sender, EventArgs e)
         {
             new UserManagement().Show();

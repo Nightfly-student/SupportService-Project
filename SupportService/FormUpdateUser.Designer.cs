@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.dtpDateOfBirth = new System.Windows.Forms.DateTimePicker();
             this.cbUserType = new System.Windows.Forms.ComboBox();
             this.tbPhoneNumber = new System.Windows.Forms.TextBox();
             this.tbWorkLocation = new System.Windows.Forms.TextBox();
@@ -36,31 +35,27 @@
             this.tbLastName = new System.Windows.Forms.TextBox();
             this.tbFirstName = new System.Windows.Forms.TextBox();
             this.lblTypeOfUser = new System.Windows.Forms.Label();
-            this.lblDateOfBirth = new System.Windows.Forms.Label();
             this.lblPhoneNumber = new System.Windows.Forms.Label();
             this.lblWorkLocation = new System.Windows.Forms.Label();
             this.lblLastName = new System.Windows.Forms.Label();
             this.lblFirstName = new System.Windows.Forms.Label();
             this.btnUpdateUser = new System.Windows.Forms.Button();
             this.btnReturn = new System.Windows.Forms.Button();
+            this.tbConfirmPassword = new System.Windows.Forms.TextBox();
+            this.tbOldPassword = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.lblUsername = new System.Windows.Forms.Label();
+            this.btnCredentials = new System.Windows.Forms.Button();
+            this.lblEmail = new System.Windows.Forms.Label();
+            this.lblSetUsername = new System.Windows.Forms.Label();
             this.SuspendLayout();
-            // 
-            // dtpDateOfBirth
-            // 
-            this.dtpDateOfBirth.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtpDateOfBirth.Location = new System.Drawing.Point(26, 273);
-            this.dtpDateOfBirth.MaxDate = new System.DateTime(2021, 9, 16, 0, 0, 0, 0);
-            this.dtpDateOfBirth.MinDate = new System.DateTime(1910, 1, 1, 0, 0, 0, 0);
-            this.dtpDateOfBirth.Name = "dtpDateOfBirth";
-            this.dtpDateOfBirth.Size = new System.Drawing.Size(226, 29);
-            this.dtpDateOfBirth.TabIndex = 18;
-            this.dtpDateOfBirth.Value = new System.DateTime(2021, 9, 16, 0, 0, 0, 0);
             // 
             // cbUserType
             // 
             this.cbUserType.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbUserType.FormattingEnabled = true;
-            this.cbUserType.Location = new System.Drawing.Point(26, 157);
+            this.cbUserType.Location = new System.Drawing.Point(26, 206);
             this.cbUserType.Name = "cbUserType";
             this.cbUserType.Size = new System.Drawing.Size(226, 30);
             this.cbUserType.TabIndex = 16;
@@ -69,7 +64,7 @@
             // 
             this.tbPhoneNumber.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbPhoneNumber.Location = new System.Drawing.Point(26, 330);
-            this.tbPhoneNumber.MaxLength = 25;
+            this.tbPhoneNumber.MaxLength = 16;
             this.tbPhoneNumber.Name = "tbPhoneNumber";
             this.tbPhoneNumber.Size = new System.Drawing.Size(226, 29);
             this.tbPhoneNumber.TabIndex = 19;
@@ -78,7 +73,7 @@
             // 
             this.tbWorkLocation.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbWorkLocation.Location = new System.Drawing.Point(26, 387);
-            this.tbWorkLocation.MaxLength = 100;
+            this.tbWorkLocation.MaxLength = 50;
             this.tbWorkLocation.Name = "tbWorkLocation";
             this.tbWorkLocation.Size = new System.Drawing.Size(226, 29);
             this.tbWorkLocation.TabIndex = 20;
@@ -86,8 +81,8 @@
             // tbEmail
             // 
             this.tbEmail.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbEmail.Location = new System.Drawing.Point(26, 215);
-            this.tbEmail.MaxLength = 100;
+            this.tbEmail.Location = new System.Drawing.Point(26, 264);
+            this.tbEmail.MaxLength = 50;
             this.tbEmail.Name = "tbEmail";
             this.tbEmail.Size = new System.Drawing.Size(226, 29);
             this.tbEmail.TabIndex = 17;
@@ -95,8 +90,8 @@
             // tbLastName
             // 
             this.tbLastName.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbLastName.Location = new System.Drawing.Point(26, 101);
-            this.tbLastName.MaxLength = 100;
+            this.tbLastName.Location = new System.Drawing.Point(26, 150);
+            this.tbLastName.MaxLength = 45;
             this.tbLastName.Name = "tbLastName";
             this.tbLastName.Size = new System.Drawing.Size(226, 29);
             this.tbLastName.TabIndex = 15;
@@ -104,8 +99,8 @@
             // tbFirstName
             // 
             this.tbFirstName.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbFirstName.Location = new System.Drawing.Point(26, 44);
-            this.tbFirstName.MaxLength = 100;
+            this.tbFirstName.Location = new System.Drawing.Point(26, 93);
+            this.tbFirstName.MaxLength = 45;
             this.tbFirstName.Name = "tbFirstName";
             this.tbFirstName.Size = new System.Drawing.Size(226, 29);
             this.tbFirstName.TabIndex = 14;
@@ -114,21 +109,11 @@
             // 
             this.lblTypeOfUser.AutoSize = true;
             this.lblTypeOfUser.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTypeOfUser.Location = new System.Drawing.Point(22, 132);
+            this.lblTypeOfUser.Location = new System.Drawing.Point(22, 181);
             this.lblTypeOfUser.Name = "lblTypeOfUser";
             this.lblTypeOfUser.Size = new System.Drawing.Size(119, 22);
             this.lblTypeOfUser.TabIndex = 8;
             this.lblTypeOfUser.Text = "Type of User";
-            // 
-            // lblDateOfBirth
-            // 
-            this.lblDateOfBirth.AutoSize = true;
-            this.lblDateOfBirth.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDateOfBirth.Location = new System.Drawing.Point(22, 247);
-            this.lblDateOfBirth.Name = "lblDateOfBirth";
-            this.lblDateOfBirth.Size = new System.Drawing.Size(115, 22);
-            this.lblDateOfBirth.TabIndex = 9;
-            this.lblDateOfBirth.Text = "Date of Birth";
             // 
             // lblPhoneNumber
             // 
@@ -154,7 +139,7 @@
             // 
             this.lblLastName.AutoSize = true;
             this.lblLastName.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblLastName.Location = new System.Drawing.Point(22, 76);
+            this.lblLastName.Location = new System.Drawing.Point(22, 125);
             this.lblLastName.Name = "lblLastName";
             this.lblLastName.Size = new System.Drawing.Size(98, 22);
             this.lblLastName.TabIndex = 12;
@@ -164,7 +149,7 @@
             // 
             this.lblFirstName.AutoSize = true;
             this.lblFirstName.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblFirstName.Location = new System.Drawing.Point(22, 19);
+            this.lblFirstName.Location = new System.Drawing.Point(22, 68);
             this.lblFirstName.Name = "lblFirstName";
             this.lblFirstName.Size = new System.Drawing.Size(99, 22);
             this.lblFirstName.TabIndex = 13;
@@ -176,7 +161,7 @@
             this.btnUpdateUser.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnUpdateUser.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnUpdateUser.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnUpdateUser.Location = new System.Drawing.Point(26, 447);
+            this.btnUpdateUser.Location = new System.Drawing.Point(26, 448);
             this.btnUpdateUser.Name = "btnUpdateUser";
             this.btnUpdateUser.Size = new System.Drawing.Size(226, 66);
             this.btnUpdateUser.TabIndex = 21;
@@ -190,7 +175,7 @@
             this.btnReturn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnReturn.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnReturn.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnReturn.Location = new System.Drawing.Point(228, 4);
+            this.btnReturn.Location = new System.Drawing.Point(436, 13);
             this.btnReturn.Name = "btnReturn";
             this.btnReturn.Size = new System.Drawing.Size(78, 34);
             this.btnReturn.TabIndex = 22;
@@ -198,14 +183,104 @@
             this.btnReturn.UseVisualStyleBackColor = false;
             this.btnReturn.Click += new System.EventHandler(this.btnReturn_Click);
             // 
+            // tbConfirmPassword
+            // 
+            this.tbConfirmPassword.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbConfirmPassword.Location = new System.Drawing.Point(288, 389);
+            this.tbConfirmPassword.MaxLength = 40;
+            this.tbConfirmPassword.Name = "tbConfirmPassword";
+            this.tbConfirmPassword.PasswordChar = '*';
+            this.tbConfirmPassword.Size = new System.Drawing.Size(226, 29);
+            this.tbConfirmPassword.TabIndex = 26;
+            // 
+            // tbOldPassword
+            // 
+            this.tbOldPassword.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbOldPassword.Location = new System.Drawing.Point(288, 332);
+            this.tbOldPassword.MaxLength = 40;
+            this.tbOldPassword.Name = "tbOldPassword";
+            this.tbOldPassword.PasswordChar = '*';
+            this.tbOldPassword.Size = new System.Drawing.Size(226, 29);
+            this.tbOldPassword.TabIndex = 25;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(284, 364);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(208, 22);
+            this.label1.TabIndex = 23;
+            this.label1.Text = "Confirm New Password";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(284, 307);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(129, 22);
+            this.label2.TabIndex = 24;
+            this.label2.Text = "Old Password";
+            // 
+            // lblUsername
+            // 
+            this.lblUsername.AutoSize = true;
+            this.lblUsername.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblUsername.Location = new System.Drawing.Point(293, 247);
+            this.lblUsername.Name = "lblUsername";
+            this.lblUsername.Size = new System.Drawing.Size(107, 22);
+            this.lblUsername.TabIndex = 27;
+            this.lblUsername.Text = "Username: ";
+            // 
+            // btnCredentials
+            // 
+            this.btnCredentials.BackColor = System.Drawing.Color.DeepSkyBlue;
+            this.btnCredentials.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCredentials.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCredentials.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnCredentials.Location = new System.Drawing.Point(288, 448);
+            this.btnCredentials.Name = "btnCredentials";
+            this.btnCredentials.Size = new System.Drawing.Size(226, 66);
+            this.btnCredentials.TabIndex = 28;
+            this.btnCredentials.Text = "Update Credentials";
+            this.btnCredentials.UseVisualStyleBackColor = false;
+            this.btnCredentials.Click += new System.EventHandler(this.btnCredentials_Click);
+            // 
+            // lblEmail
+            // 
+            this.lblEmail.AutoSize = true;
+            this.lblEmail.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblEmail.Location = new System.Drawing.Point(23, 239);
+            this.lblEmail.Name = "lblEmail";
+            this.lblEmail.Size = new System.Drawing.Size(57, 22);
+            this.lblEmail.TabIndex = 29;
+            this.lblEmail.Text = "Email";
+            // 
+            // lblSetUsername
+            // 
+            this.lblSetUsername.AutoSize = true;
+            this.lblSetUsername.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSetUsername.Location = new System.Drawing.Point(394, 247);
+            this.lblSetUsername.Name = "lblSetUsername";
+            this.lblSetUsername.Size = new System.Drawing.Size(0, 22);
+            this.lblSetUsername.TabIndex = 30;
+            // 
             // FormUpdateUser
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(307, 540);
+            this.ClientSize = new System.Drawing.Size(540, 629);
+            this.Controls.Add(this.lblSetUsername);
+            this.Controls.Add(this.lblEmail);
+            this.Controls.Add(this.btnCredentials);
+            this.Controls.Add(this.lblUsername);
+            this.Controls.Add(this.tbConfirmPassword);
+            this.Controls.Add(this.tbOldPassword);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.btnReturn);
             this.Controls.Add(this.btnUpdateUser);
-            this.Controls.Add(this.dtpDateOfBirth);
             this.Controls.Add(this.cbUserType);
             this.Controls.Add(this.tbPhoneNumber);
             this.Controls.Add(this.tbWorkLocation);
@@ -213,7 +288,6 @@
             this.Controls.Add(this.tbLastName);
             this.Controls.Add(this.tbFirstName);
             this.Controls.Add(this.lblTypeOfUser);
-            this.Controls.Add(this.lblDateOfBirth);
             this.Controls.Add(this.lblPhoneNumber);
             this.Controls.Add(this.lblWorkLocation);
             this.Controls.Add(this.lblLastName);
@@ -227,8 +301,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.DateTimePicker dtpDateOfBirth;
         private System.Windows.Forms.ComboBox cbUserType;
         private System.Windows.Forms.TextBox tbPhoneNumber;
         private System.Windows.Forms.TextBox tbWorkLocation;
@@ -236,12 +308,19 @@
         private System.Windows.Forms.TextBox tbLastName;
         private System.Windows.Forms.TextBox tbFirstName;
         private System.Windows.Forms.Label lblTypeOfUser;
-        private System.Windows.Forms.Label lblDateOfBirth;
         private System.Windows.Forms.Label lblPhoneNumber;
         private System.Windows.Forms.Label lblWorkLocation;
         private System.Windows.Forms.Label lblLastName;
         private System.Windows.Forms.Label lblFirstName;
         private System.Windows.Forms.Button btnUpdateUser;
         private System.Windows.Forms.Button btnReturn;
+        private System.Windows.Forms.TextBox tbConfirmPassword;
+        private System.Windows.Forms.TextBox tbOldPassword;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label lblUsername;
+        private System.Windows.Forms.Button btnCredentials;
+        private System.Windows.Forms.Label lblEmail;
+        private System.Windows.Forms.Label lblSetUsername;
     }
 }
