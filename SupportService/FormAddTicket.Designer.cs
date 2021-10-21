@@ -125,7 +125,7 @@ namespace SupportService
             this.cbPriority.Location = new System.Drawing.Point(3, 151);
             this.cbPriority.Name = "cbPriority";
             this.cbPriority.Size = new System.Drawing.Size(196, 30);
-            this.cbPriority.TabIndex = 4;
+            this.cbPriority.TabIndex = 5;
             // 
             // lblDeadline
             // 
@@ -149,14 +149,14 @@ namespace SupportService
             this.cbDeadline.Location = new System.Drawing.Point(3, 189);
             this.cbDeadline.Name = "cbDeadline";
             this.cbDeadline.Size = new System.Drawing.Size(196, 30);
-            this.cbDeadline.TabIndex = 5;
+            this.cbDeadline.TabIndex = 6;
             // 
             // btn_AddTicket
             // 
             this.btn_AddTicket.Location = new System.Drawing.Point(22, 453);
             this.btn_AddTicket.Name = "btn_AddTicket";
             this.btn_AddTicket.Size = new System.Drawing.Size(116, 78);
-            this.btn_AddTicket.TabIndex = 7;
+            this.btn_AddTicket.TabIndex = 8;
             this.btn_AddTicket.Text = "Add Ticket";
             this.btn_AddTicket.UseVisualStyleBackColor = true;
             this.btn_AddTicket.Click += new System.EventHandler(this.btn_AddTicket_Click);
@@ -179,7 +179,7 @@ namespace SupportService
             this.tbDescription.Multiline = true;
             this.tbDescription.Name = "tbDescription";
             this.tbDescription.Size = new System.Drawing.Size(389, 154);
-            this.tbDescription.TabIndex = 6;
+            this.tbDescription.TabIndex = 7;
             // 
             // errorProvider
             // 
@@ -206,7 +206,7 @@ namespace SupportService
             this.cbAssignedTo.Location = new System.Drawing.Point(206, 160);
             this.cbAssignedTo.Name = "cbAssignedTo";
             this.cbAssignedTo.Size = new System.Drawing.Size(196, 30);
-            this.cbAssignedTo.TabIndex = 7;
+            this.cbAssignedTo.TabIndex = 4;
             // 
             // lblAssignedTo
             // 

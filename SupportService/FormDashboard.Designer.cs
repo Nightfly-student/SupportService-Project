@@ -645,7 +645,7 @@ namespace SupportService
             this.btnRefreshTickets.Location = new System.Drawing.Point(954, 656);
             this.btnRefreshTickets.Name = "btnRefreshTickets";
             this.btnRefreshTickets.Size = new System.Drawing.Size(235, 67);
-            this.btnRefreshTickets.TabIndex = 13;
+            this.btnRefreshTickets.TabIndex = 4;
             this.btnRefreshTickets.TabStop = false;
             this.btnRefreshTickets.Text = "Refresh List";
             this.btnRefreshTickets.UseVisualStyleBackColor = false;
@@ -660,7 +660,7 @@ namespace SupportService
             this.btnEditTicket.Location = new System.Drawing.Point(889, 53);
             this.btnEditTicket.Name = "btnEditTicket";
             this.btnEditTicket.Size = new System.Drawing.Size(145, 85);
-            this.btnEditTicket.TabIndex = 14;
+            this.btnEditTicket.TabIndex = 2;
             this.btnEditTicket.TabStop = false;
             this.btnEditTicket.Text = "Edit Ticket";
             this.btnEditTicket.UseVisualStyleBackColor = false;
@@ -675,7 +675,7 @@ namespace SupportService
             this.btnAddTicket.Location = new System.Drawing.Point(733, 53);
             this.btnAddTicket.Name = "btnAddTicket";
             this.btnAddTicket.Size = new System.Drawing.Size(145, 85);
-            this.btnAddTicket.TabIndex = 14;
+            this.btnAddTicket.TabIndex = 1;
             this.btnAddTicket.TabStop = false;
             this.btnAddTicket.Text = "Add Ticket";
             this.btnAddTicket.UseVisualStyleBackColor = false;
@@ -690,7 +690,7 @@ namespace SupportService
             this.btnUserManagement.Location = new System.Drawing.Point(1044, 53);
             this.btnUserManagement.Name = "btnUserManagement";
             this.btnUserManagement.Size = new System.Drawing.Size(145, 85);
-            this.btnUserManagement.TabIndex = 14;
+            this.btnUserManagement.TabIndex = 3;
             this.btnUserManagement.TabStop = false;
             this.btnUserManagement.Text = "User Management";
             this.btnUserManagement.UseVisualStyleBackColor = false;
@@ -705,6 +705,7 @@ namespace SupportService
             this.cbShowClosed.Name = "cbShowClosed";
             this.cbShowClosed.Size = new System.Drawing.Size(111, 20);
             this.cbShowClosed.TabIndex = 8;
+            this.cbShowClosed.TabStop = false;
             this.cbShowClosed.Text = "Show closed tickets";
             this.cbShowClosed.UseVisualStyleBackColor = false;
             this.cbShowClosed.CheckedChanged += new System.EventHandler(this.cbShowClosed_CheckedChanged);
