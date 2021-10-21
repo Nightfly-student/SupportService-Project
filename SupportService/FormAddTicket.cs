@@ -55,13 +55,13 @@ namespace SupportService
                 cbReportedBy.Items.Add(item);
             }
 
-            foreach (Person item in MongoDatabaseLogic.Instance.GetUsers())
-            {
-                if (_loggedInPerson.UserType == UserType.ServiceDesk && _loggedInPerson.Id != item.Id)
-                {
-                    cbAssignedTo.Items.Add(item);
-                }
-            }
+            //foreach (Person item in MongoDatabaseLogic.Instance.GetUsers())
+            //{
+            //    if (_loggedInPerson.UserType == UserType.ServiceDesk && _loggedInPerson.Id != item.Id)
+            //    {
+            //        cbAssignedTo.Items.Add(item);
+            //    }
+            //}
 
             if (cbReportedBy.Items.Count == 1)
                 cbReportedBy.SelectedIndex = 0;
