@@ -29,7 +29,7 @@ namespace SupportService
             Person person = UserLogic.Instance.AuthUser(tbUsername.Text, tbPassword.Text);
             if (person != null)
             {
-                new FormMain(person, this).Show();
+                new FormDashboard(person, this).Show();
                 tbPassword.Clear();
                 lblError.Enabled = false;
                 Hide();

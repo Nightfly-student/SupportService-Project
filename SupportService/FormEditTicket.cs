@@ -17,18 +17,14 @@ namespace SupportService
     public partial class FormEditTicket : Form
     {
         Ticket _selectedTicket;
-        private List<Ticket> _listoftickets;
-        private TicketLogic _ticketlogics;
         private readonly TicketLogic _ticketLogic;
         private TransferTicket _transferticket;
-        
+
 
         public FormEditTicket(Ticket ticket)
         {
             InitializeComponent();
             _selectedTicket = ticket;
-            _ticketlogics = new TicketLogic();
-            _listoftickets = new List<Ticket>();
             _ticketLogic = new TicketLogic();
             _transferticket = new TransferTicket();
             btnStatus.Hide();
@@ -60,9 +56,11 @@ namespace SupportService
                 cbStatusEdit.Items.Add(MongoDatabaseLogic.Instance.GetEnumName(value));
             }
 
-            foreach (Person item in MongoDatabaseLogic.Instance.GetUsers())
+            foreach (Person person in MongoDatabaseLogic.Instance.GetUsers())
             {
-                cbAssignedToEdit.Items.Add(item);
+                if (person.UserType == UserType.Employee)
+                    continue;
+                cbAssignedToEdit.Items.Add(person);
             }
         }
 

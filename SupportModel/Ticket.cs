@@ -3,11 +3,6 @@ using MongoDB.Bson;
 
 namespace SupportModel
 {
-    public enum TypeOfIncident { Software, Hardware, Service }
-
-    public enum Priority { High, Normal, Low }
-
-    public enum Status{Unassigned, Assigned, Processing, Closed}
     public class Ticket
     {
         public ObjectId Id { get; set; }
@@ -45,12 +40,6 @@ namespace SupportModel
             IncidentDescription = incidentDescription;
             Status = Status.Unassigned;
         }
-
-
-
         public Ticket(){}
-
-        
-
     }
 }

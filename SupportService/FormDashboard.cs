@@ -1,5 +1,7 @@
 ﻿using MongoDB.Bson;
+using SupportDAL;
 using SupportDAO;
+using SupportLogic;
 using SupportModel;
 using System;
 using System.Collections.Generic;
@@ -12,6 +14,10 @@ namespace SupportService
 {
     public partial class FormDashboard : Form
     {
+        // Made by Tim Roffelsen
+        private FormLogin _formLogin;
+
+        private MongoDatabase _connectedClient;
         private TicketLogic _ticketLogic;
         private Person _loggedInPerson;
         private UserLogic _userLogic;
@@ -31,11 +37,12 @@ namespace SupportService
         private readonly Font _normalItemFont;
         private readonly Font _normalHeaderFont;
 
-        public FormDashboard(Person person)
+        public FormDashboard(Person person, FormLogin formLogin)
         {
             InitializeComponent();
             CheckConnection();
             _loggedInPerson = person;
+            _formLogin = formLogin;
             _listOrder = "NewOld";
             _orderedList = new List<Ticket>();
             _highFilter = false;
@@ -52,16 +59,41 @@ namespace SupportService
             if (_loggedInPerson.UserType == UserType.Employee)
             {
                 btnEditTicket.Hide();
+                btnUserManagement.Hide();
             }
+
+            Connect();
         }
 
         private void LblExit_Click(object sender, EventArgs e)
         {
-            Close();
+            DialogResult dialogResult = MessageBox.Show("Are you sure you want to log out?", "Log out?", MessageBoxButtons.OKCancel);
+            if (dialogResult != DialogResult.OK) return;
+            Hide();
+            _formLogin.Show();
+        }
+
+        private void Connect()
+        {
+            try
+            {
+                Cursor.Current = Cursors.WaitCursor;
+                MongoDatabaseLogic.Instance.ConnectClient(new MongoDatabase());
+                MongoDatabaseLogic.Instance.ConnectToDatabase("NoDesk");
+                _connectedClient = new MongoDatabase();
+                Cursor.Current = Cursors.Default;
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show("Something went wrong connecting to the client!\n\n" + exception.Message, "Oops!",
+                    MessageBoxButtons.OK);
+                Application.Exit();
+            }
         }
 
         private void RefreshLists()
         {
+            btnEditTicket.Enabled = false;
             _personList = _userLogic.GetUsers();
             _ticketList = _ticketLogic.GetTickets();
         }
@@ -248,7 +280,7 @@ namespace SupportService
 
         private bool ShowOpenTickets(Ticket ticket)
         {
-            if (ticket.Status == Status.Closed)
+            if (!cbShowClosed.Checked && ticket.Status == Status.Closed)
                 return false;
             return true;
         }
@@ -555,17 +587,14 @@ namespace SupportService
 
         private void BtnRefreshTickets_Click(object sender, EventArgs e)
         {
-            RefreshLists();
             RefreshListView();
         }
 
         private void BtnEditTicket_Click(object sender, EventArgs e)
         {
-            Ticket ticket = (Ticket)lvRecentTickets.SelectedItems[0].Tag;
+            Ticket ticket = (Ticket)lvRecentTickets.SelectedItems[0].Tag; // get ticket from tag
             new FormEditTicket(ticket).ShowDialog(); // add selected ticket from listview
 
-            btnEditTicket.Enabled = false;
-            RefreshLists();
             RefreshListView();
         }
 
@@ -577,6 +606,23 @@ namespace SupportService
         private void TicketSelection()
         {
             btnEditTicket.Enabled = true;
+        }
+
+        private void BtnAddTicket_Click(object sender, EventArgs e)
+        {
+            new FormAddTicket(_loggedInPerson).ShowDialog();
+            RefreshListView();
+        }
+
+        private void BtnUserManagement_Click(object sender, EventArgs e)
+        {
+            new UserManagement().ShowDialog();
+            RefreshListView();
+        }
+
+        private void cbShowClosed_CheckedChanged(object sender, EventArgs e)
+        {
+            RefreshListView();
         }
     }
 }

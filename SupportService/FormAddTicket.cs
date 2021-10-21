@@ -1,28 +1,37 @@
-﻿using SupportLogic;
+﻿using SupportDAO;
+using SupportLogic;
 using SupportModel;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Windows.Forms;
-using SupportDAO;
 
 namespace SupportService
 {
     public partial class FormAddTicket : Form
     {
-        private readonly TicketLogic _ticketLogic;
         private Person _loggedInPerson;
 
         public FormAddTicket(Person person)
         {
             InitializeComponent();
-            _ticketLogic = new TicketLogic();
             _loggedInPerson = person;
             if (_loggedInPerson.UserType == UserType.Employee)
             {
                 cbAssignedTo.Hide();
                 lblAssignedTo.Hide();
+                return;
             }
+
+            foreach (Person p in MongoDatabaseLogic.Instance.GetUsers())
+            {
+                if (p.UserType == UserType.Employee)
+                    continue;
+                cbAssignedTo.Items.Add(p);
+            }
+        }
+
+        private void Connect()
+        {
         }
 
         private void FormAddTicket_Load(object sender, EventArgs e)
@@ -53,7 +62,6 @@ namespace SupportService
                     cbAssignedTo.Items.Add(item);
                 }
             }
-
 
             if (cbReportedBy.Items.Count == 1)
                 cbReportedBy.SelectedIndex = 0;
@@ -104,11 +112,9 @@ namespace SupportService
             }
             DateTime time = DateTime.Now;
 
-            Person person = (Person) cbReportedBy.SelectedItem;
+            Person person = (Person)cbReportedBy.SelectedItem;
             Person assignedTo = (Person)cbAssignedTo.SelectedItem;
 
-           
-             
             try
             {
                 Ticket ticket;
@@ -116,23 +122,20 @@ namespace SupportService
                 {
                     ticket = new Ticket(time, tbSubject.Text, MongoDatabaseLogic.Instance.GetEnumValue<TypeOfIncident>(cbIncidentType.Text),
                         person.Id, assignedTo.Id, MongoDatabaseLogic.Instance.GetEnumValue<Priority>(cbPriority.Text), time.AddDays(days), tbDescription.Text);
-
-                    
                 }
-                else 
+                else
                 {
                     ticket = new Ticket(time, tbSubject.Text, MongoDatabaseLogic.Instance.GetEnumValue<TypeOfIncident>(cbIncidentType.Text),
                        person.Id, MongoDatabaseLogic.Instance.GetEnumValue<Priority>(cbPriority.Text), time.AddDays(days), tbDescription.Text);
                 }
 
-                MongoDatabaseLogic.Instance.InsertItem("Tickets", ticket); 
+                MongoDatabaseLogic.Instance.InsertItem("Tickets", ticket);
                 MessageBox.Show($"Ticket added!");
             }
             catch (Exception exception)
             {
-               MessageBox.Show($"Something failed\n{exception.Message}\nTicket was not added");
+                MessageBox.Show($"Something failed\n{exception.Message}\nTicket was not added");
             }
-            
         }
 
         private bool CheckFields()
@@ -146,6 +149,7 @@ namespace SupportService
                         if (!ValidationTextBox(textBox, "Field may not be empty!"))
                             allChecked = false;
                         break;
+
                     case ComboBox comboBox:
                         if (!ValidationComboBox(comboBox, "Field may not be empty!"))
                             allChecked = false;
@@ -179,7 +183,5 @@ namespace SupportService
             errorProvider.SetError(comboBox, null);
             return true;
         }
-
-       
     }
 }

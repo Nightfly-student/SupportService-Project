@@ -55,6 +55,7 @@ namespace SupportService
             // 
             this.tbSubject.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbSubject.Location = new System.Drawing.Point(3, 5);
+            this.tbSubject.MaxLength = 25;
             this.tbSubject.Name = "tbSubject";
             this.tbSubject.Size = new System.Drawing.Size(196, 29);
             this.tbSubject.TabIndex = 1;
@@ -174,6 +175,7 @@ namespace SupportService
             // 
             this.tbDescription.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbDescription.Location = new System.Drawing.Point(3, 227);
+            this.tbDescription.MaxLength = 1000;
             this.tbDescription.Multiline = true;
             this.tbDescription.Name = "tbDescription";
             this.tbDescription.Size = new System.Drawing.Size(389, 154);
