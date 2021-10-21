@@ -1,13 +1,10 @@
-﻿using System;
+﻿using SupportDAL;
+using SupportModel;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using SupportDAL;
-using SupportModel;
 
 namespace SupportLogic
 {
@@ -24,6 +21,7 @@ namespace SupportLogic
         {
             _connectedClient = connectedClient;
         }
+
         public static MongoDatabaseLogic Instance
         {
             get
@@ -36,6 +34,7 @@ namespace SupportLogic
                 return instance;
             }
         }
+
         public List<ListViewItem> ListViewItemsFromCollection(string collectionName)
         {
             var records = _connectedClient.LoadFromCollection<Person>(collectionName);
@@ -69,6 +68,7 @@ namespace SupportLogic
             }
             return value.ToString();
         }
+
         public void InsertItem<T>(string collectionName, T item)
         {
             _connectedClient.InsertItem(collectionName, item);
@@ -87,7 +87,7 @@ namespace SupportLogic
         public bool Exists(string username)
         {
             var records = _connectedClient.LoadFromCollection<Person>("Employees");
-            foreach(var record in records)
+            foreach (var record in records)
             {
                 if (record.Username.Equals(username))
                 {
@@ -119,7 +119,6 @@ namespace SupportLogic
             return val;
         }
 
-
         public List<string> GetUserName()
         {
             var records = _connectedClient.LoadFromCollection<Person>("Employees");
@@ -131,6 +130,7 @@ namespace SupportLogic
 
             return items;
         }
+
         public List<Person> GetUsers()
         {
             var records = _connectedClient.LoadFromCollection<Person>("Employees");
@@ -160,8 +160,5 @@ namespace SupportLogic
             }
             return items;
         }
-
-
-
     }
 }

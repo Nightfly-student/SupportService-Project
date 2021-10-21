@@ -77,10 +77,12 @@ namespace SupportService
 
         private void FillListView()
         {
+            // when _searchword is empty or when _searchword is NOT found in IncidentDescription, fill normal listview
             if (string.IsNullOrEmpty(_searchWord) || _orderedList.Find(t => t.IncidentDescription.ToLower().Contains(_searchWord.ToLower())) == null)
             {
                 FillNormalListView();
             }
+            // else show extended listview with IncidentDescription snippet included
             else
             {
                 FillExtendedListView();
@@ -89,6 +91,7 @@ namespace SupportService
 
         private void FillNormalListView()
         {
+            // make columns
             lvRecentTickets.Columns.Add("", 7);
             lvRecentTickets.Columns.Add("Subject", 240);
             lvRecentTickets.Columns.Add("Status", 150);
@@ -97,6 +100,7 @@ namespace SupportService
             lvRecentTickets.Columns.Add("Ticket Made", 174);
             foreach (var ticket in _orderedList)
             {
+                // if ticket doesn't meet criteria, skip
                 if (!ShowPersonResults(ticket))
                     continue;
                 if (!ShowOpenTickets(ticket))
@@ -107,6 +111,7 @@ namespace SupportService
                     continue;
                 if (!ShowTypeResults(ticket))
                     continue;
+                // make listview item with the Tag containing the ticket for easy retrieval
                 ListViewItem lvItem = new ListViewItem
                 {
                     Tag = ticket,
@@ -120,29 +125,16 @@ namespace SupportService
                         GetTicketTime(ticket)
                     }
                 };
-                switch (ticket.Priority)
-                {
-                    case Priority.High:
-                        lvItem.SubItems[0].BackColor = Color.Red;
-                        break;
-
-                    case Priority.Normal:
-                        lvItem.SubItems[0].BackColor = Color.Orange;
-                        break;
-
-                    case Priority.Low:
-                        lvItem.SubItems[0].BackColor = Color.Green;
-                        break;
-                }
-
+                // colours for first row matching the ticket's priority level
                 lvItem.UseItemStyleForSubItems = false;
-                ListViewDesign(ticket, lvItem, _normalItemFont, _normalHeaderFont, lvRecentTickets);
+                ListViewColors(ticket, lvItem, _normalItemFont, _normalHeaderFont, lvRecentTickets);
                 lvRecentTickets.Items.Add(lvItem);
             }
         }
 
         private void FillExtendedListView()
         {
+            // make columns
             lvRecentTickets.Columns.Add("", 7);
             lvRecentTickets.Columns.Add("Subject", 220);
             lvRecentTickets.Columns.Add("Status", 115);
@@ -152,6 +144,7 @@ namespace SupportService
             lvRecentTickets.Columns.Add("Matching Description", 220);
             foreach (var ticket in _orderedList)
             {
+                // if ticket doesn't meet criteria, skip
                 if (!ShowPersonResults(ticket))
                     continue;
                 if (!ShowOpenTickets(ticket))
@@ -162,6 +155,7 @@ namespace SupportService
                     continue;
                 if (!ShowTypeResults(ticket))
                     continue;
+                // make listview item with the Tag containing the ticket for easy retrieval
                 ListViewItem lvItem = new ListViewItem
                 {
                     Tag = ticket,
@@ -173,16 +167,16 @@ namespace SupportService
                         (ticket.TimeDueBy - DateTime.Now).TotalDays.ToString("## 'days'"),
                         GetAssignedTo(ticket.AssignedTo),
                         GetTicketTime(ticket),
-                        GetMatchingDescription(ticket)
+                        GetMatchingDescription(ticket) // get matching description snippet
                     },
                     UseItemStyleForSubItems = false
                 };
-                ListViewDesign(ticket, lvItem, _smallItemFont, _smallHeaderFont, lvRecentTickets);
+                ListViewColors(ticket, lvItem, _smallItemFont, _smallHeaderFont, lvRecentTickets);
                 lvRecentTickets.Items.Add(lvItem);
             }
         }
 
-        private void ListViewDesign(Ticket ticket, ListViewItem lvItem, Font itemFont, Font headerFont, ListView listView)
+        private void ListViewColors(Ticket ticket, ListViewItem lvItem, Font itemFont, Font headerFont, ListView listView)
         {
             switch (ticket.Priority)
             {
@@ -285,6 +279,7 @@ namespace SupportService
 
         private bool ShowPriorityResults(Ticket ticket)
         {
+            // only shows tickets with matching priority
             if (cbFilterPriority.Checked && (ticket.Priority != Priority.High || !_highFilter) &&
                 (ticket.Priority != Priority.Normal || !_normalFilter) &&
                 (ticket.Priority != Priority.Low || !_lowFilter))
@@ -294,6 +289,7 @@ namespace SupportService
 
         private bool ShowTypeResults(Ticket ticket)
         {
+            // only shows tickets with matching incident type
             if (cbFilterType.Checked && (ticket.IncidentType != TypeOfIncident.Hardware || !_hardwareFilter) &&
                 (ticket.IncidentType != TypeOfIncident.Software || !_softwareFilter) &&
                 (ticket.IncidentType != TypeOfIncident.Service || !_serviceFilter))
@@ -303,6 +299,7 @@ namespace SupportService
 
         private void OrderList()
         {
+            // sort depending on state of string _listOrder, data is retrieved from _orderedList
             DateTime timeNow;
             switch (_listOrder)
             {
@@ -328,25 +325,29 @@ namespace SupportService
 
         private void RefreshCounts()
         {
-            if (_loggedInPerson.UserType == UserType.Employee) return;
+            // total amount of tickets in listview
             lblOpenAmount.Text = lvRecentTickets.Items.Count.ToString();
             int low = 0;
             int mid = 0;
             int high = 0;
             foreach (ListViewItem listViewItem in lvRecentTickets.Items)
             {
-                Ticket ticket = (Ticket) listViewItem.Tag;
-                if(_loggedInPerson.UserType == UserType.Employee)
+                Ticket ticket = (Ticket)listViewItem.Tag;
+                // if loggedInPerson is of type Employee, only show own tickets
+                if (_loggedInPerson.UserType == UserType.Employee)
                     if (ticket.MadeBy != _loggedInPerson.Id)
                         continue;
+                // ticket counts
                 switch (ticket.Priority)
                 {
                     case Priority.Low:
                         low++;
                         break;
+
                     case Priority.Normal:
                         mid++;
                         break;
+
                     case Priority.High:
                         high++;
                         break;
@@ -400,10 +401,10 @@ namespace SupportService
 
         private string GetAssignedTo(ObjectId id)
         {
-          Person person;
+            Person person;
             try
             {
-               person = _ticketLogic.GetPerson(id);
+                person = _ticketLogic.GetPerson(id);
             }
             catch
             {
@@ -412,7 +413,7 @@ namespace SupportService
 
             if (person == null)
                 return "-";
-            return person.ToString(); 
+            return person.ToString();
         }
 
         private void ResetLabels(Label label)

@@ -1,10 +1,9 @@
 ﻿using MongoDB.Bson;
 using MongoDB.Bson.Serialization;
 using MongoDB.Driver;
-using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Configuration;
+using System.Linq;
 
 namespace SupportDAL
 {
@@ -58,7 +57,7 @@ namespace SupportDAL
             return _db?.DatabaseNamespace.DatabaseName;
         }
 
-        //Add a BSON document from a json string
+        // add a BSON document from a json string
         public void Add(string json, string collectionName)
         {
             var document = BsonSerializer.Deserialize<BsonDocument>(json);
@@ -79,15 +78,9 @@ namespace SupportDAL
             _db.GetCollection<T>(typeof(T).Name).InsertOne(item);
         }
 
-        //public void Update<Person>(Person item) where Person : class, new()
-        //{
-        //    _db.GetCollection<Person>(typeof(Person).Name).ReplaceOne(doc => doc.Id == item.Id, item);
-
-        //}
-
+        // delete an item from database
         public void Delete<T>(T item) where T : class, new()
         {
-            //WorkAround for DeleteOne parameter
             ObjectFilterDefinition<T> filter = new ObjectFilterDefinition<T>(item);
             // Remove the object.
             _db.GetCollection<T>(typeof(T).Name).FindOneAndDelete(filter);
@@ -101,8 +94,6 @@ namespace SupportDAL
             return collection.Find(new BsonDocument()).ToList();
         }
 
-
-
         // load specific item by ID
         public T LoadItemById<T>(string collectionName, ObjectId id)
         {
@@ -111,6 +102,7 @@ namespace SupportDAL
 
             return collection.Find(filter).First();
         }
+
         //Jelle TOonen tel de items op en return het (#tickets)//
         public int CountItemByName<T>(string collectionName, string item, string name)
         {
@@ -119,6 +111,7 @@ namespace SupportDAL
             var count = collection.Find(filter).CountDocuments();
             return int.Parse(count.ToString());
         }
+
         public T FindItemByName<T>(string collectionName, string item, string name)
         {
             var collection = _db.GetCollection<T>(collectionName);
@@ -126,6 +119,7 @@ namespace SupportDAL
 
             return collection.Find(filter).First();
         }
+
         public void UpdateItemByName<T>(string collectionName, string item, string name, T replace)
         {
             var collection = _db.GetCollection<T>(collectionName);
@@ -142,7 +136,6 @@ namespace SupportDAL
             collection.FindOneAndReplace(filter, replace);
         }
 
-
         public void DeleteItemByName<T>(string collectionName, string item, string name)
         {
             var collection = _db.GetCollection<T>(collectionName);
@@ -150,6 +143,7 @@ namespace SupportDAL
 
             collection.DeleteOne(filter);
         }
+
         public void DeleteItemById<T>(string collectionName, ObjectId id)
         {
             var collection = _db.GetCollection<T>(collectionName);
@@ -157,8 +151,6 @@ namespace SupportDAL
 
             collection.DeleteOne(filter);
         }
-
-      
 
         public static BsonObjectId Parse(string s)
         {
