@@ -116,6 +116,8 @@ namespace SupportService
                 {
                     ticket = new Ticket(time, tbSubject.Text, MongoDatabaseLogic.Instance.GetEnumValue<TypeOfIncident>(cbIncidentType.Text),
                         person.Id, assignedTo.Id, MongoDatabaseLogic.Instance.GetEnumValue<Priority>(cbPriority.Text), time.AddDays(days), tbDescription.Text);
+
+                    
                 }
                 else 
                 {
@@ -177,5 +179,7 @@ namespace SupportService
             errorProvider.SetError(comboBox, null);
             return true;
         }
+
+       
     }
 }

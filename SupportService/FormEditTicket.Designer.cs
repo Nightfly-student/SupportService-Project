@@ -55,7 +55,7 @@ namespace SupportService
             this.Priority});
             this.lstEditTicket.HideSelection = false;
             this.lstEditTicket.Location = new System.Drawing.Point(6, 13);
-            this.lstEditTicket.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.lstEditTicket.Margin = new System.Windows.Forms.Padding(2);
             this.lstEditTicket.Name = "lstEditTicket";
             this.lstEditTicket.Size = new System.Drawing.Size(572, 139);
             this.lstEditTicket.TabIndex = 0;
@@ -89,28 +89,31 @@ namespace SupportService
             // 
             this.cbPriorityEdit.FormattingEnabled = true;
             this.cbPriorityEdit.Location = new System.Drawing.Point(6, 327);
-            this.cbPriorityEdit.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cbPriorityEdit.Margin = new System.Windows.Forms.Padding(2);
             this.cbPriorityEdit.Name = "cbPriorityEdit";
             this.cbPriorityEdit.Size = new System.Drawing.Size(82, 21);
             this.cbPriorityEdit.TabIndex = 1;
+            this.cbPriorityEdit.SelectedIndexChanged += new System.EventHandler(this.cbPriorityEdit_SelectedIndexChanged);
             // 
             // cbAssignedToEdit
             // 
             this.cbAssignedToEdit.FormattingEnabled = true;
             this.cbAssignedToEdit.Location = new System.Drawing.Point(6, 266);
-            this.cbAssignedToEdit.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cbAssignedToEdit.Margin = new System.Windows.Forms.Padding(2);
             this.cbAssignedToEdit.Name = "cbAssignedToEdit";
             this.cbAssignedToEdit.Size = new System.Drawing.Size(82, 21);
             this.cbAssignedToEdit.TabIndex = 2;
+            this.cbAssignedToEdit.SelectedIndexChanged += new System.EventHandler(this.cbAssignedToEdit_SelectedIndexChanged);
             // 
             // cbStatusEdit
             // 
             this.cbStatusEdit.FormattingEnabled = true;
             this.cbStatusEdit.Location = new System.Drawing.Point(6, 201);
-            this.cbStatusEdit.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cbStatusEdit.Margin = new System.Windows.Forms.Padding(2);
             this.cbStatusEdit.Name = "cbStatusEdit";
             this.cbStatusEdit.Size = new System.Drawing.Size(82, 21);
             this.cbStatusEdit.TabIndex = 3;
+            this.cbStatusEdit.SelectedIndexChanged += new System.EventHandler(this.cbStatusEdit_SelectedIndexChanged);
             // 
             // lblStatus
             // 
@@ -148,7 +151,7 @@ namespace SupportService
             // btnStatus
             // 
             this.btnStatus.Location = new System.Drawing.Point(147, 171);
-            this.btnStatus.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnStatus.Margin = new System.Windows.Forms.Padding(2);
             this.btnStatus.Name = "btnStatus";
             this.btnStatus.Size = new System.Drawing.Size(117, 79);
             this.btnStatus.TabIndex = 9;
@@ -159,7 +162,7 @@ namespace SupportService
             // btnAssignedTo
             // 
             this.btnAssignedTo.Location = new System.Drawing.Point(291, 171);
-            this.btnAssignedTo.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnAssignedTo.Margin = new System.Windows.Forms.Padding(2);
             this.btnAssignedTo.Name = "btnAssignedTo";
             this.btnAssignedTo.Size = new System.Drawing.Size(117, 79);
             this.btnAssignedTo.TabIndex = 10;
@@ -170,7 +173,7 @@ namespace SupportService
             // btnPriority
             // 
             this.btnPriority.Location = new System.Drawing.Point(427, 171);
-            this.btnPriority.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnPriority.Margin = new System.Windows.Forms.Padding(2);
             this.btnPriority.Name = "btnPriority";
             this.btnPriority.Size = new System.Drawing.Size(112, 79);
             this.btnPriority.TabIndex = 11;
@@ -204,7 +207,7 @@ namespace SupportService
             this.Controls.Add(this.cbAssignedToEdit);
             this.Controls.Add(this.cbPriorityEdit);
             this.Controls.Add(this.lstEditTicket);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "FormEditTicket";
             this.Text = "FormEditTicket";
             this.Load += new System.EventHandler(this.FormEditTicket_Load);

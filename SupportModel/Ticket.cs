@@ -31,7 +31,7 @@ namespace SupportModel
             Priority = priority;
             TimeDueBy = timeDueBy;
             IncidentDescription = incidentDescription;
-            Status = Status.Unassigned;
+            Status = Status.Assigned;
         }
 
         public Ticket(DateTime timeReported, string subject, TypeOfIncident incidentType, ObjectId person, Priority priority, DateTime timeDueBy, string incidentDescription)

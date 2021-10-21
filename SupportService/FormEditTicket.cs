@@ -20,6 +20,7 @@ namespace SupportService
         private List<Ticket> _listoftickets;
         private TicketLogic _ticketlogics;
         private readonly TicketLogic _ticketLogic;
+        private TransferTicket _transferticket;
         
 
         public FormEditTicket(Ticket ticket)
@@ -29,12 +30,25 @@ namespace SupportService
             _ticketlogics = new TicketLogic();
             _listoftickets = new List<Ticket>();
             _ticketLogic = new TicketLogic();
+            _transferticket = new TransferTicket();
+            btnStatus.Hide();
+            btnAssignedTo.Hide();
+            btnPriority.Hide();
             checkConnection();
         }
 
 
         private void FormEditTicket_Load(object sender, EventArgs e)
         {
+            FillComboBoxItem();
+            FillListViewItem();
+        }
+
+        
+
+        public void FillComboBoxItem()
+        {
+            // Fills the combobox with the data from the database
 
             foreach (var value in Enum.GetValues(typeof(Priority)))
             {
@@ -50,13 +64,15 @@ namespace SupportService
             {
                 cbAssignedToEdit.Items.Add(item);
             }
-
-            FillListViewItem();
         }
 
         public void FillListViewItem()
         {
+            // Fills the string variable with the firstname + lastname if the objectID is not equal to the default value of MongoDB
+
             string assignedPersonString = _ticketLogic.isAssignedToValid(_selectedTicket.AssignedTo) ? _ticketLogic.GetPerson(_selectedTicket.AssignedTo).ToString() : "";
+
+            // Fills listview with the selectedticket from the listview in formDashboard
 
             ListViewItem li = new ListViewItem();
             li.Tag = _selectedTicket;
@@ -66,11 +82,6 @@ namespace SupportService
             li.SubItems.Add(_selectedTicket.Priority.ToString());
 
             lstEditTicket.Items.Add(li);
-        }
-
-        public void ClearListView()
-        {
-            lstEditTicket.Items.Clear();
         }
 
         public void checkConnection()
@@ -98,12 +109,9 @@ namespace SupportService
             {
                 Person selectedperson = (Person)cbAssignedToEdit.SelectedItem;
 
-                Ticket oldticket = _selectedTicket;
-                Ticket newticket = oldticket;
-                newticket.AssignedTo = selectedperson.Id;
-
-                _ticketLogic.updateTicket(oldticket, newticket);
-
+                _transferticket.UpdateAssignedTo(selectedperson, _selectedTicket);
+               
+                CheckIfAssignedTo();
                 MessageBox.Show($"Assigned To edited!");
             }
             catch (Exception exception)
@@ -111,7 +119,7 @@ namespace SupportService
                 MessageBox.Show($"Something failed\n{exception.Message}\nAssigned to has not been edited");
             }
 
-            RefreshLists();
+            RefreshItems();
         }
 
         private void btnStatus_Click(object sender, EventArgs e)
@@ -120,11 +128,7 @@ namespace SupportService
             {
                 Status selectedStatus = (Status)System.Enum.Parse(typeof(Status), cbStatusEdit.SelectedItem.ToString());
 
-                Ticket oldticket = _selectedTicket;
-                Ticket newticket = oldticket;
-                newticket.Status = selectedStatus;
-
-                _ticketLogic.updateTicket(oldticket, newticket);
+                _transferticket.UpdateStatus(selectedStatus, _selectedTicket);
 
                 MessageBox.Show($"Status edited!");
             }
@@ -133,20 +137,16 @@ namespace SupportService
                 MessageBox.Show($"Something failed\n{exception.Message}\nStatus has not been edited");
             }
 
-            RefreshLists();
+            RefreshItems();
         }
 
         private void btnPriority_Click(object sender, EventArgs e)
         {
-            try {
+            try 
+            {
                 Priority selectedPriority = (Priority)System.Enum.Parse(typeof(Priority), cbPriorityEdit.SelectedItem.ToString());
 
-
-                Ticket oldticket = _selectedTicket;
-                Ticket newticket = oldticket;
-                newticket.Priority = selectedPriority;
-
-                _ticketLogic.updateTicket(oldticket, newticket);
+                _transferticket.UpdatePriority(selectedPriority, _selectedTicket);
 
                 MessageBox.Show($"Priority edited!");
             }
@@ -155,19 +155,104 @@ namespace SupportService
                 MessageBox.Show($"Something failed\n{exception.Message}\nPriority has not been edited");
             }
 
-            RefreshLists();
+            RefreshItems();
         }
 
         private void btnRefreshEditTicket_Click(object sender, EventArgs e)
         {
-            RefreshLists();
+            RefreshItems();
             MessageBox.Show($"Refreshed succesfully!");
         }
 
-        private void RefreshLists()
+        private void RefreshItems()
         {
+            // Refreshes the items from the listview and combobox and hides the buttons again
+
             ClearListView();
+            ClearComboBox();
             FillListViewItem();
+            FillComboBoxItem();
+
+            btnStatus.Hide();
+            btnPriority.Hide();
+            btnAssignedTo.Hide();
+            
+        }
+
+        public void ClearListView()
+        {
+            lstEditTicket.Items.Clear();
+        }
+
+        public void ClearComboBox()
+        {
+            cbAssignedToEdit.SelectedIndex = -1;
+            cbPriorityEdit.SelectedIndex = -1;
+            cbStatusEdit.SelectedIndex = -1;
+
+            cbAssignedToEdit.Items.Clear();
+            cbPriorityEdit.Items.Clear();
+            cbStatusEdit.Items.Clear();
+
+          
+        }
+
+        public void CheckIfAssignedTo()
+        {
+            // Automatically makes the Status go from unassigned to assigned when a ticket gets assigned to a person
+
+            if(_selectedTicket.Status == SupportModel.Status.Unassigned)
+            {
+                Status selectedStatus = SupportModel.Status.Assigned;
+
+                Ticket oldticket = _selectedTicket;
+                Ticket newticket = oldticket;
+                newticket.Status = selectedStatus;
+
+                _ticketLogic.updateTicket(oldticket, newticket);
+
+            }
+        }
+
+        public void CheckIfStatusSelected()
+        {
+            if(cbStatusEdit.SelectedIndex >= 0)
+            {
+                btnStatus.Show();
+            }
+
+        }
+
+        public void CheckIfPrioritySelected()
+        {
+            if (cbPriorityEdit.SelectedIndex >= 0)
+            {
+                btnPriority.Show();
+            }
+        }
+
+        public void CheckIfAssignedToSelected()
+        {
+            if (cbAssignedToEdit.SelectedIndex >= 0)
+            {
+                btnAssignedTo.Show();
+            }
+        }
+
+        private void cbStatusEdit_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            CheckIfStatusSelected();
+            
+        }
+
+        private void cbAssignedToEdit_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            CheckIfAssignedToSelected();
+        }
+
+        private void cbPriorityEdit_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            CheckIfPrioritySelected();
         }
     }
 }
