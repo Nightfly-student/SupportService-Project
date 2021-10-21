@@ -12,6 +12,7 @@ namespace SupportService
 {
     public partial class FormDashboard : Form
     {
+        // Made by Tim Roffelsen
         private TicketLogic _ticketLogic;
         private Person _loggedInPerson;
         private UserLogic _userLogic;
