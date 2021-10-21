@@ -85,6 +85,7 @@ namespace SupportDAO
                 item.SubItems.Add(record.Email);
                 item.SubItems.Add(record.FirstName);
                 item.SubItems.Add(record.LastName);
+                item.SubItems.Add(record.UserType.ToString());
                 item.SubItems.Add(count.ToString());
                 items.Add(item);
             }
