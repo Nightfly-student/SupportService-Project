@@ -93,6 +93,7 @@ namespace SupportService
 
         private void RefreshLists()
         {
+            btnEditTicket.Enabled = false;
             _personList = _userLogic.GetUsers();
             _ticketList = _ticketLogic.GetTickets();
         }
@@ -279,7 +280,7 @@ namespace SupportService
 
         private bool ShowOpenTickets(Ticket ticket)
         {
-            if (ticket.Status == Status.Closed)
+            if (!cbShowClosed.Checked && ticket.Status == Status.Closed)
                 return false;
             return true;
         }
@@ -586,13 +587,6 @@ namespace SupportService
 
         private void BtnRefreshTickets_Click(object sender, EventArgs e)
         {
-            FullRefresh();
-        }
-
-        private void FullRefresh()
-        {
-            btnEditTicket.Enabled = false;
-            RefreshLists();
             RefreshListView();
         }
 
@@ -601,7 +595,7 @@ namespace SupportService
             Ticket ticket = (Ticket)lvRecentTickets.SelectedItems[0].Tag; // get ticket from tag
             new FormEditTicket(ticket).ShowDialog(); // add selected ticket from listview
 
-            FullRefresh();
+            RefreshListView();
         }
 
         private void LvRecentTickets_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e)
@@ -617,13 +611,18 @@ namespace SupportService
         private void BtnAddTicket_Click(object sender, EventArgs e)
         {
             new FormAddTicket(_loggedInPerson).ShowDialog();
-            FullRefresh();
+            RefreshListView();
         }
 
         private void BtnUserManagement_Click(object sender, EventArgs e)
         {
             new UserManagement().ShowDialog();
-            FullRefresh();
+            RefreshListView();
+        }
+
+        private void cbShowClosed_CheckedChanged(object sender, EventArgs e)
+        {
+            RefreshListView();
         }
     }
 }

@@ -83,6 +83,7 @@ namespace SupportService
             this.btnEditTicket = new System.Windows.Forms.Button();
             this.btnAddTicket = new System.Windows.Forms.Button();
             this.btnUserManagement = new System.Windows.Forms.Button();
+            this.cbShowClosed = new System.Windows.Forms.CheckBox();
             this.pnlDashboard.SuspendLayout();
             this.pnlOpenTickets.SuspendLayout();
             this.pnlOpenAmount.SuspendLayout();
@@ -199,7 +200,7 @@ namespace SupportService
             this.pnlOpenTickets.Controls.Add(this.lblOpenTickets);
             this.pnlOpenTickets.Location = new System.Drawing.Point(12, 53);
             this.pnlOpenTickets.Name = "pnlOpenTickets";
-            this.pnlOpenTickets.Padding = new System.Windows.Forms.Padding(20, 20, 20, 20);
+            this.pnlOpenTickets.Padding = new System.Windows.Forms.Padding(20);
             this.pnlOpenTickets.Size = new System.Drawing.Size(167, 85);
             this.pnlOpenTickets.TabIndex = 8;
             // 
@@ -240,7 +241,7 @@ namespace SupportService
             this.pnlHighPriority.Controls.Add(this.lblHighPriority);
             this.pnlHighPriority.Location = new System.Drawing.Point(191, 53);
             this.pnlHighPriority.Name = "pnlHighPriority";
-            this.pnlHighPriority.Padding = new System.Windows.Forms.Padding(20, 20, 20, 20);
+            this.pnlHighPriority.Padding = new System.Windows.Forms.Padding(20);
             this.pnlHighPriority.Size = new System.Drawing.Size(167, 85);
             this.pnlHighPriority.TabIndex = 8;
             // 
@@ -281,7 +282,7 @@ namespace SupportService
             this.pnlNormalPriority.Controls.Add(this.lblNormalPriority);
             this.pnlNormalPriority.Location = new System.Drawing.Point(371, 53);
             this.pnlNormalPriority.Name = "pnlNormalPriority";
-            this.pnlNormalPriority.Padding = new System.Windows.Forms.Padding(20, 20, 20, 20);
+            this.pnlNormalPriority.Padding = new System.Windows.Forms.Padding(20);
             this.pnlNormalPriority.Size = new System.Drawing.Size(167, 85);
             this.pnlNormalPriority.TabIndex = 8;
             // 
@@ -322,7 +323,7 @@ namespace SupportService
             this.pnlLowPriority.Controls.Add(this.lblLowPriority);
             this.pnlLowPriority.Location = new System.Drawing.Point(551, 53);
             this.pnlLowPriority.Name = "pnlLowPriority";
-            this.pnlLowPriority.Padding = new System.Windows.Forms.Padding(20, 20, 20, 20);
+            this.pnlLowPriority.Padding = new System.Windows.Forms.Padding(20);
             this.pnlLowPriority.Size = new System.Drawing.Size(167, 85);
             this.pnlLowPriority.TabIndex = 8;
             // 
@@ -463,6 +464,7 @@ namespace SupportService
             // pnlSearch
             // 
             this.pnlSearch.BackColor = System.Drawing.Color.White;
+            this.pnlSearch.Controls.Add(this.cbShowClosed);
             this.pnlSearch.Controls.Add(this.tbSearchBox);
             this.pnlSearch.Controls.Add(this.lblSearch);
             this.pnlSearch.Location = new System.Drawing.Point(954, 148);
@@ -694,6 +696,19 @@ namespace SupportService
             this.btnUserManagement.UseVisualStyleBackColor = false;
             this.btnUserManagement.Click += new System.EventHandler(this.BtnUserManagement_Click);
             // 
+            // cbShowClosed
+            // 
+            this.cbShowClosed.AutoSize = true;
+            this.cbShowClosed.BackColor = System.Drawing.Color.Transparent;
+            this.cbShowClosed.Font = new System.Drawing.Font("Arial Narrow", 9F);
+            this.cbShowClosed.Location = new System.Drawing.Point(127, 5);
+            this.cbShowClosed.Name = "cbShowClosed";
+            this.cbShowClosed.Size = new System.Drawing.Size(111, 20);
+            this.cbShowClosed.TabIndex = 8;
+            this.cbShowClosed.Text = "Show closed tickets";
+            this.cbShowClosed.UseVisualStyleBackColor = false;
+            this.cbShowClosed.CheckedChanged += new System.EventHandler(this.cbShowClosed_CheckedChanged);
+            // 
             // FormDashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -806,5 +821,6 @@ namespace SupportService
         private System.Windows.Forms.Button btnEditTicket;
         private System.Windows.Forms.Button btnAddTicket;
         private System.Windows.Forms.Button btnUserManagement;
+        private System.Windows.Forms.CheckBox cbShowClosed;
     }
 }
