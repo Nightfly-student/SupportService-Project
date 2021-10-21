@@ -328,20 +328,33 @@ namespace SupportService
 
         private void RefreshCounts()
         {
-            if (_loggedInPerson.UserType != UserType.Employee)
+            if (_loggedInPerson.UserType == UserType.Employee) return;
+            lblOpenAmount.Text = lvRecentTickets.Items.Count.ToString();
+            int low = 0;
+            int mid = 0;
+            int high = 0;
+            foreach (ListViewItem listViewItem in lvRecentTickets.Items)
             {
-                lblOpenAmount.Text = _ticketList.Count.ToString();
-                lblLowAmount.Text = _ticketList.Count(i => i.Priority == Priority.Low).ToString();
-                lblNormalAmount.Text = _ticketList.Count(i => i.Priority == Priority.Normal).ToString();
-                lblHighAmount.Text = _ticketList.Count(i => i.Priority == Priority.High).ToString();
+                Ticket ticket = (Ticket) listViewItem.Tag;
+                if(_loggedInPerson.UserType == UserType.Employee)
+                    if (ticket.MadeBy != _loggedInPerson.Id)
+                        continue;
+                switch (ticket.Priority)
+                {
+                    case Priority.Low:
+                        low++;
+                        break;
+                    case Priority.Normal:
+                        mid++;
+                        break;
+                    case Priority.High:
+                        high++;
+                        break;
+                }
             }
-            else
-            {
-                lblOpenAmount.Text = _ticketList.Count.ToString();
-                lblLowAmount.Text = _ticketList.Count(i => i.Priority == Priority.Low && i.MadeBy == _loggedInPerson.Id).ToString();
-                lblNormalAmount.Text = _ticketList.Count(i => i.Priority == Priority.Normal && i.MadeBy == _loggedInPerson.Id).ToString();
-                lblHighAmount.Text = _ticketList.Count(i => i.Priority == Priority.High && i.MadeBy == _loggedInPerson.Id).ToString();
-            }
+            lblLowAmount.Text = low.ToString();
+            lblNormalAmount.Text = mid.ToString();
+            lblHighAmount.Text = high.ToString();
         }
 
         public void CheckConnection()
@@ -456,6 +469,7 @@ namespace SupportService
         {
             _searchWord = tbSearchBox.Text;
             RefreshListView();
+            RefreshCounts();
         }
 
         private bool FilterOptionSelected(bool state, Label label)
