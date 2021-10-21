@@ -19,9 +19,8 @@ namespace SupportService
         Ticket _selectedTicket;
         private List<Ticket> _listoftickets;
         private TicketLogic _ticketlogics;
-        private List<Person> _getUsers;
         private readonly TicketLogic _ticketLogic;
-        private Person _loggedInPerson;
+        
 
         public FormEditTicket(Ticket ticket)
         {
@@ -34,12 +33,9 @@ namespace SupportService
         }
 
 
-  
-       
-
-
         private void FormEditTicket_Load(object sender, EventArgs e)
         {
+
             foreach (var value in Enum.GetValues(typeof(Priority)))
             {
                 cbPriorityEdit.Items.Add(MongoDatabaseLogic.Instance.GetEnumName(value));
@@ -50,40 +46,31 @@ namespace SupportService
                 cbStatusEdit.Items.Add(MongoDatabaseLogic.Instance.GetEnumName(value));
             }
 
-         
-
-             _listoftickets.Add(_selectedTicket);
-
-
-            
-
-            string assignedPersonString = _ticketLogic.isAssignedToValid(_selectedTicket.AssignedTo) ? _ticketLogic.GetPerson(_selectedTicket.AssignedTo).ToString() : "";
-
-            
-
-
-
-                ListViewItem li = new ListViewItem();
-                li.Tag = _selectedTicket;
-                li.Text = _selectedTicket.Subject;
-                li.SubItems.Add(_selectedTicket.Status.ToString());
-                li.SubItems.Add(assignedPersonString);
-                li.SubItems.Add(_selectedTicket.Priority.ToString());
-
-
-                lstEditTicket.Items.Add(li);
-
-            
-
-            List<Person> people = MongoDatabaseLogic.Instance.GetUsers();
-
             foreach (Person item in MongoDatabaseLogic.Instance.GetUsers())
             {
-               
                 cbAssignedToEdit.Items.Add(item);
             }
 
+            FillListViewItem();
+        }
 
+        public void FillListViewItem()
+        {
+            string assignedPersonString = _ticketLogic.isAssignedToValid(_selectedTicket.AssignedTo) ? _ticketLogic.GetPerson(_selectedTicket.AssignedTo).ToString() : "";
+
+            ListViewItem li = new ListViewItem();
+            li.Tag = _selectedTicket;
+            li.Text = _selectedTicket.Subject;
+            li.SubItems.Add(_selectedTicket.Status.ToString());
+            li.SubItems.Add(assignedPersonString);
+            li.SubItems.Add(_selectedTicket.Priority.ToString());
+
+            lstEditTicket.Items.Add(li);
+        }
+
+        public void ClearListView()
+        {
+            lstEditTicket.Items.Clear();
         }
 
         public void checkConnection()
@@ -107,40 +94,80 @@ namespace SupportService
 
         private void btnAssignedTo_Click(object sender, EventArgs e)
         {
-            Person selectedperson = (Person)cbAssignedToEdit.SelectedItem;
-           
+            try
+            {
+                Person selectedperson = (Person)cbAssignedToEdit.SelectedItem;
 
-            Ticket oldticket = _selectedTicket;
-            Ticket newticket = oldticket;
-            newticket.AssignedTo = selectedperson.Id;
+                Ticket oldticket = _selectedTicket;
+                Ticket newticket = oldticket;
+                newticket.AssignedTo = selectedperson.Id;
 
-            _ticketLogic.updateTicket(oldticket, newticket);
+                _ticketLogic.updateTicket(oldticket, newticket);
+
+                MessageBox.Show($"Assigned To edited!");
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show($"Something failed\n{exception.Message}\nAssigned to has not been edited");
+            }
+
+            RefreshLists();
         }
 
         private void btnStatus_Click(object sender, EventArgs e)
         {
-            Status selectedStatus = (Status)System.Enum.Parse(typeof(Status), cbStatusEdit.SelectedItem.ToString());
+            try
+            {
+                Status selectedStatus = (Status)System.Enum.Parse(typeof(Status), cbStatusEdit.SelectedItem.ToString());
 
-            Ticket oldticket = _selectedTicket;
-            Ticket newticket = oldticket;
-            newticket.Status = selectedStatus;
+                Ticket oldticket = _selectedTicket;
+                Ticket newticket = oldticket;
+                newticket.Status = selectedStatus;
 
-            _ticketLogic.updateTicket(oldticket, newticket);
+                _ticketLogic.updateTicket(oldticket, newticket);
 
+                MessageBox.Show($"Status edited!");
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show($"Something failed\n{exception.Message}\nStatus has not been edited");
+            }
+
+            RefreshLists();
         }
 
         private void btnPriority_Click(object sender, EventArgs e)
         {
-            Priority selectedPriority = (Priority)System.Enum.Parse(typeof(Priority), cbPriorityEdit.SelectedItem.ToString());
+            try {
+                Priority selectedPriority = (Priority)System.Enum.Parse(typeof(Priority), cbPriorityEdit.SelectedItem.ToString());
 
-            
 
-            Ticket oldticket = _selectedTicket;
-            Ticket newticket = oldticket;
-            newticket.Priority = selectedPriority;
+                Ticket oldticket = _selectedTicket;
+                Ticket newticket = oldticket;
+                newticket.Priority = selectedPriority;
 
-            _ticketLogic.updateTicket(oldticket, newticket);
+                _ticketLogic.updateTicket(oldticket, newticket);
 
+                MessageBox.Show($"Priority edited!");
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show($"Something failed\n{exception.Message}\nPriority has not been edited");
+            }
+
+            RefreshLists();
+        }
+
+        private void btnRefreshEditTicket_Click(object sender, EventArgs e)
+        {
+            RefreshLists();
+            MessageBox.Show($"Refreshed succesfully!");
+        }
+
+        private void RefreshLists()
+        {
+            ClearListView();
+            FillListViewItem();
         }
     }
 }

@@ -43,6 +43,7 @@ namespace SupportService
             this.btnStatus = new System.Windows.Forms.Button();
             this.btnAssignedTo = new System.Windows.Forms.Button();
             this.btnPriority = new System.Windows.Forms.Button();
+            this.btnRefreshEditTicket = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lstEditTicket
@@ -53,9 +54,10 @@ namespace SupportService
             this.AssignedTo,
             this.Priority});
             this.lstEditTicket.HideSelection = false;
-            this.lstEditTicket.Location = new System.Drawing.Point(12, 25);
+            this.lstEditTicket.Location = new System.Drawing.Point(6, 13);
+            this.lstEditTicket.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.lstEditTicket.Name = "lstEditTicket";
-            this.lstEditTicket.Size = new System.Drawing.Size(776, 176);
+            this.lstEditTicket.Size = new System.Drawing.Size(572, 139);
             this.lstEditTicket.TabIndex = 0;
             this.lstEditTicket.UseCompatibleStateImageBehavior = false;
             this.lstEditTicket.View = System.Windows.Forms.View.Details;
@@ -86,59 +88,69 @@ namespace SupportService
             // cbPriorityEdit
             // 
             this.cbPriorityEdit.FormattingEnabled = true;
-            this.cbPriorityEdit.Location = new System.Drawing.Point(12, 396);
+            this.cbPriorityEdit.Location = new System.Drawing.Point(6, 327);
+            this.cbPriorityEdit.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.cbPriorityEdit.Name = "cbPriorityEdit";
-            this.cbPriorityEdit.Size = new System.Drawing.Size(160, 33);
+            this.cbPriorityEdit.Size = new System.Drawing.Size(82, 21);
             this.cbPriorityEdit.TabIndex = 1;
             // 
             // cbAssignedToEdit
             // 
             this.cbAssignedToEdit.FormattingEnabled = true;
-            this.cbAssignedToEdit.Location = new System.Drawing.Point(12, 321);
+            this.cbAssignedToEdit.Location = new System.Drawing.Point(6, 266);
+            this.cbAssignedToEdit.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.cbAssignedToEdit.Name = "cbAssignedToEdit";
-            this.cbAssignedToEdit.Size = new System.Drawing.Size(160, 33);
+            this.cbAssignedToEdit.Size = new System.Drawing.Size(82, 21);
             this.cbAssignedToEdit.TabIndex = 2;
             // 
             // cbStatusEdit
             // 
             this.cbStatusEdit.FormattingEnabled = true;
-            this.cbStatusEdit.Location = new System.Drawing.Point(12, 234);
+            this.cbStatusEdit.Location = new System.Drawing.Point(6, 201);
+            this.cbStatusEdit.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.cbStatusEdit.Name = "cbStatusEdit";
-            this.cbStatusEdit.Size = new System.Drawing.Size(160, 33);
+            this.cbStatusEdit.Size = new System.Drawing.Size(82, 21);
             this.cbStatusEdit.TabIndex = 3;
             // 
             // lblStatus
             // 
             this.lblStatus.AutoSize = true;
-            this.lblStatus.Location = new System.Drawing.Point(12, 206);
+            this.lblStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblStatus.Location = new System.Drawing.Point(12, 171);
+            this.lblStatus.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblStatus.Name = "lblStatus";
-            this.lblStatus.Size = new System.Drawing.Size(73, 25);
+            this.lblStatus.Size = new System.Drawing.Size(50, 18);
             this.lblStatus.TabIndex = 6;
             this.lblStatus.Text = "Status";
             // 
             // lblAssignedTo
             // 
             this.lblAssignedTo.AutoSize = true;
-            this.lblAssignedTo.Location = new System.Drawing.Point(7, 284);
+            this.lblAssignedTo.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAssignedTo.Location = new System.Drawing.Point(6, 237);
+            this.lblAssignedTo.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblAssignedTo.Name = "lblAssignedTo";
-            this.lblAssignedTo.Size = new System.Drawing.Size(125, 25);
+            this.lblAssignedTo.Size = new System.Drawing.Size(85, 18);
             this.lblAssignedTo.TabIndex = 7;
             this.lblAssignedTo.Text = "Assigned to";
             // 
             // lblPriority
             // 
             this.lblPriority.AutoSize = true;
-            this.lblPriority.Location = new System.Drawing.Point(12, 357);
+            this.lblPriority.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPriority.Location = new System.Drawing.Point(12, 298);
+            this.lblPriority.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblPriority.Name = "lblPriority";
-            this.lblPriority.Size = new System.Drawing.Size(79, 25);
+            this.lblPriority.Size = new System.Drawing.Size(54, 18);
             this.lblPriority.TabIndex = 8;
             this.lblPriority.Text = "Priority";
             // 
             // btnStatus
             // 
-            this.btnStatus.Location = new System.Drawing.Point(235, 207);
+            this.btnStatus.Location = new System.Drawing.Point(147, 171);
+            this.btnStatus.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnStatus.Name = "btnStatus";
-            this.btnStatus.Size = new System.Drawing.Size(144, 85);
+            this.btnStatus.Size = new System.Drawing.Size(117, 79);
             this.btnStatus.TabIndex = 9;
             this.btnStatus.Text = "Status aanpassen";
             this.btnStatus.UseVisualStyleBackColor = true;
@@ -146,9 +158,10 @@ namespace SupportService
             // 
             // btnAssignedTo
             // 
-            this.btnAssignedTo.Location = new System.Drawing.Point(429, 207);
+            this.btnAssignedTo.Location = new System.Drawing.Point(291, 171);
+            this.btnAssignedTo.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnAssignedTo.Name = "btnAssignedTo";
-            this.btnAssignedTo.Size = new System.Drawing.Size(144, 85);
+            this.btnAssignedTo.Size = new System.Drawing.Size(117, 79);
             this.btnAssignedTo.TabIndex = 10;
             this.btnAssignedTo.Text = "Assigned to aanpassen";
             this.btnAssignedTo.UseVisualStyleBackColor = true;
@@ -156,19 +169,31 @@ namespace SupportService
             // 
             // btnPriority
             // 
-            this.btnPriority.Location = new System.Drawing.Point(603, 207);
+            this.btnPriority.Location = new System.Drawing.Point(427, 171);
+            this.btnPriority.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnPriority.Name = "btnPriority";
-            this.btnPriority.Size = new System.Drawing.Size(144, 85);
+            this.btnPriority.Size = new System.Drawing.Size(112, 79);
             this.btnPriority.TabIndex = 11;
             this.btnPriority.Text = "Priority aanpassen";
             this.btnPriority.UseVisualStyleBackColor = true;
             this.btnPriority.Click += new System.EventHandler(this.btnPriority_Click);
             // 
+            // btnRefreshEditTicket
+            // 
+            this.btnRefreshEditTicket.Location = new System.Drawing.Point(476, 327);
+            this.btnRefreshEditTicket.Name = "btnRefreshEditTicket";
+            this.btnRefreshEditTicket.Size = new System.Drawing.Size(101, 38);
+            this.btnRefreshEditTicket.TabIndex = 12;
+            this.btnRefreshEditTicket.Text = "Refresh";
+            this.btnRefreshEditTicket.UseVisualStyleBackColor = true;
+            this.btnRefreshEditTicket.Click += new System.EventHandler(this.btnRefreshEditTicket_Click);
+            // 
             // FormEditTicket
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(589, 369);
+            this.Controls.Add(this.btnRefreshEditTicket);
             this.Controls.Add(this.btnPriority);
             this.Controls.Add(this.btnAssignedTo);
             this.Controls.Add(this.btnStatus);
@@ -179,6 +204,7 @@ namespace SupportService
             this.Controls.Add(this.cbAssignedToEdit);
             this.Controls.Add(this.cbPriorityEdit);
             this.Controls.Add(this.lstEditTicket);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "FormEditTicket";
             this.Text = "FormEditTicket";
             this.Load += new System.EventHandler(this.FormEditTicket_Load);
@@ -203,5 +229,6 @@ namespace SupportService
         private System.Windows.Forms.Button btnStatus;
         private System.Windows.Forms.Button btnAssignedTo;
         private System.Windows.Forms.Button btnPriority;
+        private System.Windows.Forms.Button btnRefreshEditTicket;
     }
 }
